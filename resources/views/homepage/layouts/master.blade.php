@@ -38,6 +38,8 @@
     <meta property="og:image"
         content="../s3.ap-northeast-1.amazonaws.com/h.files/images/1641916441312_72B9rctC3t.png" />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('homepage') }}/assets/css/icon.css">
     @yield('css_page')
