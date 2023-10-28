@@ -1,0 +1,46 @@
+.skiptranslate iframe {
+    display: none !important;
+}
+.translated-ltr body {
+    top: 0 !important;
+}
+#button_translate span {
+    display: none;
+}
+.goog-te-gadget {
+    line-height: 2px !important;
+    color: transparent !important;
+}
+.goog-te-gadget select {
+    display: block;
+    padding: 6px 9px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.translate-wrapper {
+    padding: 0 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 44px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    /*position: fixed;*/
+    /*right: 0;*/
+    /*top: 0;*/
+}

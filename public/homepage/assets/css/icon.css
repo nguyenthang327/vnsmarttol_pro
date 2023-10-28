@@ -1,0 +1,73 @@
+
+.icon-middle {
+    position: fixed;
+    right: 15px;
+    bottom: 200px;
+    transition: all .2s;
+    z-index: 5;
+}
+.icon-middle .icon {
+    margin-bottom: 10px;
+    z-index: 1;
+    width: 55px;
+    height: 55px;
+    background: #3697D7;
+    color: #fff;
+    display: inherit;
+    text-align: center;
+    line-height: 53px;
+    cursor: pointer;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all .3s;
+}
+.icon-middle .icon:hover {
+    box-shadow: 0 8px 25px -8px #071666;
+}
+.icon-middle .icon img {
+    width: auto;
+    max-width: 100%;
+}
+.icon-middle .icon img.icon-svg {
+    width: calc(100% - 25px);
+    vertical-align: middle;
+}
+.icon-middle i {
+    font-size: 23px;
+    padding-top: 15px
+}
+.mini-icons .icon-middle {
+    right: -60px;
+}
+#middle-control {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 90;
+    background: #3697D7;
+    -webkit-box-shadow: 0 0 15px 1px rgba(69, 65, 78, 0.2);
+    box-shadow: 0 0 15px 1px rgba(69, 65, 78, 0.2);
+    opacity: 1;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 4px;
+    padding: 9px;
+}
+#middle-control i {
+    font-size: 21px;
+    color: #ffffff;
+}
