@@ -56,7 +56,7 @@
     <!--begin::Modal-->
     <div class="modal fade" id="modalChangePass" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form id="passwordForm" action="https://vnsmarttol.com/forgot_pass/confirm_code">
+            <form id="passwordForm" action="">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Xác thực thông tin</h5>

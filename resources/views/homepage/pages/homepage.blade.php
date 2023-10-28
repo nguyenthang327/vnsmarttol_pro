@@ -141,7 +141,7 @@
                                         src="{{ asset('homepage') }}/assets/images/logo/default.png">
                                     <h2 class="m-b-0">Đăng nhập</h2>
                                 </div>
-                                <form action="/">
+                                <form action="">
 
                                     <div class="form-group">
                                         <label class="font-weight-semibold">Tên đăng nhập:</label>
@@ -193,7 +193,7 @@
                                         src="{{ asset('homepage') }}/assets/images/logo/default.png">
                                     <h2 class="m-b-0">Đăng ký</h2>
                                 </div>
-                                <form action="https://vnsmarttol pro/register/">
+                                <form action="">
 
                                     <div class="form-group">
                                         <label class="font-weight-semibold">Tên đăng nhập:</label>
