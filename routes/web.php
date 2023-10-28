@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage.pages.homepage');
+})->name('homepage');
+
+Route::prefix('/auth')->group(function () {
+    Route::get('/login', function () {
+        return view('homepage.pages.login');
+    })->name('login.index');
+    Route::get('/register', function () {
+        return view('homepage.pages.register');
+    })->name('register.index');
+    Route::get('/forgot-password', function () {
+        return view('homepage.pages.forgot-password');
+    })->name('forgotPassword.index');
 });
