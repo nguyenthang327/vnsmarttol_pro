@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Home page
+|--------------------------------------------------------------------------
+ */
+
 Route::get('/', function () {
     return view('homepage.pages.homepage');
 })->name('homepage');
 
+/*
+|--------------------------------------------------------------------------
+| Route auth
+|--------------------------------------------------------------------------
+ */
 Route::prefix('/auth')->group(function () {
     Route::get('/login', function () {
         return view('homepage.pages.login');
@@ -28,3 +39,33 @@ Route::prefix('/auth')->group(function () {
         return view('homepage.pages.forgot-password');
     })->name('forgotPassword.index');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Route management
+|--------------------------------------------------------------------------
+ */
+
+// dashboard
+Route::prefix('/dashboard')->group(function () {
+    Route::get('/', function () {
+        return view('management.pages.dashboard.index');
+    })->name('dashboard.index');
+});
+
+// information
+Route::prefix('/information')->group(function () {
+    Route::get('/', function () {
+        return view('management.pages.information.index');
+    })->name('information.index');
+});
+
+// card
+
+Route::prefix('/phone-card')->group(function () {
+    Route::get('/', function () {
+        return view('management.pages.recharge.phoneCard.index');
+    })->name('phoneCard.index');
+});
+
+
