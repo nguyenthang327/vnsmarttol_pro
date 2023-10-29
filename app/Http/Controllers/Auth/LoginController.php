@@ -35,12 +35,21 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->has('remember_me'))) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard.index');
+            return response()->json([
+                'status' => 1,
+                'msg' => trans('message.login_successed')
+            ]);
+            // return redirect()->route('dashboard.index');
         }
 
-        return back()->withErrors([
-            'login_failed' => trans('message.error_login')
+        return response()->json([
+            'status' => 0,
+            'msg' => trans('message.error_login')
         ]);
+
+        // return back()->withErrors([
+        //     'login_failed' => trans('message.error_login')
+        // ]);
     }
 
     /**
@@ -52,6 +61,5 @@ class LoginController extends Controller
         Auth::logout();
         session()->flush();
         return redirect()->route('homepage');
-        // return redirect()->route('admin.login');
     }
 }

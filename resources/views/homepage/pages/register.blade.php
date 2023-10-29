@@ -23,46 +23,58 @@
                                             src="{{ asset('homepage') }}/assets/images/logo/default.png">
                                         <h2 class="m-b-0">Đăng ký</h2>
                                     </div>
-                                    <form id="formAuth" action="">
+                                    <form id="formAuth" action="{{route('register')}}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="userName">Tên đăng nhập:</label>
                                             <input type="text" class="form-control text-lower" id="userName"
                                                 name="username" placeholder="Tên đăng nhập" required tabindex="1">
+                                            @if ($errors->first('username'))
+                                                <div class="invalid-alert text-danger">{{ $errors->first('username') }}</div>
+                                            @endif
                                         </div>
 
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="email">Email:</label>
                                             <input type="email" class="form-control text-lower" id="email"
                                                 name="email" placeholder="Email" required tabindex="2">
-
+                                            @if ($errors->first('email'))
+                                                <div class="invalid-alert text-danger">{{ $errors->first('email') }}</div>
+                                            @endif
                                             <button id="generate_email" class="btn btn-primary btn-sm" type="button"
                                                 style="margin-top: 5px">Tôi chưa có email</button>
                                         </div>
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="font-weight-semibold" for="phone">SDT/Zalo:</label>
                                             <input type="number" class="form-control" id="phone" name="phone"
                                                 placeholder="SDT/Zalo" required tabindex="3">
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="password">Mật khẩu:</label>
                                             <input type="password" class="form-control" id="password" name="password"
                                                 placeholder="Mật khẩu" required tabindex="4">
+                                            @if ($errors->first('password'))
+                                                <div class="invalid-alert text-danger">{{ $errors->first('password') }}</div>
+                                            @endif
                                         </div>
 
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="confirmPassword">Xác nhận mật
                                                 khẩu:</label>
-                                            <input type="password" class="form-control" id="confirmPassword" name="confirm"
+                                            <input type="password" class="form-control" id="confirmPassword" name="re_password"
                                                 placeholder="Xác nhận mật khẩu" required tabindex="5">
+                                                @if ($errors->first('re_password'))
+                                                    <div class="invalid-alert text-danger">{{ $errors->first('username') }}</div>
+                                                @endif
                                         </div>
 
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="font-weight-semibold">Mã giới thiệu (nếu có)</label>
                                             <input class="form-control" name="referral_code" placeholder="" tabindex="6">
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group">
                                             <div class="d-flex align-items-center justify-content-between p-t-15">
