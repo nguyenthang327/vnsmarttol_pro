@@ -2,28 +2,28 @@
 
 @section('css_page')
     <!--====== Animate CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/animate.css') }}">
 
     <!--====== Magnific Popup CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/magnific-popup.css') }}">
 
     <!--====== Slick CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/slick.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/slick.css') }}">
 
     <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/LineIcons.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/LineIcons.css') }}">
 
     <!--====== Font Awesome CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/font-awesome.min.css') }}">
 
     <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/bootstrap.min.css') }}">
 
     <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/default.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/default.css') }}">
 
     <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="{{ asset('homepage') }}/assets/landing_pages/page1/css/style.css">
+    <link rel="stylesheet" href="{{ asset('homepage/assets/landing_pages/page1/css/style.css') }}">
 @endsection
 
 @section('content')
@@ -56,12 +56,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="{{ route('homepage') }}">
                                 vnsmarttol pro
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
@@ -87,7 +87,7 @@
         </div> <!-- navbar area -->
 
         <div id="home" class="header-hero bg_cover"
-            style="background-image: url({{ asset('homepage') }}/assets/landing_pages/page1/images/banner-bg.svg)">
+             style="background-image: url({{ asset('homepage/assets/landing_pages/page1/images/banner-bg.svg') }})">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -101,15 +101,15 @@
                             <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Công cụ Tiếp thị
                                 Truyền thông Xã hội Tất cả Trong Một mà bạn sẽ cần!</p>
                             <a href="javascript:changeTab('login_widget', true)" class="main-btn wow fadeInUp"
-                                data-wow-duration="1.3s" data-wow-delay="1.1s">Đăng nhập / Đăng Ký</a>
+                               data-wow-duration="1.3s" data-wow-delay="1.1s">Đăng nhập / Đăng Ký</a>
                         </div> <!-- header hero content -->
                     </div>
                 </div> <!-- row -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="header-hero-image text-center wow fadeIn" data-wow-duration="1.3s"
-                            data-wow-delay="1.4s">
-                            <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/lp1.png" alt="hero">
+                             data-wow-delay="1.4s">
+                            <img src="{{ asset('homepage/assets/landing_pages/page1/images/lp1.png') }}" alt="hero">
                         </div> <!-- header hero image -->
                     </div>
                 </div> <!-- row -->
@@ -122,23 +122,23 @@
 
     <div class="mt-5"></div>
     <div class="wow fadeInUp" data-wow-duration="1.0s" data-wow-delay="0.5s">
-        <link rel="stylesheet" href="{{ asset('homepage') }}/assets/plugins/font-awesome-v4/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="{{ asset('homepage') }}/assets/css/login_box4c96.css?v=1698339223280" />
+        <link rel="stylesheet" href="{{ asset('homepage/assets/plugins/font-awesome-v4/css/font-awesome.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('homepage/assets/css/login_box.css') }}"/>
 
         <div class="box-cover">
             <div class="container">
                 <div class="row">
 
                     <div class="col-lg-6 col-12 block-left text-center">
-                        <img src="{{ asset('homepage') }}/assets/landing_pages/page4/images/hero-18-img.png"
-                            alt="" />
+                        <img src="{{ asset('homepage/assets/landing_pages/page4/images/hero-18-img.png') }}"
+                             alt=""/>
                     </div>
                     <div class="col-lg-6 col-12 block-right">
                         <div class="card shadow-lg auth-widget" id="login_widget">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between m-b-30">
                                     <img class="img-fluid" alt=""
-                                        src="{{ asset('homepage') }}/assets/images/logo/default.png">
+                                         src="{{ asset('homepage/assets/images/logo/default.png') }}">
                                     <h2 class="m-b-0">Đăng nhập</h2>
                                 </div>
                                 <form action="{{ route('login.authenticate') }}" method="POST">
@@ -156,18 +156,19 @@
                                         <div class="input-affix">
                                             <i class="prefix-icon fa fa-user-o"></i>
                                             <input type="text" class="form-control text-lower" name="username"
-                                                placeholder="Tên đăng nhập" required tabindex="1">
+                                                   placeholder="Tên đăng nhập" required tabindex="1">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="font-weight-semibold">Mật khẩu:</label>
-                                        <a class="float-right font-size-14 text-muted" href="{{route('forgotPassword.index')}}">Quên mật
+                                        <a class="float-right font-size-14 text-muted"
+                                           href="{{route('forgotPassword.index')}}">Quên mật
                                             khẩu?</a>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon fa fa-key"></i>
                                             <input type="password" class="form-control" name="password"
-                                                placeholder="Mật khẩu" required tabindex="2">
+                                                   placeholder="Mật khẩu" required tabindex="2">
                                         </div>
                                     </div>
 
@@ -178,7 +179,8 @@
                                                 <a href="javascript:changeTab('register_widget')"> Đăng ký</a>
                                             </span>
                                             <button class="btn btn-primary" type="submit" tabindex="3">Đăng
-                                                nhập</button>
+                                                nhập
+                                            </button>
                                         </div>
 
 
@@ -198,7 +200,7 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between m-b-30">
                                     <img class="img-fluid" alt=""
-                                        src="{{ asset('homepage') }}/assets/images/logo/default.png">
+                                         src="{{ asset('homepage/assets/images/logo/default.png') }}">
                                     <h2 class="m-b-0">Đăng ký</h2>
                                 </div>
                                 <form action="{{route('register')}}" method="POST">
@@ -208,7 +210,7 @@
                                         <div class="input-affix">
                                             <i class="prefix-icon fa fa-user-o"></i>
                                             <input type="text" class="form-control text-lower" name="username"
-                                                placeholder="Tên đăng nhập" required tabindex="4">
+                                                   placeholder="Tên đăng nhập" required tabindex="4">
                                         </div>
                                         @if ($errors->first('username'))
                                             <div class="invalid-alert text-danger">{{ $errors->first('username') }}</div>
@@ -227,7 +229,8 @@
                                         </div>
 
                                         <button id="generate_email" class="btn btn-primary btn-sm" type="button"
-                                            style="margin-top: 5px">Tôi chưa có email</button>
+                                                style="margin-top: 5px">Tôi chưa có email
+                                        </button>
                                     </div>
 
                                     {{-- <div class="form-group">
@@ -235,7 +238,7 @@
                                         <div class="input-affix">
                                             <i class="prefix-icon fa fa-phone"></i>
                                             <input type="text" class="form-control" name="phone"
-                                                placeholder="SDT/Zalo" required tabindex="6">
+                                                   placeholder="SDT/Zalo" required tabindex="6">
                                         </div>
                                     </div> --}}
 
@@ -269,7 +272,7 @@
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon fa fa-crosshairs"></i>
                                             <input class="form-control" name="referral_code"
-                                                placeholder="Mã giới thiệu (nếu có)" tabindex="8">
+                                                   placeholder="Mã giới thiệu (nếu có)" tabindex="8">
                                         </div>
                                     </div> --}}
 
@@ -281,7 +284,8 @@
                                             </span>
 
                                             <button class="btn btn-primary" type="submit" tabindex="9">Đăng
-                                                ký</button>
+                                                ký
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -294,7 +298,8 @@
 
         <style>
             /*OTP widget*/
-            .otp-auth-widget {}
+            .otp-auth-widget {
+            }
 
             .otp-auth-widget .otp-label {
                 font-size: 17px;
@@ -358,7 +363,7 @@
 
                             <div class="input-container">
                                 <input class="form-control" id="otp" placeholder="XXXXXX" maxlength="6"
-                                    type="tel">
+                                       type="tel">
                             </div>
 
                             <button class="btn btn-success btn-confirm-otp">Xác nhận</button>
@@ -372,12 +377,11 @@
         <div class="modal-backdrop modal-backdrop-otp fade"></div>
 
 
-
-        <script src="{{ asset('homepage') }}/assets/landing_pages/page4/js/jquery-3.6.0.min.js"></script>
-        <script src="{{ asset('homepage') }}/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-        <script src="{{ asset('homepage') }}/assets/js/login_box4c96.js?v=1698339223280"></script>
-        <script src="{{ asset('homepage') }}/assets/js/generate_email9f3c.js?t=1698339223280"></script>
-        <script src="{{ asset('homepage') }}/assets/js/try_web9f3c.js?t=1698339223280"></script>
+        <script src="{{ asset('homepage/assets/landing_pages/page4/js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('homepage/assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+        <script src="{{ asset('homepage/assets/js/login_box.js') }}"></script>
+        <script src="{{ asset('homepage/assets/js/generate_email.js') }}"></script>
+        <script src="{{ asset('homepage/assets/js/try_web.js') }}"></script>
 
     </div>
 
@@ -397,14 +401,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-7 col-sm-8">
                     <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s"
-                        data-wow-delay="0.2s">
+                         data-wow-delay="0.2s">
                         <div class="services-icon">
                             <img class="shape"
-                                src="{{ asset('homepage') }}/assets/landing_pages/page1/images/services-shape.svg"
-                                alt="shape">
+                                 src="{{ asset('homepage/assets/landing_pages/page1/images/services-shape.svg') }}"
+                                 alt="shape">
                             <img class="shape-1"
-                                src="{{ asset('homepage') }}/assets/landing_pages/page1/images/services-shape-1.svg"
-                                alt="shape">
+                                 src="{{ asset('homepage/assets/landing_pages/page1/images/services-shape-1.svg') }}"
+                                 alt="shape">
                             <i class="lni-baloon"></i>
                         </div>
                         <div class="services-content mt-30">
@@ -418,14 +422,14 @@
                 </div>
                 <div class="col-lg-4 col-md-7 col-sm-8">
                     <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s"
-                        data-wow-delay="0.5s">
+                         data-wow-delay="0.5s">
                         <div class="services-icon">
                             <img class="shape"
-                                src="{{ asset('homepage') }}/assets/landing_pages/page1/images/services-shape.svg"
-                                alt="shape">
+                                 src="{{ asset('homepage/assets/landing_pages/page1/images/services-shape.svg') }}"
+                                 alt="shape">
                             <img class="shape-1"
-                                src="{{ asset('homepage') }}/assets/landing_pages/page1/images/services-shape-2.svg"
-                                alt="shape">
+                                 src="{{ asset('homepage/assets/landing_pages/page1/images/services-shape-2.svg') }}"
+                                 alt="shape">
                             <i class="lni-cog"></i>
                         </div>
                         <div class="services-content mt-30">
@@ -438,14 +442,14 @@
                 </div>
                 <div class="col-lg-4 col-md-7 col-sm-8">
                     <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s"
-                        data-wow-delay="0.8s">
+                         data-wow-delay="0.8s">
                         <div class="services-icon">
                             <img class="shape"
-                                src="{{ asset('homepage') }}/assets/landing_pages/page1/images/services-shape.svg"
-                                alt="shape">
+                                 src="{{ asset('homepage/assets/landing_pages/page1/images/services-shape.svg') }}"
+                                 alt="shape">
                             <img class="shape-1"
-                                src="{{ asset('homepage') }}/assets/landing_pages/page1/images/services-shape-3.svg"
-                                alt="shape">
+                                 src="{{ asset('homepage/assets/landing_pages/page1/images/services-shape-3.svg') }}"
+                                 alt="shape">
                             <i class="lni-bolt-alt"></i>
                         </div>
                         <div class="services-content mt-30">
@@ -479,14 +483,14 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s"
-                        data-wow-delay="0.5s">
-                        <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/about1.svg" alt="about">
+                         data-wow-delay="0.5s">
+                        <img src="{{ asset('homepage/assets/landing_pages/page1/images/about1.svg') }}" alt="about">
                     </div> <!-- about image -->
                 </div>
             </div> <!-- row -->
         </div> <!-- container -->
         <div class="about-shape-1">
-            <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/about-shape-1.svg" alt="shape">
+            <img src="{{ asset('homepage/assets/landing_pages/page1/images/about-shape-1.svg') }}" alt="shape">
         </div>
     </section>
 
@@ -496,7 +500,7 @@
 
     <section class="about-area pt-70">
         <div class="about-shape-2">
-            <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/about-shape-2.svg" alt="shape">
+            <img src="{{ asset('homepage/assets/landing_pages/page1/images/about-shape-2.svg') }}" alt="shape">
         </div>
         <div class="container">
             <div class="row">
@@ -512,8 +516,8 @@
                 </div>
                 <div class="col-lg-6 order-lg-first">
                     <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s"
-                        data-wow-delay="0.5s">
-                        <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/about2.svg" alt="about">
+                         data-wow-delay="0.5s">
+                        <img src="{{ asset('homepage/assets/landing_pages/page1/images/about2.svg') }}" alt="about">
                     </div> <!-- about image -->
                 </div>
             </div> <!-- row -->
@@ -538,14 +542,14 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s"
-                        data-wow-delay="0.5s">
-                        <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/about3.svg" alt="about">
+                         data-wow-delay="0.5s">
+                        <img src="{{ asset('homepage/assets/landing_pages/page1/images/about3.svg') }}" alt="about">
                     </div> <!-- about image -->
                 </div>
             </div> <!-- row -->
         </div> <!-- container -->
         <div class="about-shape-1">
-            <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/about-shape-1.svg" alt="shape">
+            <img src="{{ asset('homepage/assets/landing_pages/page1/images/about-shape-1.svg') }}" alt="shape">
         </div>
     </section>
 
@@ -558,12 +562,12 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="video-content mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img class="dots" src="{{ asset('homepage') }}/assets/landing_pages/page1/images/dots.svg"
-                            alt="dots">
+                        <img class="dots" src="{{ asset('homepage/assets/landing_pages/page1/images/dots.svg') }}"
+                             alt="dots">
                         <div class="video-wrapper">
                             <div class="video-image">
-                                <img src="{{ asset('homepage') }}/assets/landing_pages/page1/images/lp5.png"
-                                    alt="">
+                                <img src="{{ asset('homepage/assets/landing_pages/page1/images/lp5.png') }}"
+                                     alt="">
                             </div>
                         </div> <!-- video wrapper -->
                     </div> <!-- video content -->
@@ -630,7 +634,8 @@
                             <p class="text">
                                 Với hơn 2 năm kinh nghiệm trong lĩnh vực Social, chúng tôi có đội ngũ kỹ thuật viên giàu
                                 kinh nghiệm,
-                                thấu hiểu tâm lý khách hàng, từ đó mang đến cho bạn trải nghiệm tốt nhất khi sử dụng dịch vụ
+                                thấu hiểu tâm lý khách hàng, từ đó mang đến cho bạn trải nghiệm tốt nhất khi sử dụng
+                                dịch vụ
                             </p>
                         </div> <!-- footer about -->
                     </div>
@@ -679,41 +684,40 @@
 
 @section('js_page')
     <!--====== Jquery js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/vendor/modernizr-3.7.1.min.js') }}"></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/popper.min.js"></script>
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/popper.min.js') }}"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/bootstrap.min.js') }}"></script>
 
     <!--====== Plugins js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/plugins.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/plugins.js') }}"></script>
 
     <!--====== Slick js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/slick.min.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/slick.min.js') }}"></script>
 
     <!--====== Ajax Contact js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/ajax-contact.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/ajax-contact.js') }}"></script>
 
     <!--====== Counter Up js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/waypoints.min.js"></script>
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/jquery.counterup.min.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/waypoints.min.js') }}"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/jquery.counterup.min.js') }}"></script>
 
     <!--====== Magnific Popup js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/jquery.magnific-popup.min.js') }}"></script>
 
     <!--====== Scrolling Nav js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/jquery.easing.min.js"></script>
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/scrolling-nav.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/scrolling-nav.js') }}"></script>
 
     <!--====== wow js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/wow.min.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/wow.min.js') }}"></script>
 
     <!--====== Particles js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/particles.min.js"></script>
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/particles.min.js') }}"></script>
 
     <!--====== Main js ======-->
-    <script src="{{ asset('homepage') }}/assets/landing_pages/page1/js/main.js"></script>
-
+    <script src="{{ asset('homepage/assets/landing_pages/page1/js/main.js') }}"></script>
 
 @endsection

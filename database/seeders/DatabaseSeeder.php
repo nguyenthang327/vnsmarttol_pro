@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
-{
+{  
     /**
      * Seed the application's database.
      *

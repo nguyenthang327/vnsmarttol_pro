@@ -2,16 +2,16 @@
 
 @section('css_page')
     <!-- page css -->
-    <link href="{{ asset('homepage') }}/assets/css/login9f3c.css?t=1698339223280" rel="stylesheet">
+    <link href="{{ asset('homepage/assets/css/login.css') }}" rel="stylesheet">
 
     <!-- Core css -->
-    <link href="{{ asset('homepage') }}/assets/css/app.min9f3c.css?t=1698339223280" rel="stylesheet">
+    <link href="{{ asset('homepage/assets/css/app.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
     <div class="app">
         <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex"
-            style="background-image: url({{ asset('homepage') }}/assets/images/background/default.png)">
+            style="background-image: url({{ asset('homepage/assets/images/background/default.png') }})">
             <div class="d-flex flex-column justify-content-between w-100">
                 <div class="container d-flex h-100">
                     <div class="row align-items-center w-100">
@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-between m-b-30">
                                         <img class="img-fluid" alt=""
-                                            src="{{ asset('homepage') }}/assets/images/logo/default.png">
+                                            src="{{ asset('homepage/assets/images/logo/default.png') }}">
                                         <h2 class="m-b-0">Đăng ký</h2>
                                     </div>
                                     <form id="formAuth" action="{{route('register')}}" method="POST">
@@ -93,7 +93,7 @@
                                         <div class="form-group">
 
                                             <link rel="stylesheet" type="text/css"
-                                                href="{{ asset('homepage') }}/assets/css/auth_common9f3c.css?t=1698339223280">
+                                                href="{{ asset('homepage/assets/css/auth_common.css') }}">
 
                                             <div class="translate-wrapper">
                                                 <div id="button_translate"></div>
@@ -108,9 +108,7 @@
                                                 }
                                             </script>
 
-                                            <script type="text/javascript" src="../translate.google.com/translate_a/elementdb88.js?cb=googleTranslate"></script>
-
-
+                                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslate"></script>
                                         </div>
                                     </form>
                                 </div>
@@ -128,9 +126,9 @@
 
 @section('js_page')
     <!-- Core Vendors JS -->
-    <script src="{{ asset('homepage') }}/assets/js/vendors.min.js"></script>
+    <script src="{{ asset('homepage/assets/js/vendors.min.js') }}"></script>
 
     <!-- page js -->
-    <script src="{{ asset('homepage') }}/assets/js/auth9f3c.js?t=1698339223280"></script>
-    <script src="{{ asset('homepage') }}/assets/js/generate_email9f3c.js?t=1698339223280"></script>
+    <script src="{{ asset('homepage/assets/js/auth.js') }}"></script>
+    <script src="{{ asset('homepage/assets/js/generate_email.js') }}"></script>
 @endsection

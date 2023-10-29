@@ -18,6 +18,27 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $fillable = [
+        'username',
+        'email',
+        'email_verified_at',
+        'password',
+        'api',
+        'cash',
+        'active',
+        'collaborator',
+        'ip',
+        'device',
+        'cheat',
+        'identity_website',
+        'remember_token'
+    ];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
     /**
