@@ -22,7 +22,7 @@ class LoginController extends Controller
     }
 
     /**
-     * admin auth
+     * auth
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -53,7 +53,7 @@ class LoginController extends Controller
     }
 
     /**
-     * admin logout
+     * logout
      * @return \Illuminate\Http\RedirectResponse
      */
     public function logout()

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/forgot_pass', function () {
-    return view('homepage.pages.forgot-password');
-})->name('forgotPassword.index');
+Route::get('/forgot_pass', [ForgotPasswordController::class, 'index'])->name('forgotPassword.index');
+Route::post('/forgot_pass', [ForgotPasswordController::class, 'forgotPassword'])->name('forgotPassword');
+Route::post('/change_pass_by_otp', [ForgotPasswordController::class, 'changePassByOTP'])->name('changePassByOTP');
 
 /*
 |--------------------------------------------------------------------------

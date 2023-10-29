@@ -720,4 +720,20 @@
     <!--====== Main js ======-->
     <script src="{{ asset('homepage/assets/landing_pages/page1/js/main.js') }}"></script>
 
+    <script>
+        var miniIcon = !!localStorage.getItem('miniIcon');
+
+        $('#middle-control').click(function() {
+            miniIcon = !miniIcon;
+            localStorage.setItem('miniIcon', miniIcon ? 'true' : '');
+            $('body')[miniIcon ? 'addClass' : 'removeClass']('mini-icons');
+        });
+
+        // Mini icon if selected or mobile
+        if (localStorage.getItem('miniIcon') || $(window).width() < 768) {
+            $('body').addClass('mini-icons');
+            miniIcon = true;
+        }
+    </script>
+
 @endsection
