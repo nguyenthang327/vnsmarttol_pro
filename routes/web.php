@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,26 +50,27 @@ Route::post('/change_pass_by_otp', [ForgotPasswordController::class, 'changePass
  */
 
  Route::group(['middleware' => ['auth']], function () {
-    // dashboard
-    Route::prefix('/home')->group(function () {
-        Route::get('/', function () {
-            return view('management.pages.dashboard.index');
-        })->name('dashboard.index');
+    Route::group(['middleware' => ['role:' . implode("|", [Role::ROLE_ADMIN, Role::ROLE_CLIENT]) ]], function () {
+        // dashboard
+        Route::prefix('/home')->group(function () {
+            Route::get('/', function () {
+                return view('management.pages.dashboard.index');
+            })->name('dashboard.index');
+        });
+        
+        // information
+        Route::prefix('/information')->group(function () {
+            Route::get('/', function () {
+                return view('management.pages.information.index');
+            })->name('information.index');
+        });
+        
+        // card
+        
+        Route::prefix('/phone-card')->group(function () {
+            Route::get('/', function () {
+                return view('management.pages.recharge.phoneCard.index');
+            })->name('phoneCard.index');
+        });
     });
-    
-    // information
-    Route::prefix('/information')->group(function () {
-        Route::get('/', function () {
-            return view('management.pages.information.index');
-        })->name('information.index');
-    });
-    
-    // card
-    
-    Route::prefix('/phone-card')->group(function () {
-        Route::get('/', function () {
-            return view('management.pages.recharge.phoneCard.index');
-        })->name('phoneCard.index');
-    });
-
 });
