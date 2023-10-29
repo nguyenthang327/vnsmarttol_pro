@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,18 +30,16 @@ Route::get('/', function () {
 | Route auth
 |--------------------------------------------------------------------------
  */
-Route::prefix('/auth')->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::get('/register', function () {
-        return view('homepage.pages.register');
-    })->name('register.index');
-    Route::get('/forgot-password', function () {
-        return view('homepage.pages.forgot-password');
-    })->name('forgotPassword.index');
-});
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/forgot_pass', function () {
+    return view('homepage.pages.forgot-password');
+})->name('forgotPassword.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +49,7 @@ Route::prefix('/auth')->group(function () {
 
  Route::group(['middleware' => ['auth']], function () {
     // dashboard
-    Route::prefix('/dashboard')->group(function () {
+    Route::prefix('/home')->group(function () {
         Route::get('/', function () {
             return view('management.pages.dashboard.index');
         })->name('dashboard.index');

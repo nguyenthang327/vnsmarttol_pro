@@ -91,7 +91,7 @@
                                             <div class="input-affix">
                                                 <i class="prefix-icon fa fa-user"></i>
                                                 <input type="text" class="form-control text-lower" id="userName"
-                                                       name="username" placeholder="Tên đăng nhập" tabindex="1">
+                                                    name="username" placeholder="Tên đăng nhập" tabindex="1" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -101,9 +101,8 @@
                                                 khẩu?</a>
                                             <div class="input-affix m-b-10">
                                                 <i class="prefix-icon fa fa-key"></i>
-                                                <input type="password" class="form-control" id="password"
-                                                       name="password"
-                                                       placeholder="Mật khẩu" tabindex="2">
+                                                <input type="password" class="form-control" id="password" name="password"
+                                                    placeholder="Mật khẩu" tabindex="2" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
