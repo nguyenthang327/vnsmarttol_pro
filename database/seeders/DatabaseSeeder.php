@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use Exception;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        try{
+            DB::beginTransaction();
+            $this->call([
+                RoleSeeder::class,
+                UserSeeder::class,
+            ]);
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
+            Log::error('[DatabaseSeeder] error: ' . $e->getMessage());
+        }
     }
 }
