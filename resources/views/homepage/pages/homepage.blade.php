@@ -141,8 +141,16 @@
                                         src="{{ asset('homepage') }}/assets/images/logo/default.png">
                                     <h2 class="m-b-0">Đăng nhập</h2>
                                 </div>
-                                <form action="">
-
+                                <form action="{{ route('login.authenticate') }}" method="POST">
+                                    @csrf
+                                    @if ($errors->has('login_failed'))
+                                            <div class="alert alert-danger alert-dismissible fade show p-2" role="alert">
+                                                <span>{{ $errors->first('login_failed') }}</span>
+                                                <button type="button" class="close p-2" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        @endif
                                     <div class="form-group">
                                         <label class="font-weight-semibold">Tên đăng nhập:</label>
                                         <div class="input-affix">

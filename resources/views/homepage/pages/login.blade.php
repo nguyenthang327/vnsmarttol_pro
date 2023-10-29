@@ -73,7 +73,16 @@
                                             src="{{ asset('homepage') }}/assets/images/logo/default.png">
                                         <h2 class="m-b-0">Đăng nhập</h2>
                                     </div>
-                                    <form id="formAuth" action="">
+                                    <form id="formAuth" action="{{ route('login.authenticate') }}" method="POST">
+                                        @csrf
+                                        @if ($errors->has('login_failed'))
+                                            <div class="alert alert-danger alert-dismissible fade show p-2" role="alert">
+                                                <span>{{ $errors->first('login_failed') }}</span>
+                                                <button type="button" class="close p-2" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        @endif
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="userName">Tên đăng nhập:</label>
                                             <div class="input-affix">
@@ -122,13 +131,13 @@
                                             </div>
 
 
-                                            <script>
-                                                function googleTranslate() {
-                                                    new google.translate['TranslateElement']({
-                                                        pageLanguage: 'vi'
-                                                    }, 'button_translate');
-                                                }
-                                            </script>
+                                            {{-- <script>
+                                                // function googleTranslate() {
+                                                //     new google.translate['TranslateElement']({
+                                                //         pageLanguage: 'vi'
+                                                //     }, 'button_translate');
+                                                // }
+                                            </script> --}}
 
                                             <script type="text/javascript" src="../translate.google.com/translate_a/elementdb88.js?cb=googleTranslate"></script>
 

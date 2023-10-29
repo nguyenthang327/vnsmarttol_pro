@@ -129,14 +129,23 @@
                     </a>
                     <ul class="dropdown-menu animated flipInX">
                         <li class="user-body">
-                            <a class="dropdown-item" href="/clound/infomation.html"><i
-                                    class="ti-user text-muted me-2"></i> Trang cá nhân</a>
+                            <a class="dropdown-item" href="#"><i class="ti-user text-muted me-2"></i> Trang cá
+                                nhân</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/clound/changepass.html"><i
-                                    class="ti-lock text-muted me-2"></i> Đổi mật khẩu</a>
+                            <a class="dropdown-item" href="#"><i class="ti-lock text-muted me-2"></i> Đổi mật
+                                khẩu</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout.html"><i class="ti-power-off text-muted me-2"></i>
-                                Đăng xuất</a>
+                            <a class="dropdown-item"
+                                href="#"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                <i class="ti-power-off text-muted me-2"></i>
+                                Đăng xuất
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
+                            </a>
                         </li>
                     </ul>
                 </li>

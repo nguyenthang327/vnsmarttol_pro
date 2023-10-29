@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dịch Vụ Facebook 24h</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keywords"
         content="tang like, tăng like, tăng tương tác, tang tuong tac cheo, tuongtaccheo, trao đổi sub, traodoisub, trao doi sub, tăng sub, tang theo doi, tang follow, danh gia page, tang danh gia, tang thanh vien nhom, tang cam xuc bai viet, tang like binh luan, tang theo doi fanpage, tang like fanpage, tang member nhom" />
     <meta name="author" content="WEBSITE DỊCH VỤ MẠNG XÃ HỘI" />
