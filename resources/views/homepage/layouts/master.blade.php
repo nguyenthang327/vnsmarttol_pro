@@ -5,13 +5,9 @@
     <meta charset="utf-8">
     <!--====== Title ======-->
     <title>VNSMARTTOL PRO | Hệ thống Seeding hàng đầu Việt Nam</title>
-
-
     <meta charset="utf-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('homepage/assets/images/favicon.ico') }}" />
     <link rel="apple-touch-icon" href="{{ asset('homepage/assets/images/favicon.ico') }}" />
