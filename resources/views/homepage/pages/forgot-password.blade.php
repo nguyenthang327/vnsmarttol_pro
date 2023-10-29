@@ -2,17 +2,17 @@
 
 @section('css_page')
     <!-- page css -->
-    <link href="{{ asset('homepage') }}/assets/css/login9f3c.css?t=1698339223280" rel="stylesheet">
+    <link href="{{ asset('homepage/assets/css/login.css') }}" rel="stylesheet">
 
     <!-- Core css -->
-    <link href="{{ asset('homepage') }}/assets/css/app.min9f3c.css?t=1698339223280" rel="stylesheet">
+    <link href="{{ asset('homepage/assets/css/app.min.css') }}" rel="stylesheet">
 @endsection
 
 
 @section('content')
     <div class="app">
         <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex"
-            style="background-image: url({{ asset('homepage') }}/assets/images/background/default.png)">
+            style="background-image: url({{ asset('homepage/assets/images/background/default.png') }})">
             <div class="d-flex flex-column justify-content-between w-100">
                 <div class="container d-flex h-100">
                     <div class="row align-items-center w-100">
@@ -21,7 +21,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-between m-b-30">
                                         <img class="img-fluid" alt=""
-                                            src="{{ asset('homepage') }}/assets/images/logo/default.png">
+                                            src="{{ asset('homepage/assets/images/logo/default.png') }}">
                                         <h2 class="m-b-0">Khôi phục mật khẩu</h2>
                                     </div>
                                     <form id="emailForm" action="">
@@ -89,8 +89,7 @@
 
 @section('js_page')
     <!-- Core Vendors JS -->
-    <script src="{{ asset('homepage') }}/assets/js/vendors.min.js"></script>
-
+    <script src="{{ asset('homepage/assets/js/vendors.min.js') }}"></script>
     <!-- page js -->
-    <script src="{{ asset('homepage') }}/assets/js/forgot_pass.js" type="text/javascript"></script>
+    <script src="{{ asset('homepage/assets/js/forgot_pass.js') }}" type="text/javascript"></script>
 @endsection
