@@ -69,7 +69,7 @@
                         <input type="hidden" name="user_id" value="">
                         <div class="form-group">
                             <label>Mã OTP nhận được từ email ( Có thể thư nằm trong mục Thư Rác ) </label>
-                            <input class="form-control" name="code" minlength="5" maxlength="20" required />
+                            <input class="form-control" name="code" minlength="6" maxlength="6" required />
                         </div>
 
                         <div class="form-group">
