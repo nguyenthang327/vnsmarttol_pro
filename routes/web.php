@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,9 +39,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/forgot_pass', function () {
-    return view('homepage.pages.forgot-password');
-})->name('forgotPassword.index');
+Route::get('/forgot_pass', [ForgotPasswordController::class, 'index'])->name('forgotPassword.index');
+Route::post('/forgot_pass', [ForgotPasswordController::class, 'forgotPassword'])->name('forgotPassword');
+Route::post('/change_pass_by_otp', [ForgotPasswordController::class, 'changePassByOTP'])->name('changePassByOTP');
 
 /*
 |--------------------------------------------------------------------------
@@ -48,26 +50,27 @@ Route::get('/forgot_pass', function () {
  */
 
  Route::group(['middleware' => ['auth']], function () {
-    // dashboard
-    Route::prefix('/home')->group(function () {
-        Route::get('/', function () {
-            return view('management.pages.dashboard.index');
-        })->name('dashboard.index');
+    Route::group(['middleware' => ['role:' . implode("|", [Role::ROLE_ADMIN, Role::ROLE_CLIENT]) ]], function () {
+        // dashboard
+        Route::prefix('/home')->group(function () {
+            Route::get('/', function () {
+                return view('management.pages.dashboard.index');
+            })->name('dashboard.index');
+        });
+        
+        // information
+        Route::prefix('/information')->group(function () {
+            Route::get('/', function () {
+                return view('management.pages.information.index');
+            })->name('information.index');
+        });
+        
+        // card
+        
+        Route::prefix('/phone-card')->group(function () {
+            Route::get('/', function () {
+                return view('management.pages.recharge.phoneCard.index');
+            })->name('phoneCard.index');
+        });
     });
-    
-    // information
-    Route::prefix('/information')->group(function () {
-        Route::get('/', function () {
-            return view('management.pages.information.index');
-        })->name('information.index');
-    });
-    
-    // card
-    
-    Route::prefix('/phone-card')->group(function () {
-        Route::get('/', function () {
-            return view('management.pages.recharge.phoneCard.index');
-        })->name('phoneCard.index');
-    });
-
 });

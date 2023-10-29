@@ -24,7 +24,8 @@
                                             src="{{ asset('homepage/assets/images/logo/default.png') }}">
                                         <h2 class="m-b-0">Khôi phục mật khẩu</h2>
                                     </div>
-                                    <form id="emailForm" action="">
+                                    <form id="emailForm" action="{{ route('forgotPassword') }}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="email">Email của bạn:</label>
                                             <input type="email" class="form-control" id="email" name="email"
@@ -56,7 +57,8 @@
     <!--begin::Modal-->
     <div class="modal fade" id="modalChangePass" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form id="passwordForm" action="">
+            <form id="passwordForm" action="{{route('changePassByOTP')}}" method="POST">
+                @csrf
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Xác thực thông tin</h5>
@@ -64,6 +66,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" name="user_id" value="">
                         <div class="form-group">
                             <label>Mã OTP nhận được từ email ( Có thể thư nằm trong mục Thư Rác ) </label>
                             <input class="form-control" name="code" minlength="5" maxlength="20" required />
