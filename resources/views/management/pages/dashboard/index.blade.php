@@ -3,406 +3,440 @@
 @section('css_page')
 @endsection
 
-@section('content')
-    <section class="content">
-        <div class="row">
-            <div class="col-xl-6 col-12">
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-primary-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/wallet.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">SỐ DƯ (VNĐ)</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-danger-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/wallet.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">TỔNG NẠP (VNĐ)</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-warning-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/running.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">ĐƠN ĐANG CHẠY</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-info-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/finish.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">ĐƠN HOÀN THÀNH</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-primary-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/purchase.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">TỔNG DÙNG (VNĐ)</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-danger-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/wallet.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">TIỀN HOÀN (VNĐ)</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-warning-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/running.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">ĐƠN CHỜ XỬ LÝ</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <div class="bg-info-light rounded10 p-20 mx-auto w-100 h-100">
-                                    <img src="{{asset('management/assets')}}/images/respawn/finish.png" class="" alt="" />
-                                </div>
-                                <p class="text-fade mt-15 mb-5">ĐƠN LỖI</p>
-                                <h4 class="mt-0">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-12 col-12">
-                    <h4 class="card-title">Danh Sách Server</h4>
-                    <div class="form-group">
-                        <select class="form-select" aria-label="Default select example" id="chonsv" name="chonsv">
-                            <option value="1">ID[2] - [Facebook] - (Giá 7 VNĐ / 1 Seeding) - [Like Rẻ] - Chỉ Tăng Like
-                            </option>
-                            <option value="2">ID[5] - [Facebook] - (Giá 15 VNĐ / 1 Seeding) - [Like Nhanh] - - Tốc độ
-                                lên nhanh, max 10k like, không bảo hành</option>
-                            <option value="3">ID[8] - [Facebook] - (Giá 65 VNĐ / 1 Seeding) - [Like Comment] - - Tốc
-                                độ: 1-10k/ngày</option>
-                            <option value="3">ID[9] - [Facebook] - (Giá 35 VNĐ / 1 Seeding) - [Like Comment] - - Tốc
-                                độ: 1-10k/ngày</option>
-
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <center><button type="submit" name="submit" id="submit" class="btn btn-danger"
-                                    onclick="submit();"><i class="fas fa-star-of-david"></i> MUA NGAY <i
-                                        class="fas fa-star-of-david"></i></button></center>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-6 col-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h4 class="box-title">Cấp Độ Ưu Đãi</h4>
-                    </div>
-                    <div class="box-body">
-                        <div class="table-responsive dataview">
-                            <table class="table datatable ">
-                                <thead>
-                                    <tr>
-                                        <th>Số Thứ Tự</th>
-                                        <th>Nạp Kích Hoạt</th>
-                                        <th>Tên Gói</th>
-                                        <th>Ưu Đãi</th>
-                                        <th>Hành Động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>500,000 VNĐ</td>
-                                        <td>CTV PRO</td>
-                                        <td>Hưởng giá dịch vụ ưu đãi</td>
-                                        <td><span class="badge badge-info" type="button" onclick="update1();">Nâng
-                                                Cấp</span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>1,000,000 VNĐ</td>
-                                        <td>CTV VIP</td>
-                                        <td>Hưởng giá dịch vụ tốt + Support chat riêng</td>
-                                        <td><span class="badge badge-info" type="button" onclick="update2();">Nâng
-                                                Cấp</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>5,000,000 VNĐ</td>
-                                        <td>Đại Lý PRO</td>
-                                        <td>Hưởng giá dịch vụ siêu ưu đãi + Support chat riêng + Thêm nhiều dịch vụ free
-                                        </td>
-                                        <td><span class="badge badge-info" type="button" onclick="update3();">Nâng
-                                                Cấp</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>10,000,000 VNĐ</td>
-                                        <td>Đại Lý VIP</td>
-                                        <td>Hưởng giá dịch vụ siêu Tốt + Support chat riêng + Thêm nhiều dịch vụ free- Hỗ
-                                            trợ mọi vấn đề về tool</td>
-                                        <td><span class="badge badge-info" type="button" onclick="update4();">Nâng
-                                                Cấp</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>30,000,000 VNĐ</td>
-                                        <td>Nhà Phân Phối VIP</td>
-                                        <td>Hưởng giá dịch vụ tốt nhất thị trường + Support chat riêng + Thêm nhiều dịch vụ
-                                            free- Hỗ trợ mọi vấn đề về tool + Hỗ trợ tạo website</td>
-                                        <td><span class="badge badge-info" type="button" onclick="update5();">Nâng
-                                                Cấp</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-12 col-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h4 class="box-title">Thông Báo Hệ Thống</h4>
-                    </div>
-                    <div class="box-body">
-                        <div class="nav-tabs-custom">
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-bordered-sm rounded-circle" src="/images/adminnoti.png"
-                                        alt="user image">
-                                    <span class="username">
-                                        <a href="#">ADMIN</a>
-                                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                                    </span>
-                                    <span class="description">2023-04-23 23:19:12</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <div class="activitytimeline">
-                                    <h4>Thông báo hỗ trợ dịch vụ Website của chúng tôi</h4>
-                                    <p>
-                                    <h3 class=""><span style="font-family: Arial;">Trong quá trình sử dụng web, việc
-                                            gặp phải lỗi là khó tránh khỏi. Đừng ngần ngại hãy inbox cho Admin để được hỗ
-                                            trợ nhanh nhất. Chúng tôi cam kết hoàn tiền 100% nếu lỗi thuộc về phía Website.
-                                        </span><a href="#" target="_blank"><span
-                                                style="font-family: Arial;">Zalo Admin: 0123456789</span></a></h3>
-                                    </p>
-                                    <ul class="list-inline">
-                                        <li><a href="#" class="link-black text-sm"><i
-                                                    class="fa fa-share margin-r-5"></i> Share</a></li>
-                                        <li><a href="#" class="link-black text-sm"><i
-                                                    class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                                        </li>
-                                        <li class="pull-right">
-                                            <a href="#" class="link-black text-sm"><i
-                                                    class="fa fa-comments-o margin-r-5"></i> Comments</a>
-                                        </li>
-                                    </ul>
-                                    <form class="form-element">
-                                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- BEGIN: MÃ NGUỒN ĐƯỢC VIẾT BỞI RESPAWN DEVELOPER MUASITE.COM -->
-
-            <div class="col-xl-12 col-12">
-                <div class="box">
-                    <div class="box-body">
-                        <h4 class="box-title">FACEBOOK</h4>
-                        <h6> Đơn giá: 1 sản phẩm / giá tiền </h6>
-                        <div class="table-responsive">
-                            <table class="table b-1 border-primary">
-                                <thead class="bg-primary">
-                                    <tr>
-                                        <th class="text-center">THƯƠNG HIỆU</th>
-                                        <th class="text-center">TÊN SẢN PHẨM</th>
-                                        <th class="text-center">QUỐC GIA</th>
-                                        <th class="text-center">CÒN LẠI</th>
-                                        <th class="text-center">ĐÃ BÁN</th>
-                                        <th class="text-center">GIÁ BÁN</th>
-                                        <th class="text-center">CHỨC NĂNG</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center"><img src="/brand/facebook/facebook.png" width="50px">
-                                        </td>
-                                        <td class="text-center">VIA Việt<br>UID|PASS|2FA</td>
-                                        <td class="text-center"><img src="/brand/flags/vn.png" width="30px"></td>
-                                        <td class="text-center text-success">
-
-                                            10
-                                        </td>
-                                        <td class="text-center text-danger">
-
-                                            2
-
-                                        </td>
-
-                                        <td class="text-center">1.000 VNĐ</td>
-                                        <td class="text-center"> <a type="button" href="/clound/1"
-                                                class="btn btn-primary"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
-                                                ngay</a>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="font-semibold text-gray-800 "> Dùng điện thoại <i class="fas fa-mobile-alt"></i>, hãy
-                            vuốt bảng từ phải qua trái <i class="fas fa-arrow-left"></i> để xem đầy đủ thông tin! </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-xl-12 col-12">
-                <div class="box">
-                    <div class="box-body">
-                        <h4 class="box-title">HOTMAIL</h4>
-                        <h6> Đơn giá: 1 sản phẩm / giá tiền </h6>
-                        <div class="table-responsive">
-                            <table class="table b-1 border-danger">
-                                <thead class="bg-danger">
-                                    <tr>
-                                        <th class="text-center">THƯƠNG HIỆU</th>
-                                        <th class="text-center">TÊN SẢN PHẨM</th>
-                                        <th class="text-center">QUỐC GIA</th>
-                                        <th class="text-center">CÒN LẠI</th>
-                                        <th class="text-center">ĐÃ BÁN</th>
-                                        <th class="text-center">GIÁ BÁN</th>
-                                        <th class="text-center">CHỨC NĂNG</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="font-semibold text-gray-800 "> Dùng điện thoại <i class="fas fa-mobile-alt"></i>, hãy
-                            vuốt bảng từ phải qua trái <i class="fas fa-arrow-left"></i> để xem đầy đủ thông tin! </div>
-                    </div>
-
-                </div>
-            </div>
-
-            {{-- <div class="col-xl-12 col-12">
-                <div class="box">
-                    <div class="box-body">
-                        <h4 class="box-title">TOOL SPAM BĂM LIVE</h4>
-                        <h6> Đơn giá: 1 sản phẩm / giá tiền </h6>
-                        <div class="table-responsive">
-                            <table class="table b-1 border-success">
-                                <thead class="bg-success">
-                                    <tr>
-                                        <th class="text-center">THƯƠNG HIỆU</th>
-                                        <th class="text-center">TÊN SẢN PHẨM</th>
-                                        <th class="text-center">QUỐC GIA</th>
-                                        <th class="text-center">CÒN LẠI</th>
-                                        <th class="text-center">ĐÃ BÁN</th>
-                                        <th class="text-center">GIÁ BÁN</th>
-                                        <th class="text-center">CHỨC NĂNG</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center"><img
-                                                src="https://banner2.cleanpng.com/20180412/kye/kisspng-python-programming-language-computer-programming-language-5acfdc3636bac7.8891188615235717662242.jpg"
-                                                width="50px"></td>
-                                        <td class="text-center">TOOL KÍT ĐỖ CRACK <br>Chỉ gồm 1 chế độ ( tự chọn ) nhắn tin
-                                            cho ADMIN để nhận file tool và hỗ trợ cài đặt </td>
-                                        <td class="text-center"><img src="/brand/flags/vn.png" width="30px"></td>
-                                        <td class="text-center text-success">
-
-                                            17
-                                        </td>
-                                        <td class="text-center text-danger">
-
-                                            0
-
-                                        </td>
-
-                                        <td class="text-center">888.888 VNĐ</td>
-                                        <td class="text-center"> <a type="button" href="/clound/2"
-                                                class="btn btn-primary"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
-                                                ngay</a>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center"><img
-                                                src="https://banner2.cleanpng.com/20180412/kye/kisspng-python-programming-language-computer-programming-language-5acfdc3636bac7.8891188615235717662242.jpg"
-                                                width="50px"></td>
-                                        <td class="text-center">TOOL SPAM PYTHON 1 MODE<br>Chỉ gồm 1 chế độ ( tự chọn )
-                                            nhắn tin cho ADMIN để nhận file tool và hỗ trợ cài đặt</td>
-                                        <td class="text-center"><img src="/brand/flags/vn.png" width="30px"></td>
-                                        <td class="text-center text-success">
-
-                                            10
-                                        </td>
-                                        <td class="text-center text-danger">
-
-                                            2
-
-                                        </td>
-
-                                        <td class="text-center">555.555 VNĐ</td>
-                                        <td class="text-center"> <a type="button" href="/clound/1"
-                                                class="btn btn-primary"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
-                                                ngay</a>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="font-semibold text-gray-800 "> Dùng điện thoại <i class="fas fa-mobile-alt"></i>, hãy
-                            vuốt bảng từ phải qua trái <i class="fas fa-arrow-left"></i> để xem đầy đủ thông tin! </div>
-                    </div> --}}
-
-                </div>
-            </div>
-
-            <!-- END: KẾT THÚC MỘT CUỘC TÌNH -->
-
-
-
-
-
-
+@section('subHeader')
+    {{-- <div class="sub-header">
+        <div class="title">Trang Tổng Quan</div>
+        <div class="link-logout">
+            <a href="#" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">Đăng Xuất</a>
         </div>
-    </section>
+    </div> --}}
+@endsection
+
+@section('content')
+    <div class="main-content">
+        <div class="row flex-row-reverse">
+            <div class="col-xl-4 col-md-6">
+                <div class="card widget-user mb-only">
+                    <div class="card-body">
+                        <h4>Tổng Quan</h4>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="widget__top">
+                                    <div class="widget__media hidden-">
+                                        <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="image">
+                                    </div>
+                                    <div class="widget__content">
+                                        <div class="widget__head">
+                                            <a href="{{ route('information.index') }}"
+                                                class="widget__username text-success">
+                                                {{ $user->username }}
+                                                <img class="icon-tick"
+                                                    src="{{ asset('management/assets/images/tick.svg') }}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="widget__subhead">
+                                            <a href="javascript:void(0)" class="text-warning">
+                                                <i class="fa fa-envelope"></i>
+                                                {{ $user->email }}
+                                            </a>
+                                            <a href="javascript:void(0)" class="text-primary">
+                                                <i class="fa fa-user"></i>Nhà phân phối
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="widget-statistic">
+                                    <div class="widget-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-left">
+                                                <i class="icon text-success far fa-money-bill-alt"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-1">Số Dư</div>
+                                                <div class="text-2 text-money">
+                                                    <span>376,842₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-left">
+                                                <i class="icon fas fa-money-check text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-1">Đã Sử Dụng</div>
+                                                <div class="text-2 text-money">
+                                                    <span>2,123,158₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-left">
+                                                <i class="icon fas fa-money-check-alt text-danger"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-1">Đã Nạp</div>
+                                                <div class="text-2 text-money">
+                                                    <span>2,500,000₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-left">
+                                                <i class="icon fa fa-star text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-1">VIP Đang chạy</div>
+                                                <div class="text-2 text-money">
+                                                    <span>0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card box-shadow-1">
+                    <div class="card-header menu_header">Hoạt động mới</div>
+                    <div class="card-body">
+                        <div class="list-user-notifications custom-scroll">
+                            <table id="table-notifications">
+                                <tbody>
+                                    <tr class="notify-item notify-type-notify_popup"
+                                        data-time="Fri Sep 29 2023 13:38:40 GMT+0700 (Indochina Time)"
+                                        data-type="notify_popup">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            VIETCOMBANK bị ép đổi mật khẩu, mọi người đổi xong cập nhật lại
+                                            mật khẩu
+                                            và id trình duyệt nếu sử dụng auto bank và test auto lại nha
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify"
+                                        data-time="Thu Sep 28 2023 14:50:05 GMT+0700 (Indochina Time)" data-type="notify">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Hoàn 1,360₫ từ dịch vụ comment
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify"
+                                        data-time="Wed Sep 27 2023 17:40:05 GMT+0700 (Indochina Time)" data-type="notify">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Hoàn 1,360₫ từ dịch vụ comment
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify_popup"
+                                        data-time="Thu Aug 17 2023 19:27:29 GMT+0700 (Indochina Time)"
+                                        data-type="notify_popup">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Mở lại share tiktok v4, giá rẻ lên rất nhanh. Update (website
+                                            phụ) chức
+                                            năng thông báo nổi cho từng dịch vụ.
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify_popup"
+                                        data-time="Tue Jun 27 2023 11:55:58 GMT+0700 (Indochina Time)"
+                                        data-type="notify_popup">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Momo: Hiện tại bên momo chặn giới hạn đăng nhập tần suất nhiều
+                                            hơn. dễ
+                                            bị chặn 24 giờ, mọi người nên sử dụng 2 sdt momo. để nếu bị chặn
+                                            thì
+                                            thay thế cho khách hàng nạp tiền.
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify"
+                                        data-time="Tue May 30 2023 08:36:25 GMT+0700 (Indochina Time)" data-type="notify">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Nạp thành công 1,000,000VND
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify"
+                                        data-time="Sat May 20 2023 21:58:52 GMT+0700 (Indochina Time)" data-type="notify">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Nạp thành công 500,000VND
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify"
+                                        data-time="Wed May 17 2023 22:41:01 GMT+0700 (Indochina Time)" data-type="notify">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Nạp thành công 500,000VND
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="notify-item notify-type-notify"
+                                        data-time="Wed May 17 2023 22:39:26 GMT+0700 (Indochina Time)" data-type="notify">
+                                        <td class="td-time"></td>
+                                        <td class="content">
+                                            Nạp thành công 500,000VND
+                                            <span class="badge-new"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                        <div class="text-center">
+                            <button class="btn btn-view-notify">Xem tất cả thông báo</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="card box-shadow-1">
+                    <div class="card-header menu_header">Bạn cần hỗ trợ?</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <a class="widget-support" target="_blank"
+                                    href="https://www.facebook.com/nhanvien.support/">
+                                    <img src="{{ asset('management/assets/images/icons/message.png') }}" alt="" />
+                                    <div class="support-text">Nhân viên hỗ trợ</div>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <a class="widget-support" target="_blank"
+                                    href="https://www.youtube.com/channel/UCLAc8u4ojo7U8GmB_l_ohDg">
+                                    <img src="{{ asset('management/assets/images/icons/youtube.png') }}" alt="" />
+                                    <div class="support-text">Youtube HDSD</div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card box-shadow-1">
+                    <div class="card-header menu_header">Câu hỏi thường gặp (nhấn để xem)</div>
+                    <div class="card-body">
+                        <div class="question mt-2 mb-2" data-toggle="collapse" data-target="#question_0"
+                            aria-expanded="false">
+                            <i class="far fa-hand-point-right"></i> Dịch vụ mua không chạy?
+                        </div>
+                        <div class="collapse" id="question_0">
+                            <div class="card card-body p-2 text-ln">Hãy kiểm tra tình trạng tại mục quản lý
+                                uid
+                                trước, sau đó báo lỗi tại fanpage support nhé.
+                            </div>
+                        </div>
+                        <div class="question mt-2 mb-2" data-toggle="collapse" data-target="#question_1"
+                            aria-expanded="false">
+                            <i class="far fa-hand-point-right"></i> Tôi cần nạp tiền
+                        </div>
+                        <div class="collapse" id="question_1">
+                            <div class="card card-body p-2 text-ln">Tại menu website, có mục nạp tiền, các
+                                bạn
+                                bấm và hãy đọc lưu ý tại đó và chuyển tiền đúng nội dung nha
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card box-shadow-1 pc-only">
+                    <div class="card-header menu_header">Video hướng dẫn sử dụng</div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe style="width: 560px;height:315px" src="https://www.youtube.com/embed/9mW_zsdq_2U"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-md-6">
+                <div class="card widget-user pc-only">
+                    <div class="card-body">
+                        <h4>Tổng Quan</h4>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="widget__top">
+                                    <div class="widget__media hidden-">
+                                        <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="image">
+                                    </div>
+                                    <div class="widget__content">
+                                        <div class="widget__head">
+                                            <a href="/profile/" class="widget__username text-success">
+                                                {{ $user->username }}
+                                                <img class="icon-tick"
+                                                    src="{{ asset('management/assets/images/tick.svg') }}"
+                                                    alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="widget__subhead">
+                                            <a href="javascript:void(0)" class="text-warning">
+                                                <i class="fa fa-envelope"></i>
+                                                {{ $user->email }}
+                                            </a>
+                                            <a href="javascript:void(0)" class="text-primary">
+                                                <i class="fa fa-user"></i>Nhà phân phối
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="widget-statistic">
+                                    <div class="widget-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-left">
+                                                <i class="icon text-success far fa-money-bill-alt"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-1">Số Dư</div>
+                                                <div class="text-2 text-money">
+                                                    <span>376,842₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-left">
+                                                <i class="icon fas fa-money-check text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-1">Đã Sử Dụng</div>
+                                                <div class="text-2 text-money">
+                                                    <span>2,123,158₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-left">
+                                                <i class="icon fas fa-money-check-alt text-danger"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-1">Đã Nạp</div>
+                                                <div class="text-2 text-money">
+                                                    <span>2,500,000₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="card mb-4">
+                    <div class="card-body text-danger">
+                        Đề nghị mọi người liên kết Telegram <a href="/profile" target="_self">tại đây</a>
+                        <br />
+                        Liên kết Telegram giúp bảo mật tài khoản, cũng như cập nhật các thông tin mới nhất
+                        từ hệ
+                        thống!
+                    </div>
+                </div>
+
+
+                <div class="card mb-2 box-shadow-1">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('management/assets/images/admin.png') }}" class="feed-icon align-self-end"
+                                alt="">
+                            <div>
+                                <a class="feed-title" href="/">
+                                    Quản Trị Viên </a>
+                                <div class="feed-time" data-time="Mon May 15 2023 19:39:56 GMT+0700 (Indochina Time)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feed-content">
+                            <p><span style="color:#e74c3c"><strong>Chào mừng bạn tới website số 1
+                                        VN.<br>Cung cấp các giải pháp markerting digital</strong></span>
+                            </p>
+                        </div>
+
+
+                        <div class="feed-image">
+                            <img src="{{ asset('management/assets/images/feed-image.jpeg') }}" alt="feed-image" />
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="card box-shadow-1 mb-only">
+                    <div class="card-header menu_header">Video hướng dẫn sử dụng</div>
+                    <div class="card-body">
+                        {{-- <div class="video-container">
+                            <iframe style="width: 560px;height:315px" src="https://www.youtube.com/embed/9mW_zsdq_2U"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal fade" id="userNotifyModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thông báo mới</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="table-user-notifications" class="table table-bordered"></table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalZoomImage" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="fa fa-times"></span>
+                    </button>
+                    <img src="#" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js_page')

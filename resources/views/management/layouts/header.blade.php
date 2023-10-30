@@ -1,156 +1,169 @@
-<header class="main-header">
-    <div class="d-flex align-items-center logo-box justify-content-start">
-        <!-- Logo -->
-        <a href="/" class="logo">
-            <div class="logo-lg">
-                <span class="light-logo"><img src="https://i.upanh.org/2023/03/07/Untitled-15eb0066a1f38bdb5.png"
-                        alt="logo"></span>
-                <span class="dark-logo"><img src="https://i.upanh.org/2023/03/07/Untitled-15eb0066a1f38bdb5.png"
-                        alt="logo"></span>
-            </div>
+<div class="header">
+    <div class="logo">
+        <a href="{{ route('dashboard.index') }}">
+            <img src="{{ asset('management/assets/images/logo/default.png') }}" alt="Logo">
+            <img class="logo-fold" src="{{ asset('management/assets/images/logo/default.png') }}" alt="Logo">
         </a>
-    </div> <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
-        <div class="app-menu">
-            <ul class="header-megamenu nav">
-                <li class="btn-group nav-item">
-                    <a href="#" class="waves-effect waves-light nav-link push-btn btn-primary-light"
-                        data-toggle="push-menu" role="button">
-                        <i data-feather="align-left"></i>
-                    </a>
-                </li>
-                <li class="btn-group d-lg-inline-flex d-none">
-                    <div class="app-menu">
-                        <div class="search-bx mx-5">
-                            <form>
-                                <div class="input-group">
-                                    <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                                        aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn" type="submit" id="button-addon3"><i
-                                                data-feather="search"></i></button>
-                                    </div>
-                                </div>
-                            </form>
+    </div>
+    <div class="nav-wrap">
+        <ul class="nav-left">
+            <li class="desktop-toggle">
+                <a href="javascript:void(0);">
+                    <i class="icon-toggle"></i>
+                </a>
+            </li>
+            <li class="mobile-toggle">
+                <a href="javascript:void(0);">
+                    <i class="icon-toggle"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav-right nav-right-actions">
+
+            <li class="scale-left li-service-select">
+                <div class="mr-3">
+                    <div class="service-select-wrapper">
+                        <select id="service-select" class="form-control" style="width: 500px">
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Facebook Speed">
+                                <option value="/fb_speed/s_like">Like bài viết speed</option>
+                                <option value="/fb_speed/s_follow">Sub Trang cá nhân speed</option>
+                                <option value="/fb_speed/s_like_page">Like Sub FanPage speed</option>
+                            </optgroup>
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Facebook Buff">
+                                <option value="/facebook/reactions">Tăng Like bài viết chậm</option>
+                                <option value="/facebook/follow">Sub trang cá nhân VIP</option>
+                                <option value="/facebook/like_page">Like Sub Fanpage VIP</option>
+                                <option value="/fb_speed/s_like_comment">Tăng Like Comment</option>
+                                <option value="/facebook/comment">Tăng Bình Luận</option>
+                                <option value="/facebook/share">Chia Sẻ Bài Viết</option>
+                                <option value="/facebook/buff_group">Tăng member Group</option>
+                                <option value="/facebook/share_group">Share Lives Group</option>
+                                <option value="/facebook/review">Đánh giá 5 Sao</option>
+                                <option value="/facebook/checkin">Check In FanPage</option>
+                                <option value="/facebook/fb_event">Sự kiện Facebook</option>
+                            </optgroup>
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Facebook Reel">
+                                <option value="/fb_reel/fb_like_reel">Tăng Like Reels</option>
+                                <option value="/fb_reel/fb_comment_reel">Tăng Comment Reels</option>
+                                <option value="/fb_reel/fb_view_reel">Tăng View Reels</option>
+                                <option value="/fb_reel/fb_view_100k_reel">Tăng View 100k Reels</option>
+                                <option value="/fb_reel/fb_share_reel">Tăng Share Reels</option>
+                            </optgroup>
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Facebook Vip">
+                                <option value="/vipfacebook/vip_like">VIP Like Theo Tháng</option>
+                                <option value="/vipfacebook/vip_like_group">VIP Like Group Tháng</option>
+                                <option value="/vipfacebook/vip_cmt">VIP CMT Theo tháng</option>
+                                <option value="/vipfacebook/vip_live">VIP Mắt Theo Tháng</option>
+                                <option value="/vipfacebook/vip_view_video">Vip View Video Tháng</option>
+                                <option value="/vipfacebook/vip_share">Vip Share Theo Tháng</option>
+                            </optgroup>
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Facebook Bot">
+                                <option value="/reaction/proxy">Proxy</option>
+                                <option value="/reaction/bot_comment">Bot cảm xúc và Cmt</option>
+                                <option value="/reaction/bot_love_story">Bot Love và cmt Story</option>
+                                <option value="/reaction/poke">Bot Chọc Tương Tác</option>
+                                <option value="/reaction/filter_friend">Lọc bạn bè k tương tác</option>
+                            </optgroup>
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Mắt-View">
+                                <option value="/view/view_live_v2">Buff Mắt Livestream</option>
+                                <option value="/view/view_video">Tăng View Video</option>
+                                <option value="/view/view_story">Tăng View Story</option>
+                                <option value="/view/view_other">View 600k phút</option>
+                                <option value="/view/view_60k_offline">View 60k Offline</option>
+                            </optgroup>
+
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Threads">
+                                <option value="/threads/like_threads">Like Threads</option>
+                                <option value="/threads/follow_threads">Follow Threads</option>
+                            </optgroup>
+                            <option value="">Chọn dịch vụ</option>
+                            <optgroup label="Instagram">
+                                <option value="/instagram/like_instagram">Like Instagram</option>
+                                <option value="/instagram/comment_instagram">Comment Instagram</option>
+                                <option value="/instagram/follow_instagram">Follow Instagram</option>
+                                <option value="/instagram/view_instagram">View Instagram</option>
+                                <option value="/instagram/live_instagram">Mắt Livestream Instagram</option>
+                                <option value="/instagram/vip_like_instagram">Vip Like Instagram</option>
+                                <option value="/instagram/vip_comment_instagram">Vip Comment Instagram</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </li>
+
+            {{-- <li class="scale-left">
+                <div class="mr-3">
+                    <div class="switch d-inline">
+                        <label for="switch_dark_mode" class="dark-mode-label">Dark Mode</label>
+                        <input type="checkbox" name="switch_dark_mode" id="switch_dark_mode">
+                        <label for="switch_dark_mode"></label>
+                    </div>
+                </div>
+            </li> --}}
+            <li class="scale-left">
+                <div class="translate-wrapper">
+                    <div id="button_translate"></div>
+                </div>
+            </li>
+            <li class="dropdown dropdown-animated scale-left">
+                <div class="pointer" data-toggle="dropdown">
+                    <div class="avatar avatar-image  m-h-10 m-r-15">
+                        <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="p-b-15 p-t-20 dropdown-menu pop-profile">
+                    <div class="p-h-20 p-b-15 m-b-10 border-bottom">
+                        <div class="d-flex m-r-50">
+                            <div class="avatar avatar-lg avatar-image">
+                                <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="">
+                            </div>
+                            <div class="m-l-10">
+                                <p class="m-b-0 text-dark font-weight-semibold">temisvn</p>
+                                <p class="m-b-0 opacity-07">Nhà phân phối</p>
+                            </div>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="navbar-custom-menu r-side">
-            <ul class="nav navbar-nav">
-                <li class="btn-group nav-item d-lg-inline-flex d-none">
-                    <a href="#" data-provide="fullscreen"
-                        class="waves-effect waves-light nav-link full-screen btn-warning-light" title="Full Screen">
-                        <i data-feather="maximize"></i>
-                    </a>
-                </li>
-                <!-- Notifications -->
-                <li class="dropdown notifications-menu">
-                    <a href="#" class="waves-effect waves-light dropdown-toggle btn-info-light"
-                        data-bs-toggle="dropdown" title="Notifications">
-                        <i data-feather="bell"></i>
-                    </a>
-                    <ul class="dropdown-menu animated bounceIn">
-
-                        <li class="header">
-                            <div class="p-20">
-                                <div class="flexbox">
-                                    <div>
-                                        <h4 class="mb-0 mt-0">Thông báo</h4>
-                                    </div>
-                                    <div>
-                                        <a href="#" class="text-danger">Clear</a>
-                                    </div>
-                                </div>
+                    <a href="/profile" class="dropdown-item d-block p-h-15 p-v-10">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <i class="opacity-04 font-size-16 fa fa-user"></i>
+                                <span class="m-l-10">Cập nhật thông tin</span>
                             </div>
-                        </li>
-
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu sm-scrol">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-info"></i> Đơn hàng hoạt động 24/7 .
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-warning text-warning"></i> Nhân viên hỗ trợ hoạt động
-                                        24/7.
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-danger"></i> Bạn được hỗ trợ bảo mật.
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-shopping-cart text-success"></i> Tính năng hoàn toàn
-                                        chính xác.
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-warning text-warning"></i> Giá gốc rẻ nhất thị trường.
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="footer">
-                            <a href="#">View all</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- Control Sidebar Toggle Button -->
-                <!---li class="btn-group nav-item">
-                        <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect full-screen waves-light btn-danger-light">
-                        <i data-feather="settings"></i>
-                        </a>
-                    </li--->
-
-                <!-- User Account-->
-                <li class="dropdown user user-menu">
-                    <a href="#"
-                        class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent py-0 no-shadow"
-                        data-bs-toggle="dropdown" title="User">
-                        <div class="d-flex pt-5">
-                            <div class="text-end me-10">
-                                <p class="pt-5 fs-14 mb-0 fw-700 text-primary">respawn2021</p>
-                                <small class="fs-10 mb-0 text-uppercase text-mute">Level KM: Member</small>
-                            </div>
-                            <img src="../images/avatar/avatar-1.png"
-                                class="avatar rounded-10 bg-primary-light h-40 w-40" alt="" />
+                            <i class="font-size-10 fa fa-chevron-right"></i>
                         </div>
                     </a>
-                    <ul class="dropdown-menu animated flipInX">
-                        <li class="user-body">
-                            <a class="dropdown-item" href="#"><i class="ti-user text-muted me-2"></i> Trang cá
-                                nhân</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="ti-lock text-muted me-2"></i> Đổi mật
-                                khẩu</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"
-                                href="#"
-                                onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                <i class="ti-power-off text-muted me-2"></i>
-                                Đăng xuất
+                    <a href="#" class="dropdown-item d-block p-h-15 p-v-10" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <i class="opacity-04 font-size-16 fa fa-sign-out"></i>
+                                <span class="m-l-10">Đăng xuất</span>
+                            </div>
+                            <i class="font-size-10 fa fa-chevron-right"></i>
+                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                        </form>
+                    </a>
+                </div>
+            </li>
+        </ul>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                </form>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
-</header>
+        <ul class="nav-right toggle-mobile-container">
+            <li>
+                <a href="javascript:void(0);">
+                    <div class="avatar avatar-image  m-h-10 m-r-15">
+                        <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
