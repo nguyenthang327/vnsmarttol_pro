@@ -98,7 +98,7 @@
                 </div>
             </li>
 
-            <li class="scale-left">
+            {{-- <li class="scale-left">
                 <div class="mr-3">
                     <div class="switch d-inline">
                         <label for="switch_dark_mode" class="dark-mode-label">Dark Mode</label>
@@ -106,7 +106,7 @@
                         <label for="switch_dark_mode"></label>
                     </div>
                 </div>
-            </li>
+            </li> --}}
             <li class="scale-left">
                 <div class="translate-wrapper">
                     <div id="button_translate"></div>
@@ -139,7 +139,8 @@
                             <i class="font-size-10 fa fa-chevron-right"></i>
                         </div>
                     </a>
-                    <a href="/logout" class="dropdown-item d-block p-h-15 p-v-10">
+                    <a href="#" class="dropdown-item d-block p-h-15 p-v-10" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
                                 <i class="opacity-04 font-size-16 fa fa-sign-out"></i>
@@ -147,6 +148,9 @@
                             </div>
                             <i class="font-size-10 fa fa-chevron-right"></i>
                         </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                        </form>
                     </a>
                 </div>
             </li>

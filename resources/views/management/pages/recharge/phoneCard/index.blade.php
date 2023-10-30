@@ -3,67 +3,75 @@
 @section('css_page')
 @endsection
 
-@section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i class="mdi mdi-home-outline"></i>Trang Chủ</a></li>
-    <li class="breadcrumb-item" aria-current="page">Nạp Thẻ Cào</li>
-@endsection
-
 @section('content')
-    <section class="content">
+    <div class="main-content">
 
-        <!-- Basic Forms -->
-        <div class="box">
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Loại thẻ</label>
-                            <select class="form-select" name="NetworkCode" id="NetworkCode">
-                                <option value="VIETTEL">VIETTEL (Chiết khấu 25%) </option>
-                                <option value="MOBIFONE">MOBIFONE (Chiết khấu 25%) </option>
-                                <option value="VINAPHONE">VINAPHONE (Chiết khấu 25%) </option>
-                                <option value="VIETNAMOBILE">VIETNAMOBILE (Chiết khấu 25%)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Mệnh giá</label>
-                            <select class="form-select" name="PricesExchange" id="PricesExchange">
-                                <option value="10000">10.000 VNĐ</option>
-                                <option value="20000">20.000 VNĐ</option>
-                                <option value="30000">30.000 VNĐ</option>
-                                <option value="50000">50.000 VNĐ</option>
-                                <option value="100000">100.000 VNĐ</option>
-                                <option value="200000">200.000 VNĐ</option>
-                                <option value="300000">300.000 VNĐ</option>
-                                <option value="500000">500.000 VNĐ</option>
-                                <option value="1000000">1.000.000 VNĐ</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Seri</label>
-                            <input type="text" id="SeriCard" name="SeriCard" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Mã thẻ</label>
-                            <input type="text" id="NumberCard" name="NumberCard" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <button onclick="submit();" type="submit" name="submit" id="submit"
-                                class="btn btn-primary btn-block">Nạp ngay</button>
-                        </div>
-                    </div>
+        <div class="card">
+            <div class="card-body">
+                <h4>Nạp Thẻ Cào</h4>
 
+                <div class="card">
+                    <div class="card-body">
+                        <section class="content">
 
-                    <div class="page-header">
+                            <!-- Basic Forms -->
+                            <div class="box">
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Loại thẻ</label>
+                                                    <select class="form-control" name="NetworkCode" id="NetworkCode">
+                                                        <option value="VIETTEL">VIETTEL (Chiết khấu 25%) </option>
+                                                        <option value="MOBIFONE">MOBIFONE (Chiết khấu 25%) </option>
+                                                        <option value="VINAPHONE">VINAPHONE (Chiết khấu 25%) </option>
+                                                        <option value="VIETNAMOBILE">VIETNAMOBILE (Chiết khấu 25%)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Mệnh giá</label>
+                                                    <select class="form-control" name="PricesExchange" id="PricesExchange">
+                                                        <option value="10000">10.000 VNĐ</option>
+                                                        <option value="20000">20.000 VNĐ</option>
+                                                        <option value="30000">30.000 VNĐ</option>
+                                                        <option value="50000">50.000 VNĐ</option>
+                                                        <option value="100000">100.000 VNĐ</option>
+                                                        <option value="200000">200.000 VNĐ</option>
+                                                        <option value="300000">300.000 VNĐ</option>
+                                                        <option value="500000">500.000 VNĐ</option>
+                                                        <option value="1000000">1.000.000 VNĐ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Seri</label>
+                                                    <input type="text" id="SeriCard" name="SeriCard"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Mã thẻ</label>
+                                                    <input type="text" id="NumberCard" name="NumberCard"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <button onclick="submit();" type="submit" name="submit" id="submit"
+                                                        class="btn btn-primary btn-block">Nạp ngay</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.row -->
+                                    </form>
+
+                                    {{-- <div class="page-header">
                         <div class="page-title">
                             <h4>Lịch sử nạp tiền</h4>
                             <h6>(Hệ thống tự động cộng tiền sau 1 phút)</h6>
@@ -132,15 +140,19 @@
                         <ul class="pagination">
 
                         </ul>
-                    </center>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
+                    </center> --}}
 
-    </section>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js_page')
