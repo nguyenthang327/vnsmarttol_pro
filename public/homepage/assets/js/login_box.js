@@ -10,55 +10,68 @@ function changeTab(tab, navigate = false) {
   }
 }
 
-// $(".auth-widget form").submit(function(e) {
-//   e.preventDefault();
-//   if (requesting) return swalError('Thao tác quá nhanh, vui lòng chậm lại!');
+$(".auth-widget form").submit(function(e) {
+  e.preventDefault();
+  if (requesting) return swalError('Thao tác quá nhanh, vui lòng chậm lại!');
 
-//   var isRegister = $(this).attr('action').match('register');
-//   if (isRegister && $('.area-captcha').length && !grecaptcha.getResponse()) {
-//     return swalError('Bạn chưa xác nhận capcha');
-//   }
+  var isRegister = $(this).attr('action').match('register');
+  if (isRegister && $('.area-captcha').length && !grecaptcha.getResponse()) {
+    return swalError('Bạn chưa xác nhận capcha');
+  }
 
-//   if ($(this).find('[name="re_password"]').length) {
-//     let password = $(this).find('[name="password"]').val();
-//     let re_password = $(this).find('[name="re_password"]').val();
+  if ($(this).find('[name="re_password"]').length) {
+    let password = $(this).find('[name="password"]').val();
+    let re_password = $(this).find('[name="re_password"]').val();
 
-//     if (password !== re_password) return swalError('Mật khẩu xác nhận chưa chính xác!');
-//   }
+    if (password !== re_password) return swalError('Mật khẩu xác nhận chưa chính xác!');
+  }
 
-//   swalLoading('Đang xử lý...', false);
-//   var url = $(this).attr("action");
-//   $(this).find('button[type="submit"]').prop('disabled', true);
-//   var that = this;
+  swalLoading('Đang xử lý...', false);
+  var url = $(this).attr("action");
+  $(this).find('button[type="submit"]').prop('disabled', true);
+  var that = this;
 
-//   requesting = true;
-//   $.ajax({
-//     type: "POST",
-//     url: url,
-//     data: $(this).serialize(),
-//     success: function(data) {
-//       $(that).find('button[type="submit"]').prop('disabled', false);
+  requesting = true;
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $(this).serialize(),
+    success: function(data) {
+      $(that).find('button[type="submit"]').prop('disabled', false);
 
-//       if (data.telegram_otp) {
-//         swal.close();
-//         toggleOtpModal(true);
-//         $('#otp').val('');
-//         return;
-//       }
+      // if (data.telegram_otp) {
+      //   swal.close();
+      //   toggleOtpModal(true);
+      //   $('#otp').val('');
+      //   return;
+      // }
 
-//       if(data.status !== 1) {
-//         if (isRegister && typeof grecaptcha !== "undefined" && grecaptcha) grecaptcha.reset();
-//         return swalError(data.msg);
-//       }
+      if(data.status !== 1) {
+        // if (isRegister && typeof grecaptcha !== "undefined" && grecaptcha) grecaptcha.reset();
+        return swalError(data.msg);
+      }
 
-//       swalSuccess(data.msg);
-//       window.location.href = '/home';
-//     },
-//     complete: function () {
-//       requesting = false;
-//     }
-//   });
-// });
+      swalSuccess(data.msg);
+      window.location.href = '/home';
+    },
+    error: function(xhr){
+      requesting = false;
+      var errorMsg = '';
+      if(xhr.status == 422){
+        var errors  = Object.values(xhr.responseJSON.errors);
+        errors.forEach((item, index) => {
+          errorMsg += item + ' ';
+        });
+        
+      }
+      $(that).find('button[type="submit"]').prop('disabled', false);
+      return swalError(errorMsg);
+    },
+    complete: function () {
+      requesting = false;
+    }
+  });
+});
 
 // function toggleOtpModal(show = false) {
 //   $('body')[show ? 'addClass' : 'removeClass']('modal-open');

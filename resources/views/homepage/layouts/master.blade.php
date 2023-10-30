@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8">
@@ -54,21 +54,6 @@
     </div>
 
     {{-- javascript --}}
-    <script>
-        var miniIcon = !!localStorage.getItem('miniIcon');
-
-        $('#middle-control').click(function() {
-            miniIcon = !miniIcon;
-            localStorage.setItem('miniIcon', miniIcon ? 'true' : '');
-            $('body')[miniIcon ? 'addClass' : 'removeClass']('mini-icons');
-        });
-
-        // Mini icon if selected or mobile
-        if (localStorage.getItem('miniIcon') || $(window).width() < 768) {
-            $('body').addClass('mini-icons');
-            miniIcon = true;
-        }
-    </script>
     @yield('js_page')
 
 </body>

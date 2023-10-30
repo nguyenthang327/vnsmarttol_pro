@@ -146,8 +146,7 @@
                                     @if ($errors->has('login_failed'))
                                         <div class="alert alert-danger alert-dismissible fade show p-2" role="alert">
                                             <span>{{ $errors->first('login_failed') }}</span>
-                                            <button type="button" class="close p-2" data-dismiss="alert"
-                                                    aria-label="Close">
+                                            <button type="button" class="close p-2" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -204,8 +203,8 @@
                                          src="{{ asset('homepage/assets/images/logo/default.png') }}">
                                     <h2 class="m-b-0">Đăng ký</h2>
                                 </div>
-                                <form action="">
-
+                                <form action="{{route('register')}}" method="POST">
+                                    @csrf
                                     <div class="form-group">
                                         <label class="font-weight-semibold">Tên đăng nhập:</label>
                                         <div class="input-affix">
@@ -213,6 +212,9 @@
                                             <input type="text" class="form-control text-lower" name="username"
                                                    placeholder="Tên đăng nhập" required tabindex="4">
                                         </div>
+                                        @if ($errors->first('username'))
+                                            <div class="invalid-alert text-danger">{{ $errors->first('username') }}</div>
+                                        @endif
                                     </div>
 
                                     <div class="form-group">
@@ -220,7 +222,10 @@
                                         <div class="input-affix">
                                             <i class="prefix-icon fa fa-envelope-o"></i>
                                             <input type="text" class="form-control text-lower" name="email"
-                                                   placeholder="Email" required tabindex="5">
+                                                placeholder="Email" required tabindex="5">
+                                            @if ($errors->first('email'))
+                                                <div class="invalid-alert text-danger">{{ $errors->first('email') }}</div>
+                                            @endif
                                         </div>
 
                                         <button id="generate_email" class="btn btn-primary btn-sm" type="button"
@@ -228,21 +233,24 @@
                                         </button>
                                     </div>
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label class="font-weight-semibold">SDT/Zalo:</label>
                                         <div class="input-affix">
                                             <i class="prefix-icon fa fa-phone"></i>
                                             <input type="text" class="form-control" name="phone"
                                                    placeholder="SDT/Zalo" required tabindex="6">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <label class="font-weight-semibold">Mật khẩu:</label>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon fa fa-key"></i>
                                             <input type="password" class="form-control" name="password"
-                                                   placeholder="Mật khẩu" required tabindex="7">
+                                                placeholder="Mật khẩu" required tabindex="7">
+                                            @if ($errors->first('password'))
+                                                <div class="invalid-alert text-danger">{{ $errors->first('password') }}</div>
+                                            @endif
                                         </div>
                                     </div>
 
@@ -251,19 +259,22 @@
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon fa fa-key"></i>
                                             <input type="password" class="form-control" name="re_password"
-                                                   placeholder="Mật khẩu" required tabindex="7">
+                                                placeholder="Mật khẩu" required tabindex="7">
+                                            @if ($errors->first('re_password'))
+                                                <div class="invalid-alert text-danger">{{ $errors->first('re_password') }}</div>
+                                            @endif
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label class="font-weight-semibold">Mã giới thiệu:</label>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon fa fa-crosshairs"></i>
                                             <input class="form-control" name="referral_code"
                                                    placeholder="Mã giới thiệu (nếu có)" tabindex="8">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between p-t-15">
@@ -708,5 +719,21 @@
 
     <!--====== Main js ======-->
     <script src="{{ asset('homepage/assets/landing_pages/page1/js/main.js') }}"></script>
+
+    <script>
+        var miniIcon = !!localStorage.getItem('miniIcon');
+
+        $('#middle-control').click(function() {
+            miniIcon = !miniIcon;
+            localStorage.setItem('miniIcon', miniIcon ? 'true' : '');
+            $('body')[miniIcon ? 'addClass' : 'removeClass']('mini-icons');
+        });
+
+        // Mini icon if selected or mobile
+        if (localStorage.getItem('miniIcon') || $(window).width() < 768) {
+            $('body').addClass('mini-icons');
+            miniIcon = true;
+        }
+    </script>
 
 @endsection

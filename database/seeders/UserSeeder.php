@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $APIkey = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 25);
         $adminRole = Role::where('name', Role::ROLE_ADMIN)->first();
         $admin = User::create([
-            'username' => 'Admin pro',
+            'username' => 'adminpro',
             'email' => 'admin@example.com',
             'password' => bcrypt('Aa123456'),
             'api' => $APIkey,
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
         $APIkey = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 25);
         $clientRole = Role::where('name', Role::ROLE_CLIENT)->first();
         $client = User::create([
-            'username' => 'Client pro',
+            'username' => 'clientpro',
             'email' => 'client@example.com',
             'password' => bcrypt('Aa123456'),
             'api' => $APIkey,
