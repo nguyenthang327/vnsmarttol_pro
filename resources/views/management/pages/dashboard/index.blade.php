@@ -281,7 +281,7 @@
                             <div class="col-md-12 col-lg-12">
                                 <div class="widget__top">
                                     <div class="widget__media hidden-">
-                                        <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="image">
+                                        <img src="{{ $user->avatar ?? asset('management/assets/images/avatar.jpg') }}" alt="image">
                                     </div>
                                     <div class="widget__content">
                                         <div class="widget__head">

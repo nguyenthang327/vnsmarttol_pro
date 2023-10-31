@@ -22,11 +22,11 @@
                                 <div class="d-md-flex align-items-center">
                                     <div class="text-center text-sm-left ">
                                         <div class="avatar avatar-image" style="width: 150px; height:150px">
-                                            <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="">
+                                            <img src="{{ $user->avatar ?? asset('management/assets/images/avatar.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="text-center text-sm-left m-v-15 p-l-30">
-                                        <h2 class="m-b-5">{{$user->username}}
+                                        <h2 class="m-b-5">{{$user->full_name}}
                                             <img class="icon-tick" src="{{ asset('management/assets/images/tick.svg') }}"
                                                 alt="" />
                                         </h2>
@@ -66,7 +66,7 @@
                                                     <i class="m-r-10 text-primary fa fa-phone"></i>
                                                     <span>Số điện thoại: </span>
                                                 </p>
-                                                <p class="col font-weight-semibold"> 0346999645</p>
+                                                <p class="col font-weight-semibold"> {{$user->phone}}</p>
                                             </li>
                                         </ul>
                                     </div>
