@@ -20,13 +20,23 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api');
-            $table->string('cash', 5000);
-            $table->string('active');
+            $table->string('cash', 5000)->nullable()->default(0)->comment('Số dư');
             $table->string('collaborator')->default(0)->comment('cộng tác viên');
             $table->string('ip');
             $table->text('device');
             $table->string('cheat');
             $table->string('identity_website');
+            // table modified by vulct
+            $table->tinyInteger('status')->nullable()->default(1)->comment('Trạng thái');
+            $table->integer('spin_count')->nullable()->default(0)->comment('Số lượt quay');
+            $table->string('full_name', '32')->nullable()->comment('Tên');
+            $table->string('all_money', '255')->nullable()->default(0)->comment('Tổng nạp');
+            $table->string('avatar', '255')->nullable()->comment('Avatar');
+            $table->string('facebook', '255')->nullable()->comment('Facebook');
+            $table->string('phone', '12')->nullable()->comment('Phone');
+            $table->string('reason', '255')->nullable()->comment('Lý do chặn');
+            $table->tinyInteger('ugroup')->nullable()->default(0)->comment('0 => Thành Viên, 1 => Cộng tác viên, 2 => Đại lý, 3 => Nhà phân phối');
+
             $table->rememberToken();
             $table->timestamps();
         });

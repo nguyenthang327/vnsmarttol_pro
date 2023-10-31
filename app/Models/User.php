@@ -12,7 +12,10 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
+    public const GROUP_MEMBER = 0;
+    public const GROUP_COLLABORATOR = 1;
+    public const GROUP_AGENCY = 2;
+    public const GROUP_DISTRIBUTOR = 3;
     /**
      * The attributes that aren't mass assignable.
      *
@@ -25,13 +28,21 @@ class User extends Authenticatable
         'password',
         'api',
         'cash',
-        'active',
         'collaborator',
         'ip',
         'device',
         'cheat',
         'identity_website',
-        'remember_token'
+        'remember_token',
+        'status',
+        'spin_count',
+        'full_name',
+        'all_money',
+        'avatar',
+        'facebook',
+        'phone',
+        'ugroup',
+        'reason'
     ];
 
     /**
