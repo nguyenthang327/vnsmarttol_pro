@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -70,6 +71,14 @@ Route::post('/change_pass_by_otp', [ForgotPasswordController::class, 'changePass
                     return view('management.pages.recharge.phoneCard.index');
                 })->name('phoneCard.index');
             });
+        });
+    });
+
+    // admin manager
+    Route::group(['prefix' => 'qladmin', 'middleware' => ['role:' .Role::ROLE_ADMIN]], function () {
+         // dashboard
+        Route::prefix('/')->group(function () {
+            Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard.index');
         });
     });
 });
