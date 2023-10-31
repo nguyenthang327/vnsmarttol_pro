@@ -31,7 +31,11 @@ class User extends Authenticatable
         'device',
         'cheat',
         'identity_website',
-        'remember_token'
+        'remember_token',
+        'full_name',
+        'avatar',
+        'facebook',
+        'phone',
     ];
 
     /**
