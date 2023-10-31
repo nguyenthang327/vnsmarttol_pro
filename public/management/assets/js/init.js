@@ -1128,6 +1128,9 @@ $(".form-json").submit(function(e) {
   updateEditor();
 
   $.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
     type: "POST",
     url: $(this).attr("action"),
     data: $(this).serialize(),
@@ -1150,6 +1153,17 @@ $(".form-json").submit(function(e) {
           }
         }
       })
+    },
+    error: function(xhr){
+      var errorMsg = '';
+      if(xhr.status == 422){
+        var errors  = Object.values(xhr.responseJSON.errors);
+        errors.forEach((item, index) => {
+          errorMsg += item + ' ';
+        });
+        
+      }
+      return swalError(errorMsg);
     }
   });
 });

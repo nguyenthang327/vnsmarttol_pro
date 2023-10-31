@@ -61,13 +61,13 @@
                                                 </p>
                                                 <p class="col font-weight-semibold text-money"> 2,500,000 VND</p>
                                             </li>
-                                            {{-- <li class="row">
+                                            <li class="row">
                                                 <p class="col-sm-5 col-5 font-weight-semibold text-dark m-b-5">
                                                     <i class="m-r-10 text-primary fa fa-phone"></i>
                                                     <span>Số điện thoại: </span>
                                                 </p>
                                                 <p class="col font-weight-semibold"> 0346999645</p>
-                                            </li> --}}
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                 <p class="text-primary">Bạn nên cập nhật mật khẩu thường xuyên để giữ tài khoản được an
                                     toàn.</p>
                                 <hr>
-                                <form class="form-json" method="POST" action="/profile/">
+                                <form class="form-json" method="POST" action="{{route('information.update')}}">
                                     <div class="m-t-20">
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label" for="username">Tài Khoản</label>
@@ -93,23 +93,23 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Họ tên</label>
                                             <div class="col-lg-9 col-xl-9">
-                                                <input class="form-control" name="full_name" value="Anonymous" required
+                                                <input class="form-control" name="full_name" value="{{$user->full_name}}" required
                                                     minlength="2" maxlength="100">
                                             </div>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Link ảnh đại diện</label>
                                             <div class="col-lg-9 col-xl-9">
-                                                <input type="url" class="form-control" name="avatar" value="">
+                                                <input type="url" class="form-control" name="avatar" value="{{$user->avatar}}">
 
-                                                {{-- <div class="alert alert-success">
-                                                    Website hỗ trợ get link ảnh: <a href="https://linkanh.xyz/"
+                                                <div class="alert alert-success">
+                                                    Website hỗ trợ get link ảnh: <a href="https://imgur.com/upload"
                                                         target="_blank">Tại Đây</a>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -137,7 +137,7 @@
                                         </div> --}}
 
 
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Số Điện Thoại</label>
                                             <div class="col-lg-9 col-xl-9">
                                                 <div class="input-group">
@@ -145,20 +145,20 @@
                                                             <i class="fas fa-phone"></i>
                                                         </span></div>
                                                     <input type="number" id="phone" name="phone"
-                                                        class="form-control" value="0346999645"
-                                                        placeholder="Số Điện Thoại" minlength="8" maxlength="11"
+                                                        class="form-control" value="{{$user->phone}}"
+                                                        placeholder="Số Điện Thoại" minlength="10" maxlength="11"
                                                         required>
                                                 </div>
                                             </div>
-                                        </div> --}}
-                                        {{-- 
+                                        </div>
+                                        
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Link Facebook</label>
                                             <div class="col-lg-9 col-xl-9">
                                                 <input class="form-control" type="url" id="url"
-                                                    name="facebook" value="" autocomplete="off">
+                                                    name="facebook" value="{{$user->facebook}}" autocomplete="off">
                                             </div>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Mật Khẩu Cũ</label>
@@ -172,7 +172,7 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Mật Khẩu Mới</label>
                                             <div class="col-lg-9 col-xl-9">
                                                 <input class="form-control" type="password" name="new_password"
-                                                    minlength="5" maxlength="32">
+                                                    minlength="6" maxlength="32">
                                             </div>
                                         </div>
 
@@ -180,7 +180,7 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Xác Nhận Mật Khẩu</label>
                                             <div class="col-lg-9 col-xl-9">
                                                 <input class="form-control" type="password" name="confirm_password"
-                                                    minlength="5" maxlength="32">
+                                                    minlength="6" maxlength="32">
 
                                                 <div class="alert alert-danger mt-2">
                                                     Nếu bạn có website con, Cần cập nhật lại API KEY khi đổi mật khẩu
