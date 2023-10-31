@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'ip' => '27.67.95.46',
             'device' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
             'cheat' => 'on',
-            'identity_website' => 'dichvufb24h.com',
+            'identity_website' => 'viplike.org',
         ]);
 
         $admin->syncRoles([$adminRole->id]);
@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
             'ip' => '27.67.95.46',
             'device' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
             'cheat' => 'on',
-            'identity_website' => 'dichvufb24h.com',
+            'identity_website' => 'viplike.org',
         ]);
 
         $client->syncRoles([$clientRole->id]);
