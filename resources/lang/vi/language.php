@@ -8,4 +8,5 @@ return [
     'otp_not_exist' => 'Mã OTP không tồn tại',
     'otp_used' => 'Mã OTP đã được sử dụng',
 
+    'old_password_incorrect' => 'Mật khẩu cũ không chính xác',
 ];

@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
         // information
         Route::prefix('profile')->group(function () {
             Route::get('/', [ProfileController::class, 'index'])->name('information.index');
+            Route::post('/', [ProfileController::class, 'update'])->name('information.update');
         });
         // card
         Route::prefix('payment')->group(function () {
