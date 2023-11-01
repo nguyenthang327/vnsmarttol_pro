@@ -35,7 +35,6 @@ class CreateUsersTable extends Migration
             $table->string('phone', '12')->nullable()->comment('Phone');
             $table->string('reason', '255')->nullable()->comment('Lý do chặn');
             $table->tinyInteger('ugroup')->nullable()->default(0)->comment('0 => Thành Viên, 1 => Cộng tác viên, 2 => Đại lý, 3 => Nhà phân phối');
-
             $table->rememberToken();
             $table->timestamps();
         });

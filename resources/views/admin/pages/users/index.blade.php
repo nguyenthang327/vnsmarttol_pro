@@ -181,7 +181,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
-                <form class="form-json" action="https://vnsmarttol.com/qladmin/user/update" method="post">
+                <form class="form-json" action="{{ route('admin.user.update') }}" method="post">
                     <input type="hidden" name="id">
                     <div class="modal-body">
                         <div class="form-group">
@@ -224,15 +224,10 @@
                                 <div class="form-group">
                                     <label for="ugroup">Chức Vụ</label>
                                     <select name="ugroup" class="form-control">
-
                                         <option value="0">Thành Viên</option>
-
                                         <option value="1">Cộng tác viên</option>
-
                                         <option value="2">Đại lý</option>
-
                                         <option value="3">Nhà phân phối</option>
-
                                     </select>
                                 </div>
                             </div>
