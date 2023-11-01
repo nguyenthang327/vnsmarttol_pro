@@ -16,7 +16,7 @@ class CreateHistoryTable extends Migration
         Schema::create('history', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->comment('Mã người dùng');
-            $table->text('type')->nullable()->comment('Loại giao dịch: Like nhanh, Card, MB Bank');
+            $table->text('type')->comment('Loại giao dịch: Like nhanh, Card, MB Bank');
             $table->unsignedBigInteger('coin_first')->comment('Số tiền trước giao dịch');
             $table->unsignedBigInteger('coin_second')->comment('Số tiền sau giao dịch');
             $table->unsignedBigInteger('coin')->comment('Số tiền giao dịch');

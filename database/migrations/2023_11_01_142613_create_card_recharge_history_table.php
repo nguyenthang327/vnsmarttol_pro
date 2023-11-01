@@ -16,7 +16,7 @@ class CreateCardRechargeHistoryTable extends Migration
         Schema::create('card_recharge_history', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->comment('Mã người dùng');
-            $table->unsignedInteger('type')->comment('Loại thẻ: 1 => Viettel, 2 => Mobifone, 3 => Vinaphone, 4 => Vietnamobile)');
+            $table->text('type')->comment('Loại thẻ: Viettel, Mobifone, Vinaphone, Vietnamobile)');
             $table->unsignedBigInteger('denomination_money')->comment('Mệnh giá thẻ nạp');
             $table->unsignedBigInteger('actually_received')->comment('Thực nhận');
             $table->string('seri', 100)->comment('Số seri');
