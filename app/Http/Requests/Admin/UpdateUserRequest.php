@@ -1,24 +1,26 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'username' => ['required', 'regex:/^[A-Za-z]{1}[A-Za-z0-9]{5,20}$/', 'unique:users,username'],
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email,' . $this->id,
             'full_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
-            'facebook' => 'url',
-            'password' => 'required|string|min:6|max:60',
+            'phone' => ['nullable', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
+            'facebook' => 'nullable|url',
+            'password' => 'required|string|min:6|max:12',
             'ugroup' => 'required|integer|in:0,1,2,3',
+            'spin_count' => 'nullable|integer',
+            'status' => 'nullable|integer',
+            'reason' => 'required|string|max:255',
         ];
     }
 

@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\InforWebHelper;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
@@ -88,7 +88,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => 1,
                 'msg' => 'Thêm thành viên thành công.',
-                'redirect' => '/qladmin/user/'
+                'redirect' => '/qladmin/user'
             ]);
         }catch (\Exception $e) {
             Log::error("File: " . $e->getFile() . '---Line: ' . $e->getLine() . "---Message: " . $e->getMessage());
@@ -99,4 +99,61 @@ class UserController extends Controller
         }
     }
 
+    public function show(Request $request)
+    {
+        $userId = $request->input('user_id');
+        try {
+            // Thực hiện lấy thông tin người dùng từ cơ sở dữ liệu
+            $user = User::find($userId); // Thay $userId bằng id người dùng cụ thể
+
+            if (!$user) {
+                throw new \Exception('Người dùng không tồn tại'); // Ném ra lỗi nếu không tìm thấy người dùng
+            }
+
+            // Trả về dữ liệu thành công
+            return response()->json([
+                'status' => 1,
+                'msg' => 'Thao tác thành công!',
+                'user' => $user,
+            ]);
+        } catch (\Exception $e) {
+            // Xử lý lỗi và trả về định dạng yêu cầu
+            return response()->json([
+                'status' => 0,
+                'msg' => $e->getMessage(),
+            ]);
+        }
+    }
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        try {
+            $user = User::find($data['id']);
+
+            if (!$user) {
+                throw new \Exception('Thành viên không tồn tại');
+            }
+            $user->username = $data['username'];
+            $user->email = $data['email'];
+            $user->full_name = $data['full_name'];
+            $user->phone = $data['phone'];
+            $user->facebook = $data['facebook'];
+            $user->spin_count = $data['spin_count'];
+            $user->ugroup = $data['ugroup'];
+            $user->status = $data['status'];
+            $user->reason = $data['reason'];
+            if ($data['password']) {
+                $user->password = bcrypt($data['password']);
+            }
+            $user->save();
+            return response()->json([
+                'status' => 1,
+                'msg' => 'Cập nhật thành viên thành công',
+                'redirect' => '/qladmin/user'
+            ]);
+        } catch (\Exception $e) {
+            // Xử lý lỗi và trả về định dạng yêu cầu
+            return response()->json(['status' => 0, 'msg' => $e->getMessage()]);
+        }
+    }
 }
