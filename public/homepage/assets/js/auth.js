@@ -20,6 +20,9 @@ $("#formAuth").submit(function(e) {
 
   requesting = true;
   $.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
     type: "POST",
     url: url,
     data: $(this).serialize(),

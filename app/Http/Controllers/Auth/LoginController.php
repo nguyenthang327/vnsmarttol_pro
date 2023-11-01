@@ -34,6 +34,12 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials, $request->has('remember_me'))) {
+            if(auth()->user()->status != 1){
+                return response()->json([
+                    'status' => 0,
+                    'msg' => 'Tài khoản của bạn đã bị khóa'
+                ]);
+            }
             $request->session()->regenerate();
             return response()->json([
                 'status' => 1,
