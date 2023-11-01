@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('api');
             $table->string('cash', 5000)->nullable()->default(0)->comment('Số dư');
-            $table->string('collaborator')->default(0)->comment('cộng tác viên');
             $table->string('ip');
             $table->text('device');
             $table->string('cheat');

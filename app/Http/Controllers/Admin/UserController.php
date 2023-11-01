@@ -75,7 +75,6 @@ class UserController extends Controller
                 'api' => $apiKey,
                 'cash' => 0,
                 'status' => 1,
-                'collaborator' => 0,
                 'ip' => RegisterRequest::capture()->ip(),
                 'device' => $agent,
                 'cheat' => 'on',
