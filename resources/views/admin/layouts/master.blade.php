@@ -24,6 +24,7 @@
     <meta property="og:keywords"
         content="Hệ thống tăng like, sub, comment, view, tăng tương tác, chia sẻ livestream... Hệ thống mua like uy tín, Tăng like giá rẻ, Dịch vụ tăng like tăng sub giá rẻ, tăng view video FB, Tăng người xem Livestream, tăng theo dõi, tăng like Facebook, tuongtaccheo, traodoisub, tăng like, tăng follow facebook, tiktok, instagram, miễn phí, tương tác chéo, trao đổi sub, giá rẻ đảm bảo uy tín, chất lượng..." />
     <meta property="og:image" content="{{ asset('homepage/assets/images/online-marketing.png') }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Core css -->
     <link href="{{ asset('management/assets/css/app.min.css') }}" rel="stylesheet">
     <link href="{{ asset('management/assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
@@ -66,11 +67,11 @@
         text-align: center;
         font-weight: 600;
         }
-    
+
         #payment_by_level ul {
         margin-left: 30px;
         }
-    
+
         #payment_by_level li {
         font-size: 14px;
         margin-bottom: 4px;
@@ -82,7 +83,7 @@
     <script src="{{ asset('management/assets/plugins/moment/moment.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('management/assets/js/preload.js') }}" type="text/javascript"></script>
     <script>
-         var baseUrl = '/qladmin';;
+         var baseUrl = '/qladmin';
     </script>
 </head>
 
@@ -103,7 +104,7 @@
 
                 <!-- Content Wrapper START -->
                 @yield('content')
-                
+
                 <!-- page js -->
                 <script src="{{ asset('management/assets/plugins/js.cookie/js.cookie.min.js') }}"></script>
 
@@ -117,7 +118,7 @@
             <!-- Page Container END -->
         </div>
     </div>
-    
+
     <!-- page js -->
     <script src="{{ asset('management/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('management/assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>

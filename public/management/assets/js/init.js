@@ -5,7 +5,11 @@ var allLevels = [0, 1, 2, 3];
 var allPriceFields = allLevels.map(function(value) { return 'price_lv' + value });
 var allRoles = ['Thành Viên', 'Cộng tác viên', 'Đại lý', 'Nhà phân phối'];
 var domainStatus = ['Chờ xử lý', 'Hoạt động', 'Tạm khoá', 'Lỗi Token', 'Tên miền lỗi'];
-
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 function typeGroup(ugroup) {
   return allRoles[Number(ugroup)] || "Ăn Mày";
 }
@@ -222,7 +226,7 @@ var components = {
             </button>`
   },
   btn_re_check: function(buff) {
-    return `<button class="btn btn-icon btn-re-check" data-id="${buff.id}" data-type="${buff.type}" data-server="${buff.server}" 
+    return `<button class="btn btn-icon btn-re-check" data-id="${buff.id}" data-type="${buff.type}" data-server="${buff.server}"
                     data-toggle="tooltip" title="Tiếp tục chạy">
               <i class="fas fa-sync-alt text-primary"></i>
             </button>`;
@@ -333,10 +337,10 @@ var components = {
       return ejs.render('<button class="btn btn-success text-bold present-<%= full.id %>"><%= data %></button>', {data, full});
     },
     price: function(data, typeT, log) {
-      return `<span class="badge badge-success badge-price">${formatMoney(log.price_current)}</span> 
-                        <span>${log.math || '+'}</span> 
-                        <span class="badge badge-danger badge-price"">${formatMoney(log.price || log.commission || 0)}</span> 
-                        <span>=</span> 
+      return `<span class="badge badge-success badge-price">${formatMoney(log.price_current)}</span>
+                        <span>${log.math || '+'}</span>
+                        <span class="badge badge-danger badge-price"">${formatMoney(log.price || log.commission || 0)}</span>
+                        <span>=</span>
                         <span class="badge badge-primary badge-price"">${formatMoney(log.price_left)}</span>`;
     },
     price_only: function(data) {
@@ -449,10 +453,10 @@ var components = {
     return ejs.render('<input type="checkbox" value="" class="btn-toggle-running" data-order_id="<%= bot.order_id %>" <%= is_running ? "checked" : "" %> />', {bot, is_running});
   },
   refund_amount: function(data, typeT, full) {
-    return `<span class="badge badge-success badge-price">${formatMoney(full.money_before)}</span> 
-                        <span>+</span> 
-                        <span class="badge badge-danger badge-price">${formatMoney(full.refund_amount)}</span> 
-                        <span>=</span> 
+    return `<span class="badge badge-success badge-price">${formatMoney(full.money_before)}</span>
+                        <span>+</span>
+                        <span class="badge badge-danger badge-price">${formatMoney(full.refund_amount)}</span>
+                        <span>=</span>
                         <span class="badge badge-primary badge-price">${formatMoney(full.money_before + full.refund_amount)}</span>`;
   },
   enable: enable => enable ? 'Không' : 'Có',
@@ -596,10 +600,10 @@ var definedColumns = {
   phone: makeColumn('Số Điện Thoại', 'phone', 'text_primary'),
   sim_total: makeColumn('Tổng tiền', 'total', function(total, t, order) {
     if (!order.money_before) return `<span class="badge badge-danger badge-price">${formatMoney(order.total)}</span> `;
-    return `<span class="badge badge-success badge-price">${formatMoney(order.money_before)}</span> 
-              <span>-</span> 
-              <span class="badge badge-danger badge-price">${formatMoney(order.total)}</span> 
-              <span>=</span> 
+    return `<span class="badge badge-success badge-price">${formatMoney(order.money_before)}</span>
+              <span>-</span>
+              <span class="badge badge-danger badge-price">${formatMoney(order.total)}</span>
+              <span>=</span>
               <span class="badge badge-primary badge-price">${formatMoney(order.money_before - order.total)}</span>`;
   }),
   sim_status: makeColumn('Trạng thái', 'status', 'sim_status'),

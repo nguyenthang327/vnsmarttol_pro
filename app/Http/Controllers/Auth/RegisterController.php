@@ -9,6 +9,8 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,54 +19,51 @@ use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
-     /**
+    /**
      * return register page
-     * @return View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index()
     {
         if (Auth::check()) {
             return redirect()->route('dashboard.index');
         }
-
         return view('homepage.pages.register');
     }
 
     /**
      * client to register
-     * @param \App\Http\Requests\Frontend\RegisterRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param RegisterRequest $request
+     * @return JsonResponse
      */
-    public function register(RegisterRequest $request){
-        try{
+    public function register(RegisterRequest $request)
+    {
+        try {
             DB::beginTransaction();
             $client = User::where('email', $request->email)
                 ->where('username', $request->username)
                 ->first();
-            if(!$client){
+            if (!$client) {
                 $apiKey = StringHelper::generateAPI();
                 $agent = InforWebHelper::getAgent();
                 $domain = InforWebHelper::getDomain();
-
                 $client = User::create([
                     'username' => strtolower($request->username),
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'api' => $apiKey,
                     'cash' => 0,
-                    'active' => 1,
-                    'collaborator' => 0,
+                    'status' => 1,
                     'ip' => RegisterRequest::capture()->ip(),
                     'device' => $agent,
                     'cheat' => 'on',
                     'identity_website' => $domain,
                 ]);
                 $role = Role::where('name', Role::ROLE_CLIENT)->first();
-                
-                if($role){
+                if ($role) {
                     $client->syncRoles([$role->id]);
                 }
-            }else{
+            } else {
                 return response()->json([
                     'status' => 0,
                     'msg' => trans('message.register_exists')
@@ -73,9 +72,7 @@ class RegisterController extends Controller
                 //     'register_failed' => trans('message.register_exists'),
                 // ]);
             }
-    
             DB::commit();
-
             // redirect to login
             $credentials = [
                 'username' => strtolower($request->username),
@@ -88,9 +85,9 @@ class RegisterController extends Controller
                 'msg' => trans('message.register_successed')
             ]);
             // return redirect()->route('dashboard.index');
-        }catch(Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
-            Log::error("File: ".$e->getFile().'---Line: '.$e->getLine()."---Message: ".$e->getMessage());
+            Log::error("File: " . $e->getFile() . '---Line: ' . $e->getLine() . "---Message: " . $e->getMessage());
             return response()->json([
                 'status' => 0,
                 'msg' => trans('message.register_failed')
