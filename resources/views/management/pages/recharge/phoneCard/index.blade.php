@@ -18,7 +18,8 @@
                             <div class="box">
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <form action="">
+                                    <form class="form-json" action="{{ route('phoneCard.store') }}" method="POST">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-lg-3 col-sm-6 col-12">
                                                 <div class="form-group">

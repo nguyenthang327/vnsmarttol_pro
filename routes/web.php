@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Management\HomeController;
 use App\Http\Controllers\Management\ProfileController;
+use App\Http\Controllers\Management\RechargeCardController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/', function () {
                     return view('management.pages.recharge.phoneCard.index');
                 })->name('phoneCard.index');
+                Route::post('/', [RechargeCardController::class, 'store'])->name('phoneCard.store');
             });
         });
     });
