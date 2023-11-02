@@ -27,6 +27,7 @@ return new class extends Migration {
             $table->integer('present')->nullable();
             $table->unsignedBigInteger('order_id')->nullable();
             $table->string('note')->nullable()->comment('Ghi chú của khách hàng');
+            $table->string('admin_note')->nullable()->comment('Ghi chú của admin');
             $table->tinyInteger('status')->nullable();
             $table->longText('data')->nullable()->comment('Dùng cho các dịch vụ comment');
             $table->integer('refund_count')->nullable()->comment('Số lượng hoàn');
