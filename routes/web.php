@@ -79,6 +79,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('show', [UserController::class, 'show'])->name('admin.user.show');
             Route::post('update', [UserController::class, 'update'])->name('admin.user.update');
             Route::get('addPrice', [UserController::class, 'addPrice'])->name('admin.user.addPrice');
+            Route::get('subtractPrice', [UserController::class, 'subtractPrice'])->name('admin.user.subtractPrice');
+            Route::get('upgrade', [UserController::class, 'upgrade'])->name('admin.user.upgrade');
         });
         // ajax
         Route::prefix('ajax')->group(function () {

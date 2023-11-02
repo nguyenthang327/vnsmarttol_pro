@@ -32,7 +32,7 @@ return new class extends Migration {
             $table->integer('refund_count')->nullable()->comment('Số lượng hoàn');
             $table->bigInteger('refund_subtraction')->nullable()->comment('Số tiền giao dịch hoàn');
             $table->string('other')->nullable();
-            $table->integer('identity_website')->nullable()->comment('Mã định danh website');
+            $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });
     }
