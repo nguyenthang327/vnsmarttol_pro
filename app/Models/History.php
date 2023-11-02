@@ -25,6 +25,7 @@ class History extends Model
         'present',
         'order_id',
         'note',
+        'admin_note',
         'status',
         'data',
         'refund_count',
