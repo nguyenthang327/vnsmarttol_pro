@@ -89,7 +89,7 @@ class UserController extends Controller
                 'msg' => 'Thêm thành viên thành công.',
                 'redirect' => '/qladmin/user'
             ]);
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             Log::error("File: " . $e->getFile() . '---Line: ' . $e->getLine() . "---Message: " . $e->getMessage());
             return response()->json([
                 'status' => 0,
@@ -102,13 +102,10 @@ class UserController extends Controller
     {
         $userId = $request->input('user_id');
         try {
-            // Thực hiện lấy thông tin người dùng từ cơ sở dữ liệu
-            $user = User::find($userId); // Thay $userId bằng id người dùng cụ thể
-
+            $user = User::find($userId);
             if (!$user) {
-                throw new \Exception('Người dùng không tồn tại'); // Ném ra lỗi nếu không tìm thấy người dùng
+                throw new \Exception('Thành viên không tồn tại'); // Ném ra lỗi nếu không tìm thấy người dùng
             }
-
             // Trả về dữ liệu thành công
             return response()->json([
                 'status' => 1,
@@ -116,19 +113,19 @@ class UserController extends Controller
                 'user' => $user,
             ]);
         } catch (\Exception $e) {
-            // Xử lý lỗi và trả về định dạng yêu cầu
+            // Xử lý lỗi
             return response()->json([
                 'status' => 0,
                 'msg' => $e->getMessage(),
             ]);
         }
     }
+
     public function update(Request $request)
     {
         $data = $request->all();
         try {
             $user = User::find($data['id']);
-
             if (!$user) {
                 throw new \Exception('Thành viên không tồn tại');
             }
@@ -154,5 +151,27 @@ class UserController extends Controller
             // Xử lý lỗi và trả về định dạng yêu cầu
             return response()->json(['status' => 0, 'msg' => $e->getMessage()]);
         }
+    }
+
+    public function addPrice()
+    {
+        $getAllUsers = User::select(['id', 'username', 'all_money'])->get();
+        return view('admin.pages.users.add_price', [
+            'users' => $getAllUsers
+        ]);
+    }
+    public function subtractPrice()
+    {
+        $getAllUsers = User::select(['id', 'username', 'all_money'])->get();
+        return view('admin.pages.users.subtract_price', [
+            'users' => $getAllUsers
+        ]);
+    }
+    public function upgrade()
+    {
+        $getAllUsers = User::select(['id', 'username', 'all_money', 'ugroup'])->get();
+        return view('admin.pages.users.upgrade', [
+            'users' => $getAllUsers
+        ]);
     }
 }
