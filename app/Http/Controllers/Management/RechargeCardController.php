@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Log;
 class RechargeCardController extends Controller
 {
     public function ajaxGetRechargeCardHistory(Request $request){
-        // dump(auth()->user());
         // Lấy các tham số từ AJAX request
-        // dd($request->all());
         $draw = $request->input('draw');
         $start = $request->input('start');
         $length = $request->input('length');
