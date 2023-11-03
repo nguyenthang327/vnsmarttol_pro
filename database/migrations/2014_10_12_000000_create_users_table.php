@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api');
-            $table->string('cash', 5000)->nullable()->default(0)->comment('Số dư');
             $table->string('ip');
             $table->text('device');
             $table->string('cheat');
