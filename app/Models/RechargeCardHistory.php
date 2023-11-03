@@ -20,4 +20,6 @@ class RechargeCardHistory extends Model
 
     const STATUS_SUCCESS = 1;
     const STATUS_PENDING = 2;
+    const STATUS_ERROR= 3;
+    const STATUS_MAINTAIN= 4;
 }

@@ -5,6 +5,7 @@ var allLevels = [0, 1, 2, 3];
 var allPriceFields = allLevels.map(function(value) { return 'price_lv' + value });
 var allRoles = ['Thành Viên', 'Cộng tác viên', 'Đại lý', 'Nhà phân phối'];
 var domainStatus = ['Chờ xử lý', 'Hoạt động', 'Tạm khoá', 'Lỗi Token', 'Tên miền lỗi'];
+var allStatusRechargeCard = ['Thành công', 'Đang chờ', 'Lỗi', 'Bảo trì'];
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -12,6 +13,10 @@ $.ajaxSetup({
 });
 function typeGroup(ugroup) {
   return allRoles[Number(ugroup)] || "Ăn Mày";
+}
+
+function typeStatusRechargeCard(status) {
+  return allStatusRechargeCard[Number(status)] || "Không rõ";
 }
 
 function ckEditor(elementId) {

@@ -27,7 +27,6 @@ class User extends Authenticatable
         'email_verified_at',
         'password',
         'api',
-        'cash',
         'ip',
         'device',
         'cheat',

@@ -67,6 +67,11 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('/', [RechargeCardController::class, 'store'])->name('phoneCard.store');
             });
         });
+        Route::prefix('ajax-manage')->group(function () {
+            Route::prefix('payment')->group(function () {
+                Route::get('/recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
+            });
+        });
     });
     // admin manager
     Route::group(['prefix' => 'qladmin', 'middleware' => ['role:' . Role::ROLE_ADMIN]], function () {
@@ -93,3 +98,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Route handle callback
+|--------------------------------------------------------------------------
+ */
+Route::get('/recharge-phone-card/callback', [RechargeCardController::class, 'rechargeCardCallback'])->name('phoneCard.rechargeCardCallback');

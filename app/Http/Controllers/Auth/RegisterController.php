@@ -52,7 +52,6 @@ class RegisterController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'api' => $apiKey,
-                    'cash' => 0,
                     'status' => 1,
                     'ip' => RegisterRequest::capture()->ip(),
                     'device' => $agent,

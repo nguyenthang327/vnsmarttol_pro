@@ -152,9 +152,42 @@
                     </div>
                 </div>
             </div>
+            {{-- <div class="card"> --}}
+                <div class="card-header">
+                    <h4 class="card-title">Lịch sử nạp tiền</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div id="datatable-ajax_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-bordered table-hover dataTable no-footer" id="datatable-ajax">
+                                        <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Loại thẻ</th>
+                                            <th>Mã giao dịch</th>
+                                            <th>Seri</th>
+                                            <th>Mã thẻ</th>
+                                            <th>Số tiền</th>
+                                            <th>Thực nhận</th>
+                                            <th>Thời gian nạp</th>
+                                            <th>Trạng thái</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{-- </div> --}}
         </div>
     </div>
 @endsection
 
 @section('js_page')
+    <script src="{{ asset("management/assets/js/pages/recharge-card.js") }}"></script>
 @endsection
