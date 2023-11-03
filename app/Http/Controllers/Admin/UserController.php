@@ -160,4 +160,18 @@ class UserController extends Controller
             'users' => $getAllUsers
         ]);
     }
+    public function subtractPrice()
+    {
+        $getAllUsers = User::select(['id', 'username', 'all_money'])->get();
+        return view('admin.pages.users.subtract_price', [
+            'users' => $getAllUsers
+        ]);
+    }
+    public function upgrade()
+    {
+        $getAllUsers = User::select(['id', 'username', 'all_money', 'ugroup'])->get();
+        return view('admin.pages.users.upgrade', [
+            'users' => $getAllUsers
+        ]);
+    }
 }

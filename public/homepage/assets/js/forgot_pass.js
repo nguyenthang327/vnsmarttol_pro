@@ -3,6 +3,9 @@ $("#emailForm").submit(function(e) {
   var url = $(this).attr("action");
   swalLoading('Đang xử lý, vui lòng chờ...');
   $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
     type: "POST",
     url: url,
     data: $(this).serialize(),
@@ -28,7 +31,11 @@ $("#passwordForm").submit(function(e) {
   var url = $(this).attr("action");
   swalLoading('Đang xử lý, vui lòng chờ...');
   console.log($(this).serialize());
-  $.ajax({
+  $.ajax(
+    {
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
     type: "POST",
     url: url,
     data: $(this).serialize(),
