@@ -1,5 +1,8 @@
 @php
     $currentRoute = Route::current()->getName();
+    $user = auth()->user();
+    $role = $user->roles->pluck('name')->toArray();
+
 @endphp
 <div class="side-nav">
     <div class="side-nav-inner">
@@ -39,12 +42,12 @@
                             <span class="menu-dot"></span>
                             Nạp Tiền
                         </a> --}}
-                        <a class="dropdown-toggle" href="javascript:void(0);">
+                        <a class="dropdown-toggle {{ in_array($currentRoute, $routePayment) ? 'active' : ''}}" href="javascript:void(0);">
                             <span class="menu-dot"></span>
                             <span class="title">Nạp tiền</span>
                             <span class="fas fa-chevron-down"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="display:{{ in_array($currentRoute, $routePayment) ? 'block' : 'none'}}">
                             <li class="item-parent">
                                 <a href="#">
                                     <span class="icon-holder"></span>
@@ -104,12 +107,14 @@
                             Bảng giá & Cấp bậc
                         </a>
                     </li>
+                    @if(in_array(\App\Models\Role::ROLE_ADMIN, $role))
                     <li class="item-parent">
                         <a href="/qladmin">
                             <span class="menu-dot"></span>
                             Quản Trị Viên
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
             <li class="nav-item">

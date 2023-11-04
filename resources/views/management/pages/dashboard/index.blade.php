@@ -298,7 +298,8 @@
                                                 {{ $user->email }}
                                             </a>
                                             <a href="javascript:void(0)" class="text-primary">
-                                                <i class="fa fa-user"></i>Nhà phân phối
+                                                <i class="fa fa-user"></i>
+                                                {{ session()->get('uGroup')[$user->ugroup] ?? 'Thành viên' }}
                                             </a>
                                         </div>
                                     </div>

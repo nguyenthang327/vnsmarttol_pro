@@ -5,10 +5,12 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Management\BankController;
 use App\Http\Controllers\Management\HomeController;
 use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,9 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
  */
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('dashboard.index');
+    }
     return view('homepage.pages.homepage');
 })->name('homepage');
 /*
@@ -106,3 +111,4 @@ Route::group(['middleware' => ['auth']], function () {
 |--------------------------------------------------------------------------
  */
 Route::get('/recharge-phone-card/callback', [RechargeCardController::class, 'rechargeCardCallback'])->name('phoneCard.rechargeCardCallback');
+Route::get('/bank/mb-callback', [BankController::class, 'MBBCallback'])->name('bank.MBBCallback');

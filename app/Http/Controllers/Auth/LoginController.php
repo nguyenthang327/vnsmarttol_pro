@@ -41,6 +41,7 @@ class LoginController extends Controller
                 ]);
             }
             $request->session()->regenerate();
+            session()->put('uGroup', ['Thành Viên', 'Cộng tác viên', 'Đại lý', 'Nhà phân phối']);
             return response()->json([
                 'status' => 1,
                 'msg' => trans('message.login_successed')
