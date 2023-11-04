@@ -38,4 +38,6 @@ class History extends Model
         'uid' => 'string',
         'time' => 'datetime',
     ];
+
+    const TYPE_RECHARGE_CARD = 'recharge_card';
 }

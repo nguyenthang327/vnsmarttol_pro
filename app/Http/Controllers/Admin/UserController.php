@@ -73,7 +73,6 @@ class UserController extends Controller
                 'password' => bcrypt($data['password']),
                 'ugroup' => $data['ugroup'],
                 'api' => $apiKey,
-                'cash' => 0,
                 'status' => 1,
                 'ip' => RegisterRequest::capture()->ip(),
                 'device' => $agent,

@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->boolean('is_pin')->nullable();
             $table->boolean('is_visible')->nullable();
             $table->longText('content')->nullable();
+            $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });
     }

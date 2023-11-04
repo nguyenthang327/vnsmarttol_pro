@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('payment_source')->nullable();
             $table->string('extra')->nullable();
             $table->integer('auto_banks_id')->nullable();
+            $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });
     }

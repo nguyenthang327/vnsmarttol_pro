@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->text('image')->nullable();
             $table->string('content')->nullable();
             $table->string('link')->nullable();
-            $table->string('identity_website')->nullable();
+            $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });
     }
