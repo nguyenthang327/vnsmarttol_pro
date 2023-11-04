@@ -2,18 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Contact;
-use App\Models\Discount;
-use App\Models\Notification;
-use App\Models\Question;
-use App\Policies\ContactPolicy;
-use App\Policies\DiscountPolicy;
-use App\Policies\NotificationPolicy;
-use App\Policies\QuestionPolicy;
-use App\Models\Payment;
-use App\Policies\PaymentPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -24,11 +13,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        Payment::class => PaymentPolicy::class,
-        Discount::class => DiscountPolicy::class,
-        Contact::class => ContactPolicy::class,
-        Question::class => QuestionPolicy::class,
-        Notification::class => NotificationPolicy::class,
     ];
 
     /**

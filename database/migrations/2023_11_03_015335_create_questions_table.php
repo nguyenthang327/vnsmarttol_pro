@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->text('question');
             $table->longText('answer');
-            $table->string('identity_website')->nullable();
+            $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });
     }
