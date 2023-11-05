@@ -298,7 +298,8 @@
                                                 {{ $user->email }}
                                             </a>
                                             <a href="javascript:void(0)" class="text-primary">
-                                                <i class="fa fa-user"></i>Nhà phân phối
+                                                <i class="fa fa-user"></i>
+                                                {{ session()->get('uGroup')[$user->ugroup] ?? 'Thành viên' }}
                                             </a>
                                         </div>
                                     </div>
@@ -314,7 +315,7 @@
                                             <div>
                                                 <div class="text-1">Số Dư</div>
                                                 <div class="text-2 text-money">
-                                                    <span>376,842₫</span>
+                                                    <span>{{ number_format($user->all_money, 0, '', ',') }}₫</span>
                                                 </div>
                                             </div>
                                         </div>

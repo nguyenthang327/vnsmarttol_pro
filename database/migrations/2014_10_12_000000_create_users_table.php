@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('ip');
             $table->text('device');
             $table->string('cheat');
-            $table->string('identity_website');
+            $table->string('identity_website')->nullable();
             // table modified by vulct
             $table->tinyInteger('status')->nullable()->default(1)->comment('Trạng thái');
             $table->integer('spin_count')->nullable()->default(0)->comment('Số lượt quay');

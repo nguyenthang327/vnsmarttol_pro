@@ -30,6 +30,11 @@ class StringHelper
         return substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 25);
     }
 
+    public static function getQRcodeLink($bank, $acountNummber, $bankName = '', $note = ''){
+        $url ="https://img.vietqr.io/image/$bank-$acountNummber-print.png?accountName=$bankName&addInfo=$note";
+        return $url;
+    }
+
     public static function getUserRole($ugroup)
     {
         $ugroups = [0 => 'Thành viên', 1 => 'Cộng tác viên', 2 => 'Đại lý', 3 => 'Nhà phân phối'];

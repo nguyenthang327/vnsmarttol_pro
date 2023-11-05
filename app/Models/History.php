@@ -40,4 +40,5 @@ class History extends Model
     ];
 
     const TYPE_RECHARGE_CARD = 'recharge_card';
+    const TYPE_BANK_MB = 'bank_mb';
 }

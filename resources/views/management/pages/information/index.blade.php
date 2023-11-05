@@ -36,7 +36,7 @@
                                         </p>
                                         <p class="text-dark m-b-20">
                                             <i class="fas fa-user text-primary"></i>
-                                            Nhà phân phối
+                                            {{ session()->get('uGroup')[$user->ugroup] ?? 'Thành viên' }}
                                         </p>
 
                                     </div>
@@ -52,7 +52,7 @@
                                                     <i class="text-success far fa-money-bill-alt"></i>
                                                     <span>Số dư: </span>
                                                 </p>
-                                                <p class="col font-weight-semibold text-money"> 376,842 VND</p>
+                                                <p class="col font-weight-semibold text-money"> {{ number_format($user->all_money, 0, '', ',') }} VND</p>
                                             </li>
                                             <li class="row">
                                                 <p class="col-sm-5 col-5 font-weight-semibold text-dark m-b-5">
