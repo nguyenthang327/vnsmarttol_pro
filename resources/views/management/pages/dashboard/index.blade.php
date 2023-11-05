@@ -315,7 +315,7 @@
                                             <div>
                                                 <div class="text-1">Số Dư</div>
                                                 <div class="text-2 text-money">
-                                                    <span>376,842₫</span>
+                                                    <span>{{ number_format($user->all_money, 0, '', ',') }}₫</span>
                                                 </div>
                                             </div>
                                         </div>

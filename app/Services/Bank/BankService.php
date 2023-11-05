@@ -35,6 +35,10 @@ class BankService
 
             $result = json_decode(Http::get("https://api.web2m.com/$path/$password/$sotaikhoan/$token"));
 
+            if(!isset($result['data'])){
+                throw new Exception('[BankService][hanldeBankCallback] call url: ' . $result["msg"]);
+            }
+
             $data = [];
             $data = $result['data'];
             $soluong =  count($data);

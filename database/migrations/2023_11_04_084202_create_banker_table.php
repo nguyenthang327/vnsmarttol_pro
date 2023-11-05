@@ -22,9 +22,9 @@ class CreateBankerTable extends Migration
             $table->string('min_bank')->default(1)->comment('Số tiền chuyển tối thiểu');
             $table->unsignedInteger('discount')->default(100)->comment('Tỷ giá');
             $table->text('url_image')->nullable()->comment('URL ảnh');
-            $table->string('user_bank')->comment('Tài khoản ngân hàng để đăng nhập');
-            $table->string('password_bank')->comment('Mật khẩu ngân hàng để đăng nhập');
-            $table->text('token')->nullable()->comment('Token thẻ ngân hàng');
+            $table->string('user_bank')->nullable()->comment('Tài khoản ngân hàng để đăng nhập');
+            $table->string('password_bank')->nullable()->comment('Mật khẩu ngân hàng để đăng nhập');
+            $table->text('token')->nullable()->comment('Token đối tác vd: Web2M');
             $table->string('bank_code')->comment('Mã bank');
             $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();

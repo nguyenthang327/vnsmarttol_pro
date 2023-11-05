@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BankController as AdminBankController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -99,6 +100,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::prefix('users')->group(function () {
                 Route::get('/', [UserController::class, 'ajaxGetUser'])->name('admin.ajax.user.list');
             });
+        });
+
+        Route::prefix('banks')->group(function () {
+            Route::get('/', [AdminBankController::class, 'index'])->name('admin.bank.index');
         });
 
     });
