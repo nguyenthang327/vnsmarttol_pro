@@ -14,6 +14,8 @@ class InforWebHelper
     }
 
     public static function getDomain(){
+        return 'viplike.org'; // TODO: change config license domain
+
         $domain = $_SERVER['HTTP_HOST'];
         $pos = strpos($domain, 'www.');
         if ($pos !== false) {

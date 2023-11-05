@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Management\BankATMController;
 use App\Http\Controllers\Management\BankController;
 use App\Http\Controllers\Management\HomeController;
 use App\Http\Controllers\Management\ProfileController;
@@ -72,10 +73,15 @@ Route::group(['middleware' => ['auth']], function () {
                 })->name('phoneCard.index');
                 Route::post('/', [RechargeCardController::class, 'store'])->name('phoneCard.store');
             });
+            // atm
+            Route::prefix('atm')->group(function () {
+                Route::get('/', [BankATMController::class, 'index'])->name('bank.atm.index');
+            });
         });
         Route::prefix('ajax-manage')->group(function () {
             Route::prefix('payment')->group(function () {
                 Route::get('/recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
+                Route::get('/bank-history', [BankATMController::class, 'ajaxGetBankHistory'])->name('ajax.ajaxGetBankHistory.list');
             });
         });
     });

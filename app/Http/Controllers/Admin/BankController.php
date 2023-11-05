@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\InforWebHelper;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreConfigBankRequest;
@@ -29,6 +30,7 @@ class BankController extends Controller
     public function store(StoreConfigBankRequest $request)
     {
         try {
+            $domain = InforWebHelper::getDomain();
             $params = [
                 'bank_code' => $request->input('bank_code'),
                 'bank_name' => $request->input('bank_name'),
@@ -39,10 +41,11 @@ class BankController extends Controller
                 'discount' => $request->input('discount'),
                 'password_bank' => $request->input('password_bank'),
                 'token' => $request->input('token'),
+                'identity_website' => $domain,
             ];
 
             // if bank_code = other thì không thực hiện cộng tiền tự động cho người dùng khi bank.
-            if ($request->input('bank_code') == 'orther') {
+            if ($request->input('bank_code') == 'other') {
                 $params['url_image'] = $request->input('url_image');
             } else {
                 $params['url_image'] = StringHelper::getQRcodeLink($params['bank_code'], $params['account_number'], $params['bank_name'], $params['note']);
@@ -95,6 +98,7 @@ class BankController extends Controller
                 throw new \Exception('Ngân hàng không tồn tại'); // Ném ra lỗi nếu không tìm thấy ngân hàng
             }
 
+            $domain = InforWebHelper::getDomain();
             $params = [
                 'bank_code' => $request->input('bank_code'),
                 'bank_name' => $request->input('bank_name'),
@@ -105,10 +109,11 @@ class BankController extends Controller
                 'discount' => $request->input('discount'),
                 'password_bank' => $request->input('password_bank'),
                 'token' => $request->input('token'),
+                'identity_website' => $domain,
             ];
 
             // if bank_code = other thì không thực hiện cộng tiền tự động cho người dùng khi bank.
-            if ($request->input('bank_code') == 'orther') {
+            if ($request->input('bank_code') == 'other') {
                 $params['url_image'] = $request->input('url_image');
             } else {
                 $params['url_image'] = StringHelper::getQRcodeLink($params['bank_code'], $params['account_number'], $params['bank_name'], $params['note']);

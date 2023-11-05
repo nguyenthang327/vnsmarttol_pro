@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Management;
 use App\Helpers\InforWebHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Banker;
-use App\Models\BankHistory;
 use App\Models\History;
 use App\Models\User;
 use App\Services\Bank\BankService;

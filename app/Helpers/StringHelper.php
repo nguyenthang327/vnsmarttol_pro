@@ -31,7 +31,7 @@ class StringHelper
     }
 
     public static function getQRcodeLink($bank, $acountNummber, $bankName = '', $note = ''){
-        $url ="https://img.vietqr.io/image/$bank-$acountNummber-print.png…ccountName=$bankName&addInfo=$note";
+        $url ="https://img.vietqr.io/image/$bank-$acountNummber-print.png?accountName=$bankName&addInfo=$note";
         return $url;
     }
 

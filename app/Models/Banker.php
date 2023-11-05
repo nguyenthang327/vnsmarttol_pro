@@ -18,6 +18,6 @@ class Banker extends Model
      */
     protected $guarded = [];
 
-    const DATA_BANKER = ['mbbank' => 'MB Bank', 'orther' => 'Khác - Không dùng Auto'];
+    const DATA_BANKER = ['mbbank' => 'MB Bank', 'other' => 'Khác - Không dùng Auto'];
 
 }

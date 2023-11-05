@@ -34,7 +34,7 @@
                     </li>
                     @php
                         $routeCard = ['phoneCard.index'];
-                        $routeBanking = [];
+                        $routeBanking = ['bank.atm.index'];
                         $routePayment = array_merge($routeBanking, $routeCard);
                     @endphp
                     <li class="has-child {{ in_array($currentRoute, $routePayment) ? 'open' : ''}}">
@@ -48,8 +48,8 @@
                             <span class="fas fa-chevron-down"></span>
                         </a>
                         <ul class="dropdown-menu" style="display:{{ in_array($currentRoute, $routePayment) ? 'block' : 'none'}}">
-                            <li class="item-parent">
-                                <a href="#">
+                            <li class="item-parent {{ in_array($currentRoute, $routeBanking) ? 'active' : ''}}">
+                                <a href="{{ route('bank.atm.index') }}">
                                     <span class="icon-holder"></span>
                                     Banking
                                 </a>

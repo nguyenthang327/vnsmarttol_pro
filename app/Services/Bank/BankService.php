@@ -4,9 +4,10 @@ namespace App\Services\Bank;
 
 use App\Helpers\InforWebHelper;
 use App\Models\Banker;
-use App\Models\BankHistory;
 use App\Models\History;
+use App\Models\Payment;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -68,22 +69,27 @@ class BankService
                         $usercheck3b = $user->username;
                         $create = $user->cheat;
 
+            
                         // check mã giao dịch đẫ tồn tại hay chưa
-                        $bankHistory = BankHistory::where('username', $usercheck3b)->where('trans', $magd)->where('type', $type)->first();
+                        $bankHistory = Payment::where('username', $usercheck3b)
+                            ->where('trans', $magd)
+                            ->where('payment_source', $type)
+                            ->first();
                         if(!$bankHistory && $create == 'on'){
                             $cashmoi = $cashto + $amount;
-                            $statusBank = BankHistory::STATUS_SUCCESS;
-                            
-                            // create lịch sử bank
-                            BankHistory::create([
+
+                            // create payment
+                            Payment::create([
                                 'user_id' => $user->id,
                                 'username' => $usercheck3b,
-                                'type' => $type,
-                                'money' => $amount,
-                                'trans' => $magd,
+                                'payment_source' => $type,
                                 'note' => $noidung,
-                                'status' => $statusBank,
-                                'identity_website' => $domain,
+                                'user_read' => 0,
+                                'is_auto' => 1,
+                                'time' => Carbon::now()->format('Y-m-d H:i:s'),
+                                'price' => $amount,
+                                'auto_banks_id' => null,
+                                'extra' => Banker::DATA_BANKER[$type] ?? null,
                             ]);
 
                             // update all money
