@@ -87,7 +87,7 @@ class RechargeCardController extends Controller
             // tạo ra một yêu cầu nạp  ở domain phụ
             $user = auth()->user();
 
-            $chietkhau = ($menhgiareal / 100) * (100 - env('DISCOUNT', 0));
+            $chietkhau = ($menhgiareal / 100) * (100 - config('constants.discount_recharge_card'));
             $thucnhan = ($menhgiareal - $chietkhau);
             $domain = InforWebHelper::getDomain();
 

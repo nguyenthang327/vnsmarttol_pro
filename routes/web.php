@@ -1,14 +1,18 @@
 <?php
 
+use App\Http\Controllers\Admin\BankController as AdminBankController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Management\BankATMController;
+use App\Http\Controllers\Management\BankController;
 use App\Http\Controllers\Management\HomeController;
 use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +31,9 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
  */
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('dashboard.index');
+    }
     return view('homepage.pages.homepage');
 })->name('homepage');
 /*
@@ -66,10 +73,15 @@ Route::group(['middleware' => ['auth']], function () {
                 })->name('phoneCard.index');
                 Route::post('/', [RechargeCardController::class, 'store'])->name('phoneCard.store');
             });
+            // atm
+            Route::prefix('atm')->group(function () {
+                Route::get('/', [BankATMController::class, 'index'])->name('bank.atm.index');
+            });
         });
         Route::prefix('ajax-manage')->group(function () {
             Route::prefix('payment')->group(function () {
                 Route::get('/recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
+                Route::get('/bank-history', [BankATMController::class, 'ajaxGetBankHistory'])->name('ajax.ajaxGetBankHistory.list');
             });
         });
     });
@@ -96,6 +108,14 @@ Route::group(['middleware' => ['auth']], function () {
             });
         });
 
+        Route::prefix('banks')->group(function () {
+            Route::get('/', [AdminBankController::class, 'index'])->name('admin.bank.index');
+            Route::post('/store', [AdminBankController::class, 'store'])->name('admin.bank.store');
+            Route::post('/show', [AdminBankController::class, 'show'])->name('admin.bank.show');
+            Route::post('/update', [AdminBankController::class, 'update'])->name('admin.bank.update');
+            Route::post('/delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
+        });
+
     });
 });
 
@@ -106,3 +126,4 @@ Route::group(['middleware' => ['auth']], function () {
 |--------------------------------------------------------------------------
  */
 Route::get('/recharge-phone-card/callback', [RechargeCardController::class, 'rechargeCardCallback'])->name('phoneCard.rechargeCardCallback');
+Route::get('/bank/mb-callback', [BankController::class, 'MBBCallback'])->name('bank.MBBCallback');
