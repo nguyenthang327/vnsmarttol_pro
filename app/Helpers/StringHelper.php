@@ -23,11 +23,22 @@ class StringHelper
 	}
 
     /**
-     * Generate API 
+     * Generate API
      * @return string
      */
     public static function generateAPI(){
         return substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 25);
+    }
+
+    public static function getUserRole($ugroup)
+    {
+        $ugroups = [0 => 'Thành viên', 1 => 'Cộng tác viên', 2 => 'Đại lý', 3 => 'Nhà phân phối'];
+
+        if (array_key_exists($ugroup, $ugroups)) {
+            return $ugroups[$ugroup];
+        } else {
+            return 'Không xác định';
+        }
     }
 
 }

@@ -3,48 +3,83 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PaymentRequest;
 use App\Http\Resources\PaymentResource;
-use App\Models\Payment;
+use App\Services\Admin\PaymentService;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
+    protected $paymentService;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+
     public function index()
     {
-        $this->authorize('viewAny', Payment::class);
-
-        return PaymentResource::collection(Payment::all());
+        return view('admin.pages.payments.index');
     }
 
-    public function store(PaymentRequest $request)
+    public function ajaxGetPayments(Request $request)
     {
-        $this->authorize('create', Payment::class);
-
-        return new PaymentResource(Payment::create($request->validated()));
+        $mode = $request->input('mode');
+        $source = $request->input('source');
+        $start = $request->input('start');
+        $length = $request->input('length');
+        $orderBy = $request->input('order_by');
+        $orderDir = $request->input('order_dir');
+        $keyword = $request->input('keyword');
+        $payments = $this->paymentService->getPayments($mode, $source, $start, $length, $orderBy, $orderDir, $keyword);
+        $formattedPayments = PaymentResource::collection($payments);
+        $result = [
+            'aaData' => $formattedPayments,
+            'iTotalDisplayRecords' => count($formattedPayments),
+            'iTotalRecords' => count($formattedPayments),
+        ];
+        return response()->json($result);
     }
 
-    public function show(Payment $payment)
+    public function findRepeatedPayments(Request $request)
     {
-        $this->authorize('view', $payment);
-
-        return new PaymentResource($payment);
+        try {
+            $paymentDate = $request->input('payment_date');
+            // Thực hiện logic để tìm kiếm thanh toán liên tiếp
+            $repeatedPayments = $this->paymentService->findRepeatedPayments($paymentDate);
+            $response = [
+                'status' => 1,
+                'msg' => 'Thao tác thành công!',
+                'data' => $repeatedPayments,
+            ];
+            return response()->json($response);
+        } catch (\Exception $e) {
+            $errorResponse = [
+                'status' => 0,
+                'msg' => 'Có lỗi xảy ra: ' . $e->getMessage(),
+                'data' => [],
+            ];
+            return response()->json($errorResponse);
+        }
     }
 
-    public function update(PaymentRequest $request, Payment $payment)
+    public function findDuplicatePayments(Request $request)
     {
-        $this->authorize('update', $payment);
-
-        $payment->update($request->validated());
-
-        return new PaymentResource($payment);
-    }
-
-    public function destroy(Payment $payment)
-    {
-        $this->authorize('delete', $payment);
-
-        $payment->delete();
-
-        return response()->json();
+        try {
+            $paymentDate = $request->input('payment_date');
+            $duplicatePayments = $this->paymentService->findDuplicatePayments($paymentDate);
+            $response = [
+                'status' => 1,
+                'msg' => 'Thao tác thành công!',
+                'data' => $duplicatePayments,
+            ];
+            return response()->json($response);
+        } catch (\Exception $e) {
+            $errorResponse = [
+                'status' => 0,
+                'msg' => 'Có lỗi xảy ra: ' . $e->getMessage(),
+                'data' => [],
+            ];
+            return response()->json($errorResponse);
+        }
     }
 }

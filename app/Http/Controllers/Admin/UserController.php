@@ -7,52 +7,43 @@ use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResource;
 use App\Models\Role;
 use App\Models\User;
+use App\Services\Admin\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index()
     {
         return view('admin.pages.users.index');
     }
 
-    public function ajaxGetUser(Request $request)
+    public function ajaxGetUsers(Request $request)
     {
         // Lấy các tham số từ AJAX request
-        $draw = $request->input('draw');
         $start = $request->input('start');
         $length = $request->input('length');
-        $searchValue = $request->input('search.value');
-        $orderColumn = $request->input('order_by');
+        $orderBy = $request->input('order_by');
         $orderDir = $request->input('order_dir');
         $keyword = $request->input('keyword');
-        $query = User::query();
-        // Áp dụng các điều kiện tìm kiếm nếu cần
-        if (!empty($searchValue)) {
-            $query->where('username', 'like', '%' . $searchValue . '%')
-                ->orWhere('email', 'like', '%' . $searchValue . '%');
-        }
-        if (!empty($keyword)) {
-            $query->where('username', 'like', '%' . $keyword . '%');
-        }
-        // Sắp xếp dữ liệu
-        $query->orderBy($orderColumn, $orderDir);
-        // Lấy tổng số bản ghi trước khi áp dụng phân trang
-        $totalRecords = $query->count();
-        // Áp dụng phân trang
-        $query->offset($start)->limit($length);
-        // Lấy dữ liệu cuối cùng
-        $data = $query->get();
-        // Chuyển định dạng dữ liệu theo yêu cầu
-        $formattedData = [
-            'aaData' => $data,
-            'iTotalDisplayRecords' => $totalRecords,
-            'iTotalRecords' => $totalRecords,
+        $users = $this->userService->getUsers($start, $length, $orderBy, $orderDir, $keyword);
+        $formattedUsers = UserResource::collection($users);
+        $result = [
+            'aaData' => $formattedUsers,
+            'iTotalDisplayRecords' => count($formattedUsers),
+            'iTotalRecords' => count($formattedUsers),
         ];
-        return response()->json($formattedData);
+        return response()->json($result);
     }
 
     public function create(UserRequest $request)
@@ -62,7 +53,7 @@ class UserController extends Controller
             $data = $request->validated();
             $apiKey = StringHelper::generateAPI();
             $agent = InforWebHelper::getAgent();
-            $domain = InforWebHelper::getDomain();
+            $domain = config('license.domain');
             // Tạo một user mới
             $client = User::create([
                 'username' => strtolower($data['username']),
@@ -154,32 +145,134 @@ class UserController extends Controller
 
     public function addPrice()
     {
-        $getAllUsers = User::select(['id', 'username', 'all_money'])->get();
+        $getAllUsers = User::select(['id', 'username', 'price'])->get();
         return view('admin.pages.users.add_price', [
             'users' => $getAllUsers
         ]);
     }
 
-    public function addMoney()
+    public function addMoney(Request $request, UserService $userService)
     {
-        $getAllUsers = User::select(['id', 'username', 'all_money'])->get();
-        return view('admin.pages.users.add_price', [
-            'users' => $getAllUsers
+        $this->validate($request, [
+            'user_id' => 'required|exists:users,id',
+            'amount' => 'required|numeric',
+            'note' => 'string|nullable',
         ]);
+        $user = User::find($request->input('user_id'));
+        $amount = $request->input('amount');
+        $note = $request->input('note');
+        try {
+            $updatedUser = $userService->addMoneyToUser($user, $amount, $note);
+            if ($updatedUser) {
+                return response()->json([
+                    'status' => 1,
+                    'msg' => 'Thêm thanh toán thành công',
+                    'redirect' => '/qladmin/payment/'
+                ]);
+            } else {
+                throw new \InvalidArgumentException('Có lỗi xảy ra trong quá trình thêm thanh toán');
+            }
+
+        } catch (\InvalidArgumentException $e) {
+            return response()->json([
+                'status' => 0,
+                'msg' => $e->getMessage()
+            ]);
+        }
     }
 
     public function subtractPrice()
     {
-        $getAllUsers = User::select(['id', 'username', 'all_money'])->get();
+        $getAllUsers = User::select(['id', 'username', 'price'])->get();
         return view('admin.pages.users.subtract_price', [
             'users' => $getAllUsers
         ]);
     }
+
+    public function subtractMoney(Request $request, UserService $userService)
+    {
+        $this->validate($request, [
+            'user_id' => 'required|exists:users,id',
+            'amount' => 'required|numeric',
+            'note' => 'string|nullable',
+        ]);
+        $user = User::find($request->input('user_id'));
+        $amount = $request->input('amount');
+        $note = $request->input('note');
+        try {
+            $updatedUser = $userService->subtractMoneyToUser($user, $amount, $note);
+            if ($updatedUser) {
+                return response()->json([
+                    'status' => 1,
+                    'msg' => 'Thao tác thành công',
+                    'redirect' => '/qladmin/payment/'
+                ]);
+            } else {
+                throw new \InvalidArgumentException('Có lỗi xảy ra trong quá trình thao tác');
+            }
+
+        } catch (\InvalidArgumentException $e) {
+            return response()->json([
+                'status' => 0,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function upgrade()
     {
-        $getAllUsers = User::select(['id', 'username', 'all_money', 'ugroup'])->get();
+        $getAllUsers = User::select(['id', 'username', 'price', 'all_money', 'ugroup'])->get();
         return view('admin.pages.users.upgrade', [
             'users' => $getAllUsers
         ]);
+    }
+
+    public function upgradeUser(Request $request)
+    {
+        try {
+            $user_id = $request->input('user_id');
+            $ugroup = $request->input('ugroup');
+            $this->userService->upgradeUser($user_id, $ugroup);
+            return response()->json([
+                "status" => 1,
+                "msg" => "Nâng cấp thành viên thành công!",
+                "redirect" => "/qladmin/user/"
+            ]);
+        } catch (\InvalidArgumentException $e) {
+            return response()->json([
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function export()
+    {
+        return view('admin.pages.users.export');
+    }
+
+    public function exportData(Request $request)
+    {
+        try {
+            $timeFrom = $request->input('time_from');
+            $timeTo = $request->input('time_to');
+            $users = $this->userService->getUsersWithFormat($timeFrom, $timeTo);
+            if ($users) {
+                $formattedUsers = UserResource::collection($users);
+                return response()->json([
+                    "status" => 1,
+                    "msg" => "OK",
+                    "users" => $formattedUsers,
+                ]);
+            } else {
+                throw new \InvalidArgumentException('Có lỗi xảy ra trong quá trình thao tác');
+            }
+
+        } catch (\InvalidArgumentException $e) {
+            return response()->json([
+                'status' => 0,
+                'msg' => $e->getMessage()
+            ]);
+        }
     }
 }

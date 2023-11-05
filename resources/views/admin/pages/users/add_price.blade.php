@@ -27,7 +27,7 @@
                             <option></option>
                             @foreach($users as $user)
                                 <option value="{{ $user->id }}">
-                                    {{ $user->username . " - " . number_format($user->all_money) . " VNĐ" }}
+                                    {{ $user->username . " - " . number_format($user->price) . " VNĐ" }}
                                 </option>
                             @endforeach
                         </select>

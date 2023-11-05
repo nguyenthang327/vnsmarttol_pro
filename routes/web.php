@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -69,9 +71,10 @@ Route::group(['middleware' => ['auth']], function () {
         });
         Route::prefix('ajax-manage')->group(function () {
             Route::prefix('payment')->group(function () {
-                Route::get('/recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
+                Route::get('recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
             });
         });
+        Route::post('new_update', [HomeController::class, 'newUpdate'])->name('home.new-update');
     });
     // admin manager
     Route::group(['prefix' => 'qladmin', 'middleware' => ['role:' . Role::ROLE_ADMIN]], function () {
@@ -79,21 +82,42 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('/')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard.index');
         });
-        // user
+        // User
         Route::prefix('user')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
             Route::post('create', [UserController::class, 'create'])->name('admin.user.create');
             Route::post('show', [UserController::class, 'show'])->name('admin.user.show');
             Route::post('update', [UserController::class, 'update'])->name('admin.user.update');
             Route::get('addPrice', [UserController::class, 'addPrice'])->name('admin.user.addPrice');
-            Route::get('addMoney', [UserController::class, 'addMoney'])->name('admin.user.addMoney');
+            Route::post('addMoney', [UserController::class, 'addMoney'])->name('admin.user.addMoney');
             Route::get('subtractPrice', [UserController::class, 'subtractPrice'])->name('admin.user.subtractPrice');
+            Route::post('subtractMoney', [UserController::class, 'subtractMoney'])->name('admin.user.subtractMoney');
+            Route::get('export', [UserController::class, 'export'])->name('admin.user.export');
+            Route::post('export_data', [UserController::class, 'exportData'])->name('admin.user.export_data');
             Route::get('upgrade', [UserController::class, 'upgrade'])->name('admin.user.upgrade');
+            Route::post('upgrade_user', [UserController::class, 'upgradeUser'])->name('admin.user.upgrade_user');
+        });
+        // Notifications
+        Route::prefix('notifications')->group(function () {
+            Route::get('/', [NotificationController::class, 'notifications'])->name('admin.notification.index');
+            Route::get('show_last_notify', [NotificationController::class, 'show_last_notify'])->name('admin.notification.show_last_notify');
+        });
+        // Payment
+        Route::prefix('payment')->group(function () {
+            Route::get('/', [PaymentController::class, 'index'])->name('admin.payment.index');
+            Route::post('find_repeated', [PaymentController::class, 'findRepeatedPayments'])->name('admin.payment.find_repeated');
+            Route::post('find_duplicate', [PaymentController::class, 'findDuplicatePayments'])->name('admin.payment.find_duplicate');
         });
         // ajax
         Route::prefix('ajax')->group(function () {
             Route::prefix('users')->group(function () {
-                Route::get('/', [UserController::class, 'ajaxGetUser'])->name('admin.ajax.user.list');
+                Route::get('/', [UserController::class, 'ajaxGetUsers'])->name('admin.ajax.user.list');
+            });
+            Route::prefix('notifications')->group(function () {
+                Route::get('/', [NotificationController::class, 'ajaxGetNotifications'])->name('admin.ajax.notification.list');
+            });
+            Route::prefix('payments')->group(function () {
+                Route::get('/', [PaymentController::class, 'ajaxGetPayments'])->name('admin.ajax.');
             });
         });
 

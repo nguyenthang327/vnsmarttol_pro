@@ -23,6 +23,7 @@ class PaymentResource extends JsonResource
             'auto_banks_id' => $this->auto_banks_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'identity_website' => $this->identity_website,
         ];
     }
 }

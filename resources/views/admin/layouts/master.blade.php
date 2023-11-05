@@ -79,11 +79,12 @@
     </style>
 
     <!-- Core Vendors JS -->
+    <script src="{{ asset('management/assets/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('management/assets/js/vendors.min.js') }}"></script>
-    <script src="{{ asset('management/assets/plugins/moment/moment.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('management/assets/js/preload.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('management/assets/js/preload.js') }}"></script>
     <script>
-         var baseUrl = '/qladmin';
+        var baseUrl = '/qladmin';
+        const currency = 'vnd';
     </script>
 </head>
 
@@ -122,20 +123,10 @@
     <!-- page js -->
     <script src="{{ asset('management/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('management/assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-    <!-- page js -->
-    <link rel="stylesheet" href="{{ asset('management/assets/plugins/select2/select2.min.css') }}" />
-    <script src="{{ asset('management/assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('management/assets/js/ejs.min.js') }}"></script>
     <script src="{{ asset('management/assets/js/jquery.doubleScroll.js') }}"></script>
+    <script src="{{ asset('management/assets/js/ejs.min.js') }}"></script>
     <script src="{{ asset('management/assets/js/init.js') }}"></script>
-    <script src="{{ asset('management/assets/js/user.js') }}"></script>
-    <script src="{{ asset('management/assets/plugins/highchart/highcharts.min.js') }}"></script>
-
     <script src="{{ asset('management/assets/js/admin/admin.js') }}"></script>
-    <script src="{{ asset('management/assets/js/admin/dashboard.js') }}"></script>
-
-    <link href="{{ asset('management/assets/plugins/bootstrap-datetimepicker/datetimepicker.min.css')}}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('management/assets/plugins/bootstrap-datetimepicker/datetimepicker.min.js')}}" type="text/javascript"></script>
     <!-- site -->
     @yield('js_page')
     <!-- Core JS -->

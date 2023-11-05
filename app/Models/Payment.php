@@ -17,6 +17,7 @@ class Payment extends Model
         'payment_source',
         'extra',
         'auto_banks_id',
+        'identity_website'
     ];
 
     protected $casts = [
