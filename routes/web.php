@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BankController as AdminBankController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\UserController;
@@ -58,16 +59,16 @@ Route::post('change_pass_by_otp', [ForgotPasswordController::class, 'changePassB
  */
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['role:' . implode("|", [Role::ROLE_ADMIN, Role::ROLE_CLIENT])]], function () {
-        // dashboard
+        // Dashboard
         Route::prefix('home')->group(function () {
             Route::get('/', [HomeController::class, 'index'])->name('dashboard.index');
         });
-        // information
+        // Information
         Route::prefix('profile')->group(function () {
             Route::get('/', [ProfileController::class, 'index'])->name('information.index');
             Route::post('/', [ProfileController::class, 'update'])->name('information.update');
         });
-        // card
+        // Card
         Route::prefix('payment')->group(function () {
             Route::prefix('phone-card')->group(function () {
                 Route::get('/', function () {
@@ -75,7 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
                 })->name('phoneCard.index');
                 Route::post('/', [RechargeCardController::class, 'store'])->name('phoneCard.store');
             });
-            // atm
+            // Atm
             Route::prefix('atm')->group(function () {
                 Route::get('/', [BankATMController::class, 'index'])->name('bank.atm.index');
             });
@@ -88,9 +89,9 @@ Route::group(['middleware' => ['auth']], function () {
         });
         Route::post('new_update', [HomeController::class, 'newUpdate'])->name('home.new-update');
     });
-    // admin manager
+    // Admin manager
     Route::group(['prefix' => 'qladmin', 'middleware' => ['role:' . Role::ROLE_ADMIN]], function () {
-        // dashboard
+        // Dashboard
         Route::prefix('/')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard.index');
         });
@@ -120,7 +121,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('find_repeated', [PaymentController::class, 'findRepeatedPayments'])->name('admin.payment.find_repeated');
             Route::post('find_duplicate', [PaymentController::class, 'findDuplicatePayments'])->name('admin.payment.find_duplicate');
         });
-        // ajax
+        // Ajax
         Route::prefix('ajax')->group(function () {
             Route::prefix('users')->group(function () {
                 Route::get('/', [UserController::class, 'ajaxGetUsers'])->name('admin.ajax.user.list');
@@ -129,16 +130,25 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/', [NotificationController::class, 'ajaxGetNotifications'])->name('admin.ajax.notification.list');
             });
             Route::prefix('payments')->group(function () {
-                Route::get('/', [PaymentController::class, 'ajaxGetPayments'])->name('admin.ajax.');
+                Route::get('/', [PaymentController::class, 'ajaxGetPayments'])->name('admin.ajax.get_payments');
             });
+            Route::get('discount_codes', [DiscountController::class, 'ajaxGetDiscounts'])->name('admin.ajax.discount_codes');
+        });
+
+        // Discount codes
+        Route::prefix('discount_codes')->group(function () {
+            Route::get('/', [DiscountController::class, 'index'])->name('admin.discount.index');
+            Route::post('store', [DiscountController::class, 'store'])->name('admin.discount.store');
+            Route::post('show', [DiscountController::class, 'show'])->name('admin.discount.show');
+            Route::post('delete', [DiscountController::class, 'destroy'])->name('admin.discount.delete');
         });
 
         Route::prefix('banks')->group(function () {
             Route::get('/', [AdminBankController::class, 'index'])->name('admin.bank.index');
-            Route::post('/store', [AdminBankController::class, 'store'])->name('admin.bank.store');
-            Route::post('/show', [AdminBankController::class, 'show'])->name('admin.bank.show');
-            Route::post('/update', [AdminBankController::class, 'update'])->name('admin.bank.update');
-            Route::post('/delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
+            Route::post('store', [AdminBankController::class, 'store'])->name('admin.bank.store');
+            Route::post('show', [AdminBankController::class, 'show'])->name('admin.bank.show');
+            Route::post('update', [AdminBankController::class, 'update'])->name('admin.bank.update');
+            Route::post('delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
         });
 
     });

@@ -20,6 +20,7 @@ class DiscountResource extends JsonResource
             'max_discount' => $this->max_discount,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'identity_website' => $this->identity_website
         ];
     }
 }
