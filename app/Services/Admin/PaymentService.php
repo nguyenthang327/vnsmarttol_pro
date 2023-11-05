@@ -21,6 +21,8 @@ class PaymentService
                 $query->where('is_auto', 0);
             } elseif ($mode == 'auto') {
                 $query->where('is_auto', 1);
+            } else {
+                $query->whereNotNull('is_auto');
             }
         }
         if (!empty($source) && $source != 'all') {

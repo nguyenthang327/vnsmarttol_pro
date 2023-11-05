@@ -11,8 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('code_type');
             $table->string('code');
-            $table->integer('discount_percent');
-            $table->integer('limit_per_user')->nullable();
+            $table->integer('discount_percent')->nullable();
+            $table->integer('limit_per_user');
             $table->tinyInteger('enable')->nullable()->default(1);
             $table->integer('min_order')->nullable();
             $table->integer('max_discount');
