@@ -104,6 +104,10 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::prefix('banks')->group(function () {
             Route::get('/', [AdminBankController::class, 'index'])->name('admin.bank.index');
+            Route::post('/store', [AdminBankController::class, 'store'])->name('admin.bank.store');
+            Route::post('/show', [AdminBankController::class, 'show'])->name('admin.bank.show');
+            Route::post('/update', [AdminBankController::class, 'update'])->name('admin.bank.update');
+            Route::post('/delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
         });
 
     });

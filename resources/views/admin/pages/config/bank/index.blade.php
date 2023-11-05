@@ -31,7 +31,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($data as $item)
+                            <tr>
+                                <td>
+                                    <img src="{{asset("/assets/images/banks/$item->bank_code.png")}}" alt="" height="50"
+                                        style="margin-right: 5px">
+                                    <span class="text-bold text-success">{{\App\Models\Banker::DATA_BANKER[$item->bank_code] ?? ''}}</span>
+                                </td>
+                                <td><button class="btn btn-success">{{$item->bank_name}}</button></td>
+                                <td><button class="btn btn-primary">{{$item->account_number}}</button></td>
+                                <td><button class="btn btn-warning">{{$item->card_holder}}</button></td>
+                                <td>
+                                    <button class="btn btn-icon btn-edit-bank" title="Sửa" data-id="{{$item->id}}">
+                                        <i class="fas fa-edit text-info"></i>
+                                    </button>
 
+                                    <button class="btn btn-icon btn-delete-bank" title="Xóa" data-id="{{$item->id}}">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
@@ -50,18 +70,18 @@
                     <h5 class="modal-title">Thông tin ngân hàng</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/qladmin/banks" method="post" class="form-json" data-reload="1">
+                <form action="{{ route('admin.bank.store') }}" method="post" class="form-json" data-reload="1">
                     <input type="hidden" name="id" id="id" />
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Ngân hàng</label>
-                            <select class="form-control" name="mabank" required>
+                            <select class="form-control" name="bank_code" required>
 
                                 {{-- <option value="vietcombank">Vietcombank</option> --}}
 
                                 {{-- <option value="techcombank">Techcombank</option> --}}
 
-                                <option value="mbb">MB Bank</option>
+                                <option value="mbbank">MB Bank</option>
 
                                 {{-- <option value="momo">Ví MoMo</option>
 
@@ -112,7 +132,7 @@
                                 <option value="saigonbank">Sài Gòn – Saigonbank</option>
 
                                  --}}
-                                <option value="other">Khác</option>
+                                <option value="other">Không dùng Auto</option>
                             </select>
                         </div>
 
@@ -165,7 +185,16 @@
 
                         <div class="form-group">
                             <label>Tỷ giá nạp (100 ATM = 100 VNĐ)</label>
-                            <input type="number" class="form-control" name="discount" placeholder="10000" value="" required>
+                            <input type="number" class="form-control" name="discount" placeholder="10000"
+                                value="" min="0" required>
+                        </div>
+
+                        <p>* Phần này dành cho nạp tự động Nếu Không sử dụng thì không cần sửa ! </p>
+
+                        <div class="form-group">
+                            <label for="disabledInput">Tên đăng nhập internet Banking (MOMO nhập SĐT)</label>
+                            <input type="text" class="form-control" id="password_bank" name="user_bank" badge bg
+                                value="Không dùng">
                         </div>
 
                         <div class="form-group">
@@ -178,7 +207,6 @@
                             <input type="text" class="form-control" id="token" name="token" badge bg
                                 value="Không dùng">
                         </div>
-
 
                     </div>
                     <div class="modal-footer">

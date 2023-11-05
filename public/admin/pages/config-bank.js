@@ -1,24 +1,31 @@
 "use strict";
 
-jQuery(document).ready(function () {});
+jQuery(document).ready(function () {
+});
 
 $(".btn-add-bank").click(function () {
     $("#modalBank form").trigger("reset");
+    $("#modalBank form").attr('action', `${baseUrl}/banks/store`);
 });
 
 $(".btn-edit-bank").click(function () {
     $("#modalBank form").trigger("reset");
+    $("#modalBank form").attr('action', `${baseUrl}/banks/update`);
     var id = $(this).data("id");
     callAjaxPost(`${baseUrl}/banks/show`, { id: id }).then(function (data) {
-        var bank = data.msg;
+        var bank = data.data;
         var form = $("#modalBank form").first();
         [
             "id",
-            "icon",
-            "image",
+            "bank_code",
             "bank_name",
-            "bank_account",
-            "bank_user",
+            "card_holder",
+            "account_number",
+            "note",
+            'min_bank',
+            'discount',
+            'password_bank',
+            'token'
         ].forEach(function (key) {
             form.find(`[name="${key}"]`).val(bank[key]);
         });

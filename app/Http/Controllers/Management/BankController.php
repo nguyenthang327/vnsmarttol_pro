@@ -29,7 +29,7 @@ class BankController extends Controller
     {
         try {
             $path = 'historyapimb';
-            $bankCode = 'mbb';
+            $bankCode = 'mbbank';
             $type = 'MB Bank';
             $typeHistory = History::TYPE_BANK_MB;
             $this->bankService->hanldeBankCallback($path, $bankCode, $type, $typeHistory); // call to service callback
