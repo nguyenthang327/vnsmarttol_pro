@@ -20,14 +20,14 @@
                 <h4 class="card-title text-white">Thêm Thanh Toán</h4>
             </div>
             <div class="card-body">
-                <form id="formAdminAction" class="kt-form" method="POST" action="/qladmin/user/addMoney/">
+                <form id="formAdminAction" class="kt-form" method="POST" action="{{ route('admin.user.addMoney') }}">
                     <div class="form-group">
                         <label for="user_id">Chọn Tài Khoản</label>
                         <select class="form-control select2-hidden-accessible" id="user_id" name="user_id" autocomplete="off" required="">
                             <option></option>
                             @foreach($users as $user)
                                 <option value="{{ $user->id }}">
-                                    {{ $user->username . " - " . number_format($user->all_money) . " VNĐ" }}
+                                    {{ $user->username . " - " . number_format($user->price) . " VNĐ" }}
                                 </option>
                             @endforeach
                         </select>

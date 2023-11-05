@@ -14,5 +14,6 @@ class Discount extends Model
         'enable',
         'min_order',
         'max_discount',
+        'identity_website'
     ];
 }

@@ -204,3 +204,10 @@
         </div>
     </div>
 @endsection
+
+@section('js_page')
+    <script src="{{ asset('management/assets/js/admin/dashboard.js') }}"></script>
+    <script src="{{ asset('management/assets/plugins/highchart/highcharts.min.js') }}"></script>
+    <link href="{{ asset('management/assets/plugins/bootstrap-datetimepicker/datetimepicker.min.css')}}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('management/assets/plugins/bootstrap-datetimepicker/datetimepicker.min.js')}}" type="text/javascript"></script>
+@endsection

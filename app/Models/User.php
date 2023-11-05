@@ -35,6 +35,7 @@ class User extends Authenticatable
         'status',
         'spin_count',
         'full_name',
+        'price',
         'all_money',
         'avatar',
         'facebook',

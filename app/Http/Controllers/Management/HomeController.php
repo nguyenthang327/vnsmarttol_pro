@@ -10,13 +10,25 @@ use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
-    public function index(){
-        try{
+    public function index()
+    {
+        try {
             $user = Auth::user();
             return view('management.pages.dashboard.index', compact('user'));
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::error('[HomeController][index] error:' . $e->getMessage());
             return back()->with(['error' => trans('message.error')]);
         }
+    }
+
+    public function newUpdate()
+    {
+        return response()->json([
+            'status' => 1,
+            'msg' => 'Thao tác thành công!',
+            'payment' => 0,
+            'refund' => 0,
+            'notify' => null
+        ]);
     }
 }

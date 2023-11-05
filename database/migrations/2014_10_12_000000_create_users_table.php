@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->nullable()->default(1)->comment('Trạng thái');
             $table->integer('spin_count')->nullable()->default(0)->comment('Số lượt quay');
             $table->string('full_name', '32')->nullable()->comment('Tên');
+            $table->string('price', '255')->nullable()->default(0)->comment('Số dư');
             $table->string('all_money', '255')->nullable()->default(0)->comment('Tổng nạp');
             $table->string('avatar', '255')->nullable()->comment('Avatar');
             $table->string('facebook', '255')->nullable()->comment('Facebook');

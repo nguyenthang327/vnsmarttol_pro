@@ -24,7 +24,7 @@ jQuery(document).ready(function() {
       }),
       makeColumn('Tên', 'full_name'),
       definedColumns.user_status,
-      makeColumn('Số dư', 'cash', 'money_vnd'),
+      makeColumn('Số dư', 'price', 'money_vnd'),
       makeColumn('Tổng nạp', 'all_money', 'money_vnd'),
       makeColumn('Lượt quay', 'spin_count', spin_count => spin_count),
       makeColumn('Thời gian tạo', 'created_at', 'time'),

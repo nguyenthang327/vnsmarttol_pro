@@ -62,7 +62,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
-                <form class="form-json" action="https://vnsmarttol.com/qladmin/user/addMoney" method="post">
+                <form class="form-json" action="{{ route('admin.user.addMoney') }}" method="post">
                     <input type="hidden" name="user_id" value="">
 
                     <div class="modal-body">
@@ -95,7 +95,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
-                <form class="form-json" action="https://vnsmarttol.com/qladmin/user/subtractMoney" method="post">
+                <form class="form-json" action="{{ route('admin.user.subtractMoney') }}" method="post">
                     <input type="hidden" name="user_id" value="">
 
                     <div class="modal-body">
