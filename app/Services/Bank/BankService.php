@@ -65,9 +65,10 @@ class BankService
                             throw new Exception('[BankService][hanldeBankCallback] Không có đơn mới ' . $noidung);
                         }
 
-                        $cashto = $user->all_money;
+                        $cashto = $user->price;
                         $usercheck3b = $user->username;
                         $create = $user->cheat;
+                        $allMoney = $user->all_money;
 
             
                         // check mã giao dịch đẫ tồn tại hay chưa
@@ -77,6 +78,7 @@ class BankService
                             ->first();
                         if(!$bankHistory && $create == 'on'){
                             $cashmoi = $cashto + $amount;
+                            $allMoney = $allMoney + $amount;
 
                             // create payment
                             Payment::create([
@@ -93,7 +95,7 @@ class BankService
                             ]);
 
                             // update all money
-                            User::where('username', $usercheck3b)->update('all_money', $cashmoi);
+                            User::where('username', $usercheck3b)->update(['price' => $cashmoi,'all_money' => $cashmoi]);
 
                             // History
 
