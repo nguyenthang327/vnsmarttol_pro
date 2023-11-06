@@ -24,7 +24,7 @@
                             <div class="col-md-12 col-lg-12">
                                 <div class="widget__top">
                                     <div class="widget__media hidden-">
-                                        <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="image">
+                                        <img src="{{ $user->avatar ?? asset('management/assets/images/avatar.jpg') }}" alt="image">
                                     </div>
                                     <div class="widget__content">
                                         <div class="widget__head">
@@ -41,7 +41,7 @@
                                                 {{ $user->email }}
                                             </a>
                                             <a href="javascript:void(0)" class="text-primary">
-                                                <i class="fa fa-user"></i>Nhà phân phối
+                                                <i class="fa fa-user"></i> {{ session()->get('uGroup')[$user->ugroup] ?? 'Thành viên' }}
                                             </a>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                             <div>
                                                 <div class="text-1">Số Dư</div>
                                                 <div class="text-2 text-money">
-                                                    <span>376,842₫</span>
+                                                    <span>{{ number_format($user->price, 0, '', ',') }}₫</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,7 +70,7 @@
                                             <div>
                                                 <div class="text-1">Đã Sử Dụng</div>
                                                 <div class="text-2 text-money">
-                                                    <span>2,123,158₫</span>
+                                                    <span>{{ number_format($user->all_money - $user->price, 0, '', ',') }}₫</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,7 +83,7 @@
                                             <div>
                                                 <div class="text-1">Đã Nạp</div>
                                                 <div class="text-2 text-money">
-                                                    <span>2,500,000₫</span>
+                                                    <span>{{ number_format($user->all_money, 0, '', ',') }}₫</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -328,7 +328,7 @@
                                             <div>
                                                 <div class="text-1">Đã Sử Dụng</div>
                                                 <div class="text-2 text-money">
-                                                    <span>2,123,158₫</span>
+                                                    <span>{{ number_format($user->all_money - $user->price, 0, '', ',') }}₫</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,7 +341,7 @@
                                             <div>
                                                 <div class="text-1">Đã Nạp</div>
                                                 <div class="text-2 text-money">
-                                                    <span>2,500,000₫</span>
+                                                    <span>{{ number_format($user->all_money, 0, '', ',') }}₫</span>
                                                 </div>
                                             </div>
                                         </div>

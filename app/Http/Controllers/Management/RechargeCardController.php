@@ -73,7 +73,7 @@ class RechargeCardController extends Controller
             $partnerid = env('PARTNER_ID', '');
 
             $sig = md5(env('PARTNER_KEY', '') . $mathe . $seri);
-            $uri = "http://trumthe.vn/chargingws/v2?telco=$loaithe&code=$mathe&serial=$seri&amount=$menhgiareal&request_id=$request_id&partner_id=$partnerid&sign=$sig&command=$command";
+            $uri = "http://thesieure.com/chargingws/v2?telco=$loaithe&code=$mathe&serial=$seri&amount=$menhgiareal&request_id=$request_id&partner_id=$partnerid&sign=$sig&command=$command";
             $response  = Http::get($uri);
 
             $obj = json_decode($response);
