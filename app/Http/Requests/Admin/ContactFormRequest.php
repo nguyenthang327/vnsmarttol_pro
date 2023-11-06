@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Http\Requests\BaseRequest;
+use App\Http\Requests\BaseFormRequest;
 
-class ContactRequest extends BaseRequest
+class ContactFormRequest extends BaseFormRequest
 {
     public function rules(): array
     {

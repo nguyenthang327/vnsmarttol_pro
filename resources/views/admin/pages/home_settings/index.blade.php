@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="tab_2" role="tabpanel">
-                        <form class="form-json" method="POST" action="/qladmin/questions/" data-table="Questions">
+                        <form class="form-json" method="POST" action="{{ route('admin.home_settings.question.index') }}" data-table="Questions">
                             <div class="form-group">
                                 <label>Câu hỏi</label>
                                 <input class="form-control" name="question" required maxlength="200">
@@ -165,7 +165,7 @@
                     </button>
                 </div>
 
-                <form class="form-json" method="POST" action="/qladmin/questions" data-table="Questions">
+                <form class="form-json" method="POST" action="{{ route('admin.home_settings.question.index') }}" data-table="Questions">
                     <input type="hidden" name="id"/>
 
                     <div class="modal-body">

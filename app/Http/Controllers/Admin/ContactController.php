@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ContactRequest;
+use App\Http\Requests\Admin\ContactFormRequest;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
 use App\Services\Admin\ContactService;
@@ -36,7 +36,7 @@ class ContactController extends Controller
         return response()->json($result);
     }
 
-    public function store(ContactRequest $request)
+    public function store(ContactFormRequest $request)
     {
         try {
             $id = $request->input('id');

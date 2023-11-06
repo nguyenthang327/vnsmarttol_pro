@@ -14,8 +14,8 @@ class QuestionResource extends JsonResource
             'question' => $this->question,
             'answer' => $this->answer,
             'identity_website' => $this->identity_website,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at,
         ];
     }
 }

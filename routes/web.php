@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -140,6 +141,11 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('show', [ContactController::class, 'show'])->name('contact.show');
                 Route::post('delete', [ContactController::class, 'destroy'])->name('contact.delete');
             });
+            Route::prefix('questions')->group(function () {
+                Route::post('/', [QuestionController::class, 'store'])->name('question.index');
+                Route::post('show', [QuestionController::class, 'show'])->name('question.show');
+                Route::post('delete', [QuestionController::class, 'destroy'])->name('question.delete');
+            });
         });
 
         Route::prefix('banks')->group(function () {
@@ -163,7 +169,7 @@ Route::group(['middleware' => ['auth']], function () {
             });
             Route::get('discount_codes', [DiscountController::class, 'ajaxGetDiscounts'])->name('admin.ajax.discount_codes');
             Route::get('contacts', [ContactController::class, 'ajaxGetContacts'])->name('admin.ajax.contacts');
-            Route::get('questions', [ContactController::class, 'ajaxGetContacts'])->name('admin.ajax.questions');
+            Route::get('questions', [QuestionController::class, 'ajaxGetQuestions'])->name('admin.ajax.questions');
         });
     });
 });
