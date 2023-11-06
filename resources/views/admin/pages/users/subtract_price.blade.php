@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('css_page')
+    <link rel="stylesheet" href="{{ asset('management/assets/plugins/select2/select2.min.css') }}" />
 @endsection
 
 @section('content')
@@ -58,6 +59,7 @@
 @endsection
 
 @section('js_page')
+    <script src="{{ asset('management/assets/plugins/select2/select2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $("#user_id").select2({

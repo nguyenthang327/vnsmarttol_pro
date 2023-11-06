@@ -1,20 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('css_page')
-    <style>
-        .tet-bg-footer,
-        .tet-icon-footer {
-            display: none;
-        }
-    </style>
-
-
-    <style type="text/css">
-        .nav-wrap,
-        .menu_header {
-            background-color: #ffffff;
-        }
-    </style>
+    <link href="{{ asset('management/assets/plugins/bootstrap-datetimepicker/datetimepicker.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -241,5 +228,6 @@
 @endsection
 
 @section('js_page')
+    <script src="{{ asset('management/assets/plugins/bootstrap-datetimepicker/datetimepicker.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('admin/datatable-payment.js') }}"></script>
 @endsection

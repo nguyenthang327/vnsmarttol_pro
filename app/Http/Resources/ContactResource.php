@@ -15,8 +15,8 @@ class ContactResource extends JsonResource
             'content' => $this->content,
             'link' => $this->link,
             'identity_website' => $this->identity_website,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at,
         ];
     }
 }
