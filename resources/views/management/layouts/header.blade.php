@@ -1,3 +1,6 @@
+@php
+    $user = auth()->user();
+@endphp
 <div class="header">
     <div class="logo">
         <a href="{{ route('dashboard.index') }}">
@@ -25,7 +28,7 @@
                     <div class="service-select-wrapper">
                         <select id="service-select" class="form-control" style="width: 500px">
                             <option value="">Chọn dịch vụ</option>
-                            <optgroup label="Facebook Speed">
+                            {{-- <optgroup label="Facebook Speed">
                                 <option value="/fb_speed/s_like">Like bài viết speed</option>
                                 <option value="/fb_speed/s_follow">Sub Trang cá nhân speed</option>
                                 <option value="/fb_speed/s_like_page">Like Sub FanPage speed</option>
@@ -92,7 +95,7 @@
                                 <option value="/instagram/live_instagram">Mắt Livestream Instagram</option>
                                 <option value="/instagram/vip_like_instagram">Vip Like Instagram</option>
                                 <option value="/instagram/vip_comment_instagram">Vip Comment Instagram</option>
-                            </optgroup>
+                            </optgroup> --}}
                         </select>
                     </div>
                 </div>
@@ -115,18 +118,18 @@
             <li class="dropdown dropdown-animated scale-left">
                 <div class="pointer" data-toggle="dropdown">
                     <div class="avatar avatar-image  m-h-10 m-r-15">
-                        <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="">
+                        <img src="{{ $user->avatar ?? asset('management/assets/images/avatar.jpg') }}" alt="">
                     </div>
                 </div>
                 <div class="p-b-15 p-t-20 dropdown-menu pop-profile">
                     <div class="p-h-20 p-b-15 m-b-10 border-bottom">
                         <div class="d-flex m-r-50">
                             <div class="avatar avatar-lg avatar-image">
-                                <img src="{{ asset('management/assets/images/avatar.jpg') }}" alt="">
+                                <img src="{{  $user->avatar ?? asset('management/assets/images/avatar.jpg') }}" alt="">
                             </div>
                             <div class="m-l-10">
-                                <p class="m-b-0 text-dark font-weight-semibold">temisvn</p>
-                                <p class="m-b-0 opacity-07">Nhà phân phối</p>
+                                <p class="m-b-0 text-dark font-weight-semibold">{{$user->username}}</p>
+                                <p class="m-b-0 opacity-07"> {{ session()->get('uGroup')[$user->ugroup] ?? 'Thành viên' }}</p>
                             </div>
                         </div>
                     </div>

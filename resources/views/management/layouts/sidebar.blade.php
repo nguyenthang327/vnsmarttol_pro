@@ -35,7 +35,8 @@
                     @php
                         $routeCard = ['phoneCard.index'];
                         $routeBanking = ['bank.atm.index'];
-                        $routePayment = array_merge($routeBanking, $routeCard);
+                        $routePaypal = ['paypal.index'];
+                        $routePayment = array_merge($routeBanking, $routeCard, $routePaypal);
                     @endphp
                     <li class="has-child {{ in_array($currentRoute, $routePayment) ? 'open' : ''}}">
                         {{-- <a href="/payment">
@@ -60,9 +61,15 @@
                                     Thẻ cào
                                 </a>
                             </li>
+                            <li class="item-parent {{ in_array($currentRoute, $routePaypal) ? 'active' : ''}}">
+                                <a href="{{ route('paypal.index') }}">
+                                    <span class="icon-holder"></span>
+                                    Paypal
+                                </a>
+                            </li>
                         </ul>
                     </li>
-                    <li class="has-child">
+                    {{-- <li class="has-child">
                         <a class="dropdown-toggle" href="javascript:void(0);">
                             <span class="menu-dot"></span>
                             <span class="title">Liên Hệ Hỗ Trợ</span>
@@ -82,14 +89,14 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="item-parent">
-                        <a href="/report">
+                        <a href="{{route('report.index')}}">
                             <span class="menu-dot"></span>
                             Nhật ký hoạt động
                         </a>
                     </li>
-                    <li class="item-parent">
+                    {{-- <li class="item-parent">
                         <a href="/child_domain">
                             <span class="menu-dot"></span>
                             Tạo Site Đại Lý
@@ -106,7 +113,7 @@
                             <span class="menu-dot"></span>
                             Bảng giá & Cấp bậc
                         </a>
-                    </li>
+                    </li> --}}
                     @if(in_array(\App\Models\Role::ROLE_ADMIN, $role))
                     <li class="item-parent">
                         <a href="/qladmin">
@@ -117,7 +124,7 @@
                     @endif
                 </ul>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="section-title" href="javascript:void(0);">
                     <span class="title">DANH SÁCH DỊCH VỤ</span>
                 </a>
@@ -130,6 +137,7 @@
                     <span class="title">Vòng quay may mắn</span>
                 </a>
             </li>
+            --}}
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fab fa-facebook-square"></i></span>
@@ -145,12 +153,12 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="item-parent">
-                                <a href="/fb_speed/s_like">
+                                <a href="{{route('facebook.sLike')}}">
                                     <span class="menu-dot"></span>
                                     <span class="text-danger pl-0">Like</span> bài viết speed
                                 </a>
                             </li>
-                            <li class="item-parent">
+                            {{-- <li class="item-parent">
                                 <a href="/facebook/reactions"> <span class="menu-dot"></span> <span
                                         class="text-danger pl-0">Like</span> bài viết VIP
                                 </a>
@@ -220,12 +228,12 @@
                             <li class="item-parent">
                                 <a href="/facebook/fb_event"> <span class="menu-dot"></span> Sự kiện Facebook
                                 </a>
-                            </li>
+                            </li> --}}
 
                         </ul>
                     </li>
 
-
+                    {{--
                     <li class="has-child">
                         <a class="dropdown-toggle" href="javascript:void(0);">
                             <span class="icon-holder"><i class="fa-solid fa-film"></i></span>
@@ -372,11 +380,11 @@
                         </ul>
                     </li>
 
-
+                --}}
                 </ul>
             </li>
 
-
+            {{--
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fab fa-instagram-square"></i></span>
@@ -946,7 +954,7 @@
 
 
                 </ul>
-            </li>
+            </li> --}}
 
 
             <li class="nav-item item-parent menu-item-logout">

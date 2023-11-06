@@ -52,14 +52,14 @@
                                                     <i class="text-success far fa-money-bill-alt"></i>
                                                     <span>Số dư: </span>
                                                 </p>
-                                                <p class="col font-weight-semibold text-money"> {{ number_format($user->all_money, 0, '', ',') }} VND</p>
+                                                <p class="col font-weight-semibold text-money"> {{ number_format($user->price, 0, '', ',') }} VND</p>
                                             </li>
                                             <li class="row">
                                                 <p class="col-sm-5 col-5 font-weight-semibold text-dark m-b-5">
                                                     <i class="m-r-10 fas fa-money-check-alt text-danger"></i>
                                                     <span>Đã nạp: </span>
                                                 </p>
-                                                <p class="col font-weight-semibold text-money"> 2,500,000 VND</p>
+                                                <p class="col font-weight-semibold text-money"> {{ number_format($user->all_money, 0, '', ',') }} VND</p>
                                             </li>
                                             <li class="row">
                                                 <p class="col-sm-5 col-5 font-weight-semibold text-dark m-b-5">
