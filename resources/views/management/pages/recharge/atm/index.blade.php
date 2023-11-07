@@ -234,7 +234,7 @@
                                 </div>
 
                                 <div class="col-md-5 mb-2">
-                                    <div class="card card-body">
+                                    {{-- <div class="card card-body">
                                         <h5 class="text-success">Ghi Chú</h5>
 
                                         <div class="payment-note">
@@ -279,7 +279,7 @@
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 

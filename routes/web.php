@@ -17,6 +17,8 @@ use App\Http\Controllers\Management\BankController;
 use App\Http\Controllers\Management\HomeController;
 use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
+use App\Http\Controllers\Management\ReportController;
+use App\Http\Controllers\Management\Services\FacebookController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +85,21 @@ Route::group(['middleware' => ['auth']], function () {
             Route::prefix('atm')->group(function () {
                 Route::get('/', [BankATMController::class, 'index'])->name('bank.atm.index');
             });
+            // paypal
+            Route::prefix('paypal')->group(function () {
+                Route::get('/', function () {
+                    return view('management.pages.recharge.paypal.index');
+                })->name('paypal.index');
+            });
+        });
+        // report
+        Route::prefix('report')->group(function () {
+            Route::get('/', [ReportController::class, 'index'])->name('report.index');
+        });
+
+        // report
+        Route::prefix('fb_speed')->group(function () {
+            Route::get('/s_like', [FacebookController::class, 'sLike'])->name('facebook.sLike');
         });
         Route::prefix('ajax-manage')->group(function () {
             Route::prefix('payment')->group(function () {

@@ -73,7 +73,7 @@ class RechargeCardController extends Controller
             $partnerid = env('PARTNER_ID', '');
 
             $sig = md5(env('PARTNER_KEY', '') . $mathe . $seri);
-            $uri = "http://trumthe.vn/chargingws/v2?telco=$loaithe&code=$mathe&serial=$seri&amount=$menhgiareal&request_id=$request_id&partner_id=$partnerid&sign=$sig&command=$command";
+            $uri = "http://thesieure.com/chargingws/v2?telco=$loaithe&code=$mathe&serial=$seri&amount=$menhgiareal&request_id=$request_id&partner_id=$partnerid&sign=$sig&command=$command";
             $response  = Http::get($uri);
 
             $obj = json_decode($response);
@@ -153,16 +153,17 @@ class RechargeCardController extends Controller
                         if ($value == $declared_value) {
                             $note = 'Nạp thẻ cào thành công mệnh giá ' . $declared_value . ' ';
                             $user = User::where('id', $rechargeCardHistory->user_id)->first();
-                            $allMoney = $rechargeCardHistory->actually_received + $user->all_money; // tính lại tiền
-            
+                            $allPrice = $rechargeCardHistory->actually_received + $user->price; // tính lại tiền
+                            $allMoney = $rechargeCardHistory->actually_received + $user->all_money; // tính lại tổng nạp
+
                             # Thêm lịch sử
                             History::create([
                                 'user_id' => $rechargeCardHistory->user_id,
                                 'username' => $rechargeCardHistory->username,
                                 'count' => 1,
                                 'price' => $rechargeCardHistory->actually_received, // giá nhận
-                                'price_current' =>  $user->all_money,
-                                'price_left' => $allMoney,
+                                'price_current' =>  $user->price,
+                                'price_left' => $allPrice,
                                 'math' => '+',
                                 'type' => History::TYPE_RECHARGE_CARD,
                                 'note' => $note,
@@ -171,6 +172,7 @@ class RechargeCardController extends Controller
                             ]);
 
                             # update all money of user
+                            $user->price = $allPrice;
                             $user->all_money = $allMoney;
                             $user->save();
 
