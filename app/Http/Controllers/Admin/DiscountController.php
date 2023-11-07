@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DiscountRequest;
 use App\Http\Resources\DiscountResource;
-use App\Models\Discount;
 use App\Services\Admin\DiscountService;
 use Illuminate\Http\Request;
 

@@ -168,7 +168,7 @@
                             <input class="form-control" name="image" type="url_image" maxlength="240" />
 
                             <div class="alert alert-warning">
-                                Website hỗ trợ get link ảnh: <a href="https://linkanh.xyz/" target="_blank">Tại Đây</a>
+                                Website hỗ trợ get link ảnh: <a href="https://imgur.com/upload" target="_blank">Tại Đây</a>
                             </div>
                         </div>
 

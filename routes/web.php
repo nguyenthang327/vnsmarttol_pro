@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\BankController as AdminBankController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -35,7 +38,6 @@ use Illuminate\Support\Facades\Route;
 | Home page
 |--------------------------------------------------------------------------
  */
-
 Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('dashboard.index');
@@ -139,6 +141,38 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('find_repeated', [PaymentController::class, 'findRepeatedPayments'])->name('admin.payment.find_repeated');
             Route::post('find_duplicate', [PaymentController::class, 'findDuplicatePayments'])->name('admin.payment.find_duplicate');
         });
+
+        // Discount codes
+        Route::prefix('discount_codes')->group(function () {
+            Route::get('/', [DiscountController::class, 'index'])->name('admin.discount.index');
+            Route::post('store', [DiscountController::class, 'store'])->name('admin.discount.store');
+            Route::post('show', [DiscountController::class, 'show'])->name('admin.discount.show');
+            Route::post('delete', [DiscountController::class, 'destroy'])->name('admin.discount.delete');
+        });
+
+        // Home Settings
+        Route::name('admin.home_settings.')->group(function () {
+            Route::get('home_settings', [HomeSettingController::class, 'index'])->name('index');
+            Route::prefix('contacts')->group(function () {
+                Route::post('/', [ContactController::class, 'store'])->name('contact.index');
+                Route::post('show', [ContactController::class, 'show'])->name('contact.show');
+                Route::post('delete', [ContactController::class, 'destroy'])->name('contact.delete');
+            });
+            Route::prefix('questions')->group(function () {
+                Route::post('/', [QuestionController::class, 'store'])->name('question.index');
+                Route::post('show', [QuestionController::class, 'show'])->name('question.show');
+                Route::post('delete', [QuestionController::class, 'destroy'])->name('question.delete');
+            });
+        });
+
+        Route::prefix('banks')->group(function () {
+            Route::get('/', [AdminBankController::class, 'index'])->name('admin.bank.index');
+            Route::post('store', [AdminBankController::class, 'store'])->name('admin.bank.store');
+            Route::post('show', [AdminBankController::class, 'show'])->name('admin.bank.show');
+            Route::post('update', [AdminBankController::class, 'update'])->name('admin.bank.update');
+            Route::post('delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
+        });
+
         // Ajax
         Route::prefix('ajax')->group(function () {
             Route::prefix('users')->group(function () {
@@ -151,22 +185,8 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/', [PaymentController::class, 'ajaxGetPayments'])->name('admin.ajax.get_payments');
             });
             Route::get('discount_codes', [DiscountController::class, 'ajaxGetDiscounts'])->name('admin.ajax.discount_codes');
-        });
-
-        // Discount codes
-        Route::prefix('discount_codes')->group(function () {
-            Route::get('/', [DiscountController::class, 'index'])->name('admin.discount.index');
-            Route::post('store', [DiscountController::class, 'store'])->name('admin.discount.store');
-            Route::post('show', [DiscountController::class, 'show'])->name('admin.discount.show');
-            Route::post('delete', [DiscountController::class, 'destroy'])->name('admin.discount.delete');
-        });
-
-        Route::prefix('banks')->group(function () {
-            Route::get('/', [AdminBankController::class, 'index'])->name('admin.bank.index');
-            Route::post('store', [AdminBankController::class, 'store'])->name('admin.bank.store');
-            Route::post('show', [AdminBankController::class, 'show'])->name('admin.bank.show');
-            Route::post('update', [AdminBankController::class, 'update'])->name('admin.bank.update');
-            Route::post('delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
+            Route::get('contacts', [ContactController::class, 'ajaxGetContacts'])->name('admin.ajax.contacts');
+            Route::get('questions', [QuestionController::class, 'ajaxGetQuestions'])->name('admin.ajax.questions');
         });
     });
 });

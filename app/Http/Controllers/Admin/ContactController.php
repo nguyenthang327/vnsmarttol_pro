@@ -3,41 +3,95 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactRequest;
+use App\Http\Requests\Admin\ContactFormRequest;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
+use App\Services\Admin\ContactService;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+
+    protected $contactService;
+
+    public function __construct(ContactService $contactService)
     {
-        $this->authorize('viewAny', Contact::class);
-        return ContactResource::collection(Contact::all());
+        $this->contactService = $contactService;
     }
 
-    public function store(ContactRequest $request)
+    public function ajaxGetContacts(Request $request)
     {
-        $this->authorize('create', Contact::class);
-        return new ContactResource(Contact::create($request->validated()));
+        $start = $request->input('start');
+        $length = $request->input('length');
+        $orderBy = $request->input('order_by');
+        $orderDir = $request->input('order_dir');
+        $keyword = $request->input('keyword');
+        $contacts = $this->contactService->getContacts($start, $length, $orderBy, $orderDir, $keyword);
+        $formattedContacts = ContactResource::collection($contacts);
+        $result = [
+            'aaData' => $formattedContacts,
+            'iTotalDisplayRecords' => count($formattedContacts),
+            'iTotalRecords' => count($formattedContacts),
+        ];
+        return response()->json($result);
     }
 
-    public function show(Contact $contact)
+    public function store(ContactFormRequest $request)
     {
-        $this->authorize('view', $contact);
-        return new ContactResource($contact);
+        try {
+            $id = $request->input('id');
+            $image = $request->input('image');
+            $content = $request->input('content');
+            $link = $request->input('link');
+            $this->contactService->createOrUpdateContact($id, $image, $content, $link);
+            return response()->json([
+                "status" => 1,
+                "msg" => "Thao tác thành công!"
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ]);
+        }
     }
 
-    public function update(ContactRequest $request, Contact $contact)
+    public function show(Request $request)
     {
-        $this->authorize('update', $contact);
-        $contact->update($request->validated());
-        return new ContactResource($contact);
+        try {
+            $id = $request->input('id');
+            $contact = $this->contactService->getContactById($id);
+
+            if (!$contact) {
+                return response()->json([
+                    "status" => 0,
+                    "msg" => "Không tìm thấy thông tin liên hệ"
+                ]);
+            }
+            return response()->json($contact);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ]);
+        }
     }
 
-    public function destroy(Contact $contact)
+    public function destroy(Request $request)
     {
-        $this->authorize('delete', $contact);
-        $contact->delete();
-        return response()->json();
+        try {
+            $id = $request->input('id');
+            $this->contactService->deleteContact($id);
+            $response = [
+                'status' => 1,
+                'msg' => 'OK'
+            ];
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ]);
+        }
     }
 }
