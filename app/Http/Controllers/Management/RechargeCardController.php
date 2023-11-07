@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRechargeCardRequest;
 use App\Models\History;
 use App\Models\RechargeCardHistory;
+use App\Models\Setting;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -70,9 +71,11 @@ class RechargeCardController extends Controller
             $mathe = $request->input('NumberCard');
             $seri = $request->input('SeriCard');
             $menhgiareal = $request->input('PricesExchange');
-            $partnerid = env('PARTNER_ID', '');
 
-            $sig = md5(env('PARTNER_KEY', '') . $mathe . $seri);
+            $setting = Setting::first();
+            $partnerid = $setting->card_partner_id;
+
+            $sig = md5($setting->card_partner_key . $mathe . $seri);
             $uri = "http://thesieure.com/chargingws/v2?telco=$loaithe&code=$mathe&serial=$seri&amount=$menhgiareal&request_id=$request_id&partner_id=$partnerid&sign=$sig&command=$command";
             $response  = Http::get($uri);
 
@@ -87,7 +90,7 @@ class RechargeCardController extends Controller
             // tạo ra một yêu cầu nạp  ở domain phụ
             $user = auth()->user();
 
-            $chietkhau = ($menhgiareal / 100) * (100 - config('constants.discount_recharge_card'));
+            $chietkhau = ($menhgiareal / 100) * (100 - $setting->card_discount);
             $thucnhan = ($menhgiareal - $chietkhau);
             $domain = InforWebHelper::getDomain();
 
