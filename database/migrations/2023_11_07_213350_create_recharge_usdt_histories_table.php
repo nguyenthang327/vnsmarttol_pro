@@ -18,7 +18,7 @@ class CreateRechargeUsdtHistoriesTable extends Migration
             $table->unsignedBigInteger('user_id')->comment('Mã người dùng');
             $table->string('username')->comment('Tên tài khoản người dùng');
             $table->text('type')->comment('Loại dịch vụ bên thứ 3');
-            $table->unsignedBigInteger('usdt_number')->comment('Số usdt nạp');
+            $table->unsignedDouble('usdt_number')->comment('Số usdt nạp');
             $table->unsignedBigInteger('actually_received')->nullable()->comment('Thực nhận');
             $table->string('name', 100)->comment('Tên hóa đơn');
             $table->string('description', 100)->comment('Mô tả hóa đơn');
