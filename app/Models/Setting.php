@@ -53,7 +53,12 @@ class Setting extends Model
         'payment_popup_content',
         'show_header',
         'show_last_notify',
-        'admin_tele_on_payment'
+        'admin_tele_on_payment',
+        'card_partner_id',
+        'card_partner_key',
+        'card_discount',
+        'usdt_address_wallet',
+        'usdt_token_wallet',
     ];
 
     protected $casts = [
