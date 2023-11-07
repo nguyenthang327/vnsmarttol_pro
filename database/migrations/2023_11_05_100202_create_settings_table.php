@@ -56,6 +56,11 @@ return new class extends Migration {
             $table->boolean('show_header')->nullable()->comment('Hiển thị thông báo nổi');
             $table->boolean('show_last_notify')->nullable()->comment('Hiển thị popup thông báo mới nhất');
             $table->boolean('admin_tele_on_payment')->nullable()->comment('Nhận thông báo về Telegram khi người dùng nạp tiền');
+            $table->text('card_partner_id')->nullable()->comment('Cấu hình partner_id nạp card');
+            $table->text('card_partner_key')->nullable()->comment('Cấu hình partner_key nạp card');
+            $table->string('card_discount')->nullable()->comment('Cấu hình tỷ giá nạp card. VD nap the 100 tỷ giá 75 người dùng sẽ nhận đc 75k');
+            $table->text('usdt_address_wallet')->nullable()->comment('USDT Địa chỉ ví Tron nhận tiền (không sử dụng địa chỉ tại Binance)');
+            $table->text('usdt_token_wallet')->nullable()->comment('USDT Token mà hệ thống tạo ra khi thêm ví vào FPAYMENT');
             $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });

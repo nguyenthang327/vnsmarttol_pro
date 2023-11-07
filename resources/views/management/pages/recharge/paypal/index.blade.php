@@ -8,7 +8,7 @@
 
         <div class="card">
             <div class="card-body">
-                <h4>Nạp Thẻ Cào</h4>
+                <h4>Nạp Paypal</h4>
 
                 <div class="card">
                     <div class="card-body">
