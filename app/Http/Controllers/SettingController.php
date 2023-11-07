@@ -10,7 +10,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return SettingResource::collection(Setting::all());
+        return view('admin.pages.settings.index');
     }
 
     public function store(SettingRequest $request)
