@@ -174,6 +174,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
             Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
             Route::post('toggle', [SettingController::class, 'toggle'])->name('admin.setting.toggle');
+            Route::post('update_data', [SettingController::class, 'updateLogo'])->name('admin.setting.update_data');
             Route::post('get_level_note', [SettingController::class, 'getNotesByLevel'])->name('admin.setting.getNotesByLevel');
             Route::post('update_level_note', [SettingController::class, 'updateNoteByLevel'])->name('admin.setting.updateNoteByLevel');
         });

@@ -30,6 +30,7 @@ class Setting extends Model
         'zalo',
         'fanpage',
         'phone',
+        'video_intro',
         'link_video_1',
         'link_video_2',
         'min_charge_lv1',

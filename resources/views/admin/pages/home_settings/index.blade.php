@@ -99,7 +99,7 @@
                             <div class="form-group">
                                 <label>Link video Hướng dẫn sử dụng</label>
                                 <input class="form-control" name="video_intro" required maxlength="200"
-                                       value="https://www.youtube.com/watch?v=9mW_zsdq_2U">
+                                       value="{{ old('video_intro') ?? $videoIntro->video_intro }}">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-success text-bold">Hoàn tất</button>

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class HomeSettingController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.home_settings.index');
+        $videoIntro = Setting::first('video_intro');
+        return view('admin.pages.home_settings.index', [
+            'videoIntro' => $videoIntro
+        ]);
     }
 
     public function create()

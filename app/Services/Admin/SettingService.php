@@ -106,4 +106,15 @@ class SettingService
             throw new \Exception("Không tìm thấy trường 'note_lv$level' hoặc không tìm thấy thông tin cấu hình.");
         }
     }
+
+    public function updateSetting($key, $value)
+    {
+        $setting = Setting::first();
+
+        if (!$setting) {
+            throw new \Exception("Không tìm thấy thông tin cấu hình.");
+        }
+
+        $setting->update([$key => $value]);
+    }
 }

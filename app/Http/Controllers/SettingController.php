@@ -64,6 +64,24 @@ class SettingController extends Controller
         }
     }
 
+    public function updateLogo(Request $request)
+    {
+        try {
+            $logo = $request->input('video_intro');
+            $this->settingService->updateSetting('video_intro', $logo);
+
+            return response()->json([
+                "status" => 1,
+                "msg" => "Cập nhật logo thành công."
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => 0,
+                "msg" => "Lỗi: " . $e->getMessage()
+            ]);
+        }
+    }
+
     public function getNotesByLevel(Request $request)
     {
         try {

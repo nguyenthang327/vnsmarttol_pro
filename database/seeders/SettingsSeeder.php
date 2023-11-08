@@ -33,6 +33,7 @@ class SettingsSeeder extends Seeder
             'zalo' => null,
             'fanpage' => null,
             'phone' => null,
+            'video_intro' => "https://www.youtube.com/watch?v=9mW_zsdq_2U",
             'link_video_1' => "https://youtu.be/CutJVfDfRiE",
             'link_video_2' => "https://youtu.be/Z5ToDZw8XzA",
             'min_charge_lv1' => 200000,

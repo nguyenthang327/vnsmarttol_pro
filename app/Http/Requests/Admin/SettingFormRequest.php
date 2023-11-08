@@ -32,6 +32,7 @@ class SettingFormRequest extends BaseFormRequest
             'zalo' => ['nullable', 'string', 'max:255'],
             'fanpage' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:255'],
+            'video_intro' => ['nullable', 'string', 'max:255'],
             'link_video_1' => ['nullable', 'string', 'max:255'],
             'link_video_2' => ['nullable', 'string', 'max:255'],
             'min_charge_lv1' => ['nullable', 'string', 'max:255'],

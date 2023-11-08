@@ -34,6 +34,7 @@ return new class extends Migration {
             $table->string('phone')->nullable();
             $table->string('link_video_1')->nullable();
             $table->string('link_video_2')->nullable();
+            $table->string('video_intro')->nullable();
             $table->string('min_charge_lv1')->nullable();
             $table->integer('total_charge_lv1')->nullable();
             $table->text('note_lv1')->nullable();
