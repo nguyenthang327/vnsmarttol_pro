@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\SettingFormRequest;
+use App\Models\Setting;
 use App\Services\Admin\SettingService;
 
 class SettingController extends Controller
@@ -15,7 +16,10 @@ class SettingController extends Controller
     }
     public function index()
     {
-        return view('admin.pages.settings.index');
+        $settings = Setting::first();
+        return view('admin.pages.settings.index', [
+            'settings' => $settings
+        ]);
     }
 
     /**

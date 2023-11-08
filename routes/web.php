@@ -169,6 +169,7 @@ Route::group(['middleware' => ['auth']], function () {
         // Settings
         Route::prefix('settings')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
+            Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
             Route::post('store', [SettingController::class, 'store'])->name('admin.setting.store');
             Route::post('show', [SettingController::class, 'show'])->name('admin.setting.show');
             Route::post('delete', [SettingController::class, 'destroy'])->name('admin.setting.delete');
