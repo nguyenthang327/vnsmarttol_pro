@@ -38,4 +38,18 @@ class ProfileService
             throw new Exception('[ProfileService][updateProfile] error: ' . $e->getMessage());
         }
     }
+
+    public function getProfile(){
+        try{
+            $user = null;
+            if(auth()->user()){
+                $user = auth()->user();
+                $user = User::where('id', $user->id)->first();
+            }
+            return $user;
+        }catch(Exception $e){
+            Log::error('[ProfileService][getProfile] error:' . $e->getMessage());
+            throw new Exception('[ProfileService][getProfile] error: ' . $e->getMessage());
+        }
+    }
 }

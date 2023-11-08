@@ -6,8 +6,11 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\PriceServiceController;
 use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -171,6 +174,21 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('show', [AdminBankController::class, 'show'])->name('admin.bank.show');
             Route::post('update', [AdminBankController::class, 'update'])->name('admin.bank.update');
             Route::post('delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
+        });
+
+        // Service
+        Route::prefix('services')->group(function () {
+            Route::get('/facebook', [ServiceController::class, 'facebookIndex'])->name('admin.service.facebookIndex');
+        });
+
+        // Price Service
+        Route::prefix('prices')->group(function () {
+            Route::get('/', [PriceServiceController::class, 'index'])->name('admin.price.service.index');
+        });
+
+        // Order manage Buff
+         Route::prefix('logs')->group(function () {
+            Route::get('/', [OrderController::class, 'buff'])->name('admin.orders.buff');
         });
 
         // Ajax
