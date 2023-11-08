@@ -15,13 +15,52 @@
             </li>
 
             <li class="item-parent menu-item-prices">
-                <a href="/qladmin/prices">
+                <a href="{{route('admin.price.service.index')}}">
                     <span class="icon-holder">
                         <i class="fa fa-list"></i>
                     </span>
                     <span class="title">Chỉnh giá dịch vụ</span>
                 </a>
             </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="fas fa-tasks"></i>
+                    </span>
+                    <span class="title">Quản lý dịch vụ</span>
+                    <span class="fas fa-chevron-down"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class="item-parent">
+                        <a href="{{route('admin.service.facebookIndex')}}">
+                            <span class="menu-dot"></span>
+                            Dịch vụ facebook
+                        </a>
+                    </li>
+
+                    <li class="item-parent">
+                        <a href="#">
+                            <span class="menu-dot"></span>
+                            Dịch vụ instagram
+                        </a>
+                    </li>
+
+                    <li class="item-parent">
+                        <a href="#">
+                            <span class="menu-dot"></span>
+                            Dịch vụ Tiktok
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
 
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -64,13 +103,11 @@
                     </li>
                 </ul>
             </li>
-
             <li>
                 <a class="sidebar-title">
                     <span class="title">Chức năng</span>
                 </a>
             </li>
-
             <li class="item-parent menu-item-payment">
                 <a href="/qladmin/payment">
                     <span class="icon-holder">
@@ -79,7 +116,6 @@
                     <span class="title">Nhật ký cộng tiền</span>
                 </a>
             </li>
-
             <li class="item-parent menu-item-refunds">
                 <a href="/qladmin/refunds">
                     <span class="icon-holder">
@@ -88,7 +124,6 @@
                     <span class="title">Lịch sử hoàn tiền</span>
                 </a>
             </li>
-
             <li class="item-parent menu-item-discount_codes">
                 <a href="/qladmin/discount_codes">
                     <span class="icon-holder">
@@ -97,7 +132,6 @@
                     <span class="title">Mã giảm giá</span>
                 </a>
             </li>
-
             <li class="item-parent menu-item-notes">
                 <a href="/qladmin/notes">
                     <span class="icon-holder">
@@ -106,7 +140,6 @@
                     <span class="title">Ghi chú</span>
                 </a>
             </li>
-
             <li class="item-parent menu-item-news">
                 <a href="/qladmin/news">
                     <span class="icon-holder">
@@ -115,15 +148,13 @@
                     <span class="title">Cập nhật tính năng mới</span>
                 </a>
             </li>
-
             <li>
                 <a class="sidebar-title">
                     <span class="title">Quản Lý Đơn</span>
                 </a>
             </li>
-
             <li class="item-parent menu-item-logs">
-                <a href="/qladmin/logs">
+                <a href="{{route('admin.orders.buff')}}">
                     <span class="icon-holder">
                         <i class="fas fa-thumbs-up"></i>
                     </span>
@@ -146,7 +177,6 @@
                     <span class="title">Vòng quay quay mắn</span>
                 </a>
             </li>
-
             <li>
                 <a class="sidebar-title">
                     <span class="title">Phần thiết lập web</span>
