@@ -63,4 +63,47 @@ class SettingService
             'usdt_discount' => $request->input('usdt_discount'),
         ]);
     }
+
+    public function getAllSettings()
+    {
+        return Setting::first();
+    }
+
+    public function toggleSetting($field, $value)
+    {
+        $setting = Setting::first();
+
+        if (!$setting) {
+            throw new \Exception("Không tìm thấy thông tin cấu hình.");
+        }
+        if (isset($setting->$field)) {
+            // Cập nhật giá trị của trường tương ứng với key
+            $setting[$field] = $value;
+            $setting->save();
+        } else {
+            throw new \Exception("Trường '$field' không tồn tại trong thông tin cấu hình.");
+        }
+    }
+
+    public function getNotesByLevel($level)
+    {
+        $noteLevel = 'note_lv' . $level;
+        // Tìm các bản ghi Setting với mức độ (level) tương ứng
+        $settings = Setting::first();
+        return $settings->isEmpty() ? null : $settings->pluck($noteLevel);
+    }
+
+    public function updateNoteByLevel($level, $content)
+    {
+        $noteLevel = 'note_lv' . $level;
+        $setting = Setting::first();
+        // Kiểm tra xem mô hình Setting có tồn tại và trường `note_lvX` có tồn tại không
+        if ($setting && isset($setting->$noteLevel)) {
+            // Cập nhật trường `note_lvX` với nội dung mới
+            $setting->$noteLevel = $content;
+            $setting->save();
+        } else {
+            throw new \Exception("Không tìm thấy trường 'note_lv$level' hoặc không tìm thấy thông tin cấu hình.");
+        }
+    }
 }

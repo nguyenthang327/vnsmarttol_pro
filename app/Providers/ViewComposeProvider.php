@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Admin\SettingService;
 use App\Services\Profile\ProfileService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -9,10 +10,12 @@ use Illuminate\Support\ServiceProvider;
 class ViewComposeProvider extends ServiceProvider
 {
     private $profileService;
+    private $settingService;
     //contructor
     public function __construct()
     {
         $this->profileService = new ProfileService();
+        $this->settingService = new SettingService();
     }
     /**
      * Register services.
@@ -29,9 +32,10 @@ class ViewComposeProvider extends ServiceProvider
     {
         View::composer(['*'], function ($view) {
             $user = $this->profileService->getProfile();
-            
+            $settingsComposer = $this->settingService->getAllSettings();
             $view->with([
-                'user' => $user
+                'user' => $user,
+                'settingsComposer' => $settingsComposer
             ]);
         });
     }

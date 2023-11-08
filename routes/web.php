@@ -173,9 +173,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('settings')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
             Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
-            Route::post('store', [SettingController::class, 'store'])->name('admin.setting.store');
-            Route::post('show', [SettingController::class, 'show'])->name('admin.setting.show');
-            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.setting.delete');
+            Route::post('toggle', [SettingController::class, 'toggle'])->name('admin.setting.toggle');
+            Route::post('get_level_note', [SettingController::class, 'getNotesByLevel'])->name('admin.setting.getNotesByLevel');
+            Route::post('update_level_note', [SettingController::class, 'updateNoteByLevel'])->name('admin.setting.updateNoteByLevel');
         });
 
         // Banks
