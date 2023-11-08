@@ -2,36 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SettingRequest;
-use App\Http\Resources\SettingResource;
+use App\Http\Requests\Admin\SettingFormRequest;
 use App\Models\Setting;
+use App\Services\Admin\SettingService;
 
 class SettingController extends Controller
 {
+    protected $settingService;
+
+    public function __construct(SettingService $settingService)
+    {
+        $this->settingService = $settingService;
+    }
     public function index()
     {
-        return SettingResource::collection(Setting::all());
+        $settings = Setting::first();
+        return view('admin.pages.settings.index', [
+            'settings' => $settings
+        ]);
     }
 
-    public function store(SettingRequest $request)
+    /**
+     * @param SettingFormRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(SettingFormRequest $request)
     {
-        return new SettingResource(Setting::create($request->validated()));
-    }
+        try {
+            $this->settingService->updateSettings($request);
 
-    public function show(Setting $setting)
-    {
-        return new SettingResource($setting);
-    }
-
-    public function update(SettingRequest $request, Setting $setting)
-    {
-        $setting->update($request->validated());
-        return new SettingResource($setting);
-    }
-
-    public function destroy(Setting $setting)
-    {
-        $setting->delete();
-        return response()->json();
+            return response()->json([
+                "status" => 1,
+                "msg" => "Cập nhật thành công."
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ]);
+        }
     }
 }

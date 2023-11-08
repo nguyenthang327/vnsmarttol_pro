@@ -22,6 +22,7 @@ use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
 use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\Services\FacebookController;
+use App\Http\Controllers\SettingController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -168,6 +169,16 @@ Route::group(['middleware' => ['auth']], function () {
             });
         });
 
+        // Settings
+        Route::prefix('settings')->group(function () {
+            Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
+            Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
+            Route::post('store', [SettingController::class, 'store'])->name('admin.setting.store');
+            Route::post('show', [SettingController::class, 'show'])->name('admin.setting.show');
+            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.setting.delete');
+        });
+
+        // Banks
         Route::prefix('banks')->group(function () {
             Route::get('/', [AdminBankController::class, 'index'])->name('admin.bank.index');
             Route::post('store', [AdminBankController::class, 'store'])->name('admin.bank.store');
