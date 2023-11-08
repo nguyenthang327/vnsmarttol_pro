@@ -544,7 +544,7 @@
 
                                 <div class="form-group">
                                     <label>Cú pháp nạp tiền (Không tùy ý đổi khi đang sử dụng auto bank)</label>
-                                    <input class="form-control" name="bank_prefix" value="naptien" maxlength="50"
+                                    <input class="form-control" name="bank_prefix" value="{{ old('bank_prefix') ?? $settings->bank_prefix }}" maxlength="50"
                                            placeholder="ví dụ điền: auto. thì ctv chuyển tiền nd auto test123, thì test123 sẽ nhận được tiền tự động.">
                                 </div>
                                 <hr/>
