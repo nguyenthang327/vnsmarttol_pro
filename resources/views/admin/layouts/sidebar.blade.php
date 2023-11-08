@@ -15,12 +15,48 @@
             </li>
 
             <li class="item-parent menu-item-prices">
-                <a href="/qladmin/prices">
+                <a href="{{route('admin.price.service.index')}}">
                     <span class="icon-holder">
                         <i class="fa fa-list"></i>
                     </span>
                     <span class="title">Chỉnh giá dịch vụ</span>
                 </a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="fas fa-tasks"></i>
+                    </span>
+                    <span class="title">Quản lý dịch vụ</span>
+                    <span class="fas fa-chevron-down"></span>
+                </a>
+    
+                <ul class="dropdown-menu">
+                    <li class="item-parent">
+                        <a href="{{route('admin.service.facebookIndex')}}">
+                            <span class="menu-dot"></span>
+                            Dịch vụ facebook
+                        </a>
+                    </li>
+
+                    <li class="item-parent">
+                        <a href="#">
+                            <span class="menu-dot"></span>
+                            Dịch vụ instagram
+                        </a>
+                    </li>
+
+                    <li class="item-parent">
+                        <a href="#">
+                            <span class="menu-dot"></span>
+                            Dịch vụ Tiktok
+                        </a>
+                    </li>
+
+
+                </ul>
             </li>
 
 
@@ -163,7 +199,7 @@
 
 
             <li class="item-parent menu-item-logs">
-                <a href="/qladmin/logs">
+                <a href="{{route('admin.orders.buff')}}">
                     <span class="icon-holder">
                         <i class="fas fa-thumbs-up"></i>
                     </span>
@@ -173,9 +209,8 @@
 
 
 
-
             <li class="item-parent menu-item-sim_otp">
-                <a href="/qladmin/sim_otp">
+                <a href="#">
                     <span class="icon-holder">
                         <i class="fas fa-sim-card"></i>
                     </span>
@@ -187,7 +222,7 @@
 
 
             <li class="item-parent menu-item-vips">
-                <a href="/qladmin/vips">
+                <a href="#">
                     <span class="icon-holder">
                         <i class="fab fa-vimeo-square"></i>
                     </span>
@@ -199,7 +234,7 @@
 
 
             <li class="item-parent menu-item-bots">
-                <a href="/qladmin/bots">
+                <a href="#">
                     <span class="icon-holder">
                         <i class="fas fa-robot"></i>
                     </span>
