@@ -10,6 +10,7 @@ use App\Models\History;
 use App\Models\RechargeCardHistory;
 use App\Models\Setting;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -156,6 +157,17 @@ class RechargeCardController extends Controller
                         if ($value == $declared_value) {
                             $note = 'Nạp thẻ cào thành công mệnh giá ' . $declared_value . ' ';
                             $user = User::where('id', $rechargeCardHistory->user_id)->first();
+
+                            $setting = Setting::first(); // setting
+                            if(!empty($setting->offer_from) && !empty($setting->offer_to) && !empty($setting->offer_percent)){
+                                $offerFrom = Carbon::parse($setting->offer_from);
+                                $offerTo = Carbon::parse($setting->offer_to);
+                                $now = Carbon::now();
+                                if($offerFrom->lte($now) && $offerTo->gte($now)){
+                                    $rechargeCardHistory->actually_received = $rechargeCardHistory->actually_received + ($rechargeCardHistory->actually_received*$setting->offer_percent)/100;
+                                }
+                            }
+                    
                             $allPrice = $rechargeCardHistory->actually_received + $user->price; // tính lại tiền
                             $allMoney = $rechargeCardHistory->actually_received + $user->all_money; // tính lại tổng nạp
 
@@ -175,13 +187,37 @@ class RechargeCardController extends Controller
                             ]);
 
                             # update all money of user
-                            $user->price = $allPrice;
-                            $user->all_money = $allMoney;
-                            $user->save();
+                            // $user->price = $allPrice;
+                            // $user->all_money = $allMoney;
+                            // $user->save();
 
                             # update lịch sử nạp card
                             $rechargeCardHistory->status = RechargeCardHistory::STATUS_SUCCESS;
                             $rechargeCardHistory->save();
+                            
+                            $paramsUpdateUser = [
+                                'price' => $allPrice,
+                                'all_money' => $allMoney
+                            ];
+
+                            // process ugroup of user
+                            if($user->ugroup != User::GROUP_DISTRIBUTOR){
+                                // lấy ra mốc nạp tiền cao nhất
+                                $maxPrice = History::where('math', '+')
+                                    ->where('user_id', $user->id)
+                                    ->max('price');
+                                if ($allMoney >= $setting->total_charge_lv3 && $maxPrice >= $setting->min_charge_lv3){
+                                    $paramsUpdateUser['ugroup'] = User::GROUP_DISTRIBUTOR;
+                                }else if ($allMoney >= $setting->total_charge_lv2 && $maxPrice >= $setting->min_charge_lv2){
+                                    $paramsUpdateUser['ugroup'] = User::GROUP_AGENCY;
+                                }else if($allMoney >= $setting->total_charge_lv1 && $maxPrice >= $setting->min_charge_lv1){
+                                    $paramsUpdateUser['ugroup'] = User::GROUP_COLLABORATOR;
+                                }
+                            }
+
+                            // update all money
+                            User::where('id', $rechargeCardHistory->user_id)->update($paramsUpdateUser);
+
                             Log::info('[RechargeCardController][rechargeCardCallback] Nạp thẻ thành công');
                         } else {
                             $rechargeCardHistory->status = RechargeCardHistory::STATUS_ERROR;
