@@ -11,5 +11,6 @@ class Notification extends Model
         'is_pin',
         'is_visible',
         'content',
+        'identity_website'
     ];
 }

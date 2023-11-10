@@ -138,6 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('notifications')->group(function () {
             Route::get('/', [NotificationController::class, 'notifications'])->name('admin.notification.index');
             Route::get('show_last_notify', [NotificationController::class, 'show_last_notify'])->name('admin.notification.show_last_notify');
+            Route::post('show_last_notify', [NotificationController::class, 'toggle'])->name('admin.notification.show_last_notify');
         });
         // Payment
         Route::prefix('payment')->group(function () {

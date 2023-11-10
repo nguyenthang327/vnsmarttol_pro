@@ -12,7 +12,7 @@ class NotificationRequest extends FormRequest
             'image' => ['nullable'],
             'is_pin' => ['nullable'],
             'is_visible' => ['nullable'],
-            'content' => ['nullable'],
+            'content' => ['required', 'string'],
         ];
     }
 

@@ -6,10 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\NotificationRequest;
 use App\Http\Resources\NotificationResource;
 use App\Models\Notification;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
+    protected $notificationService;
+
+    public function __construct(NotificationService $notificationService)
+    {
+        $this->notificationService = $notificationService;
+    }
+
     public function index()
     {
         $this->authorize('viewAny', Notification::class);
@@ -18,8 +26,25 @@ class NotificationController extends Controller
 
     public function store(NotificationRequest $request)
     {
-        $this->authorize('create', Notification::class);
-        return new NotificationResource(Notification::create($request->validated()));
+        try {
+            $id = $request->input('id');
+            $image = $request->input('image');
+            $isPin = $request->input('is_pin', 0);
+            $isVisible = $request->input('is_visible', 1);
+            $content = $request->input('content');
+
+            $this->notificationService->createOrUpdateNotification($id, $image, $isPin, $isVisible, $content);
+
+            return response()->json([
+                "status" => 1,
+                "msg" => "Thao tác thành công!",
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ]);
+        }
     }
 
     public function show(Notification $notification)
