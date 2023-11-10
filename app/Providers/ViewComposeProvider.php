@@ -31,7 +31,7 @@ class ViewComposeProvider extends ServiceProvider
             $user = $this->profileService->getProfile();
             
             $view->with([
-                'user' => $user
+                'userComposer' => $user
             ]);
         });
     }
