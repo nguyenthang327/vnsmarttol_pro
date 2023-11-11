@@ -63,4 +63,21 @@ class SettingService
             'usdt_discount' => $request->input('usdt_discount'),
         ]);
     }
+
+    /**
+     * @throws \Exception
+     */
+    public function updateSettingByKey($key, $value)
+    {
+        try {
+            $setting = Setting::first();
+            if (!$setting) {
+                throw new \Exception("Không tìm thấy thông tin cấu hình.");
+            }
+            $setting->update([$key => $value]);
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
 }

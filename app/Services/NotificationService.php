@@ -3,10 +3,15 @@
 namespace App\Services;
 
 use App\Models\Notification;
+use App\Models\Setting;
 use DB;
+use Log;
 
 class NotificationService
 {
+    /**
+     * @throws \Exception
+     */
     public function createOrUpdateNotification($id, $image, $isPin, $isVisible, $content)
     {
         DB::beginTransaction();
@@ -37,9 +42,22 @@ class NotificationService
             return true;
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('[QuestionService][createOrUpdateQuestion] error:' . $e->getMessage());
+            Log::error('[NotificationService][createOrUpdateNotification] error:' . $e->getMessage());
             throw new \Exception($messageError);
         }
+    }
 
+    public function updateNotifyByKey($id, $key, $value)
+    {
+        try {
+            $notify = Notification::where('id', $id)->first();
+            if (!$notify) {
+                throw new \Exception("Không tìm thấy thông báo.");
+            }
+            $notify->update([$key => $value]);
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
     }
 }

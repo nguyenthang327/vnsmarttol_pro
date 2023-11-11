@@ -64,6 +64,7 @@ return new class extends Migration {
             $table->text('usdt_address_wallet')->nullable()->comment('USDT Địa chỉ ví Tron nhận tiền (không sử dụng địa chỉ tại Binance)');
             $table->text('usdt_token_wallet')->nullable()->comment('USDT Token mà hệ thống tạo ra khi thêm ví vào FPAYMENT');
             $table->string('usdt_discount')->nullable()->comment('Cấu hình tỷ giá nạp USDT');
+            $table->text('notify_new_user')->nullable()->comment('Thông báo cho người dùng mới');
             $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });

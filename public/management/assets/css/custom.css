@@ -2720,6 +2720,6 @@ form small, form .small {
     cursor: pointer;
 }
 
-
-
-
+.page-container .main-content {
+    padding-top: calc(70px + 25px) !important;
+}
