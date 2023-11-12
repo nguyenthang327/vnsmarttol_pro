@@ -150,7 +150,15 @@
                     <span class="icon-holder">
                         <i class="fas fa-cogs"></i>
                     </span>
-                    <span class="title">Thiết lập server</span>
+                    <span class="title">Chuyên mục</span>
+                </a>
+            </li>
+            <li class="item-parent menu-item-logs">
+                <a href="{{route('admin.service.category')}}">
+                    <span class="icon-holder">
+                        <i class="fas fa-thumbs-up"></i>
+                    </span>
+                    <span class="title">Quản lý chuyên mục</span>
                 </a>
             </li>
             <li>
