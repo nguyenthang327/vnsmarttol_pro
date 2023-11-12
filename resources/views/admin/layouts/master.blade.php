@@ -102,15 +102,11 @@
             <!-- Page Container START -->
             <div class="page-container">
                 @yield('subHeader')
-
                 <!-- Content Wrapper START -->
                 @yield('content')
-
                 <!-- page js -->
                 <script src="{{ asset('management/assets/plugins/js.cookie/js.cookie.min.js') }}"></script>
-
                 <!-- Content Wrapper END -->
-
                 <!-- Footer START -->
                 @include('admin.layouts.footer')
                 <!-- Footer END -->

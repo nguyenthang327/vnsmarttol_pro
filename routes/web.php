@@ -136,8 +136,12 @@ Route::group(['middleware' => ['auth']], function () {
         });
         // Notifications
         Route::prefix('notifications')->group(function () {
-            Route::get('/', [NotificationController::class, 'notifications'])->name('admin.notification.index');
-            Route::get('show_last_notify', [NotificationController::class, 'show_last_notify'])->name('admin.notification.show_last_notify');
+            Route::match(['get', 'post'],'/', [NotificationController::class, 'notifications'])->name('admin.notification.index');
+            Route::post('show_last_notify', [NotificationController::class, 'showLastNotify'])->name('admin.notification.show_last_notify');
+            Route::post('toggle', [NotificationController::class, 'toggle'])->name('admin.notification.toggle');
+            Route::post('notify_new_user', [NotificationController::class, 'notifyNewUser'])->name('admin.notification.notify_new_user');
+            Route::post('show', [NotificationController::class, 'show'])->name('admin.notification.show');
+            Route::post('delete', [NotificationController::class, 'destroy'])->name('admin.notification.destroy');
         });
         // Payment
         Route::prefix('payment')->group(function () {

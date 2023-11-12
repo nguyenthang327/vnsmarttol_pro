@@ -140,12 +140,17 @@
                     <span class="title">Ghi chú</span>
                 </a>
             </li>
-            <li class="item-parent menu-item-news">
-                <a href="/qladmin/news">
+            <li>
+                <a class="sidebar-title">
+                    <span class="title">Phần thiết lập dịch vụ</span>
+                </a>
+            </li>
+            <li class="item-parent menu-item-settings">
+                <a href="">
                     <span class="icon-holder">
-                        <i class="fas fa-newspaper"></i>
+                        <i class="fas fa-cogs"></i>
                     </span>
-                    <span class="title">Cập nhật tính năng mới</span>
+                    <span class="title">Thiết lập server</span>
                 </a>
             </li>
             <li>
@@ -159,14 +164,6 @@
                         <i class="fas fa-thumbs-up"></i>
                     </span>
                     <span class="title">Quản lý đơn Buff</span>
-                </a>
-            </li>
-            <li class="item-parent menu-item-tickets/setting">
-                <a href="/qladmin/tickets/setting">
-                    <span class="icon-holder">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                    </span>
-                    <span class="title">Cấu hình Hộp thư hỗ trợ</span>
                 </a>
             </li>
             <li class="item-parent menu-item-lucky_wheel">

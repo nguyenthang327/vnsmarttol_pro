@@ -2,18 +2,20 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class NotificationRequest extends FormRequest
+class NotificationRequest extends BaseFormRequest
 {
     public function rules(): array
     {
-        return [
-            'image' => ['nullable'],
-            'is_pin' => ['nullable'],
-            'is_visible' => ['nullable'],
-            'content' => ['nullable'],
-        ];
+        $rules = [];
+        if ($this->method() == 'POST') {
+            $rules = [
+                'image' => ['nullable', 'string', 'max:240'],
+                'is_pin' => ['nullable'],
+                'is_visible' => ['nullable'],
+                'content' => ['required', 'string'],
+            ];
+        }
+        return $rules;
     }
 
     public function authorize(): bool
