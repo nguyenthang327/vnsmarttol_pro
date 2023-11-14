@@ -11,8 +11,9 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'sort' => 0,
-            'icon' => 'fab fa-facebook-square',
-            'name' => 'Facebook' ,
+            'icon' => 'fas fa-hand-point-up',
+            'name' => 'Buff Facebook' ,
+            'display_name' => 'Facebook Buff' ,
             'slug' => 'facebook',
             'content' => null,
             'visible' => 1,

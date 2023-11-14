@@ -10,6 +10,7 @@ class Category extends Model
         'sort',
         'icon',
         'name',
+        'display_name',
         'slug',
         'content',
         'display',

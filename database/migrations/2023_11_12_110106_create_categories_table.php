@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->integer('sort')->nullable()->default(0)->comment('Thứ tự hiển thị');
             $table->string('icon')->nullable()->comment('Class icon của fontawesome');
             $table->string('name')->nullable()->comment('Tên danh mục');
+            $table->string('display_name')->nullable()->comment('Tên hiển thị danh mục');
             $table->string('slug')->unique()->nullable()->comment('Đường dẫn danh mục');
             $table->longText('content')->nullable()->comment('Nội dung danh mục');
             $table->boolean('visible')->nullable()->default(0)->comment('Trạng thái hiển thị');

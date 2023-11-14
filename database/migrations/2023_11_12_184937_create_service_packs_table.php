@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('sort')->nullable()->default(0)->comment('Thứ tự hiển thị');
             $table->string('name')->comment('Tên gói dịch vụ');
+            $table->string('slug')->unique()->nullable()->comment('Đường dẫn gói dịch vụ');
             $table->string('display_name')->comment('Tên hiển thị gói dịch vụ');
             $table->float('price_stock')->comment('Giá gốc');
             $table->float('price_lv0')->comment('Giá thành viên');
@@ -28,7 +29,7 @@ return new class extends Migration {
             $table->integer('show_comment')->nullable();
             $table->integer('show_camxuc')->nullable();
             $table->string('server')->nullable();
-            $table->unsignedBigInteger('service_group_id');
+            $table->unsignedBigInteger('service_id');
             $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });
