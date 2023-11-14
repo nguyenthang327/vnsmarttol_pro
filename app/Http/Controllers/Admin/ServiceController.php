@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    protected $pathView = 'admin.pages.services.';
-
     public function facebookIndex()
     {
-        return view($this->pathView . 'facebook');
+        return view('admin.pages.services.facebook');
     }
 }

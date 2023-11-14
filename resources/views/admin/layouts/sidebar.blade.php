@@ -40,22 +40,6 @@
                             Dịch vụ facebook
                         </a>
                     </li>
-
-                    <li class="item-parent">
-                        <a href="#">
-                            <span class="menu-dot"></span>
-                            Dịch vụ instagram
-                        </a>
-                    </li>
-
-                    <li class="item-parent">
-                        <a href="#">
-                            <span class="menu-dot"></span>
-                            Dịch vụ Tiktok
-                        </a>
-                    </li>
-
-
                 </ul>
             </li>
 

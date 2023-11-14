@@ -134,6 +134,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('upgrade', [UserController::class, 'upgrade'])->name('admin.user.upgrade');
             Route::post('upgrade_user', [UserController::class, 'upgradeUser'])->name('admin.user.upgrade_user');
         });
+
         // Notifications
         Route::prefix('notifications')->group(function () {
             Route::match(['get', 'post'],'/', [NotificationController::class, 'notifications'])->name('admin.notification.index');
@@ -201,7 +202,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         // Service
         Route::prefix('services')->group(function () {
-            Route::get('/facebook', [ServiceController::class, 'facebookIndex'])->name('admin.service.facebookIndex');
+            Route::get('facebook', [ServiceController::class, 'facebookIndex'])->name('admin.service.facebookIndex');
         });
 
         // Price Service
@@ -209,7 +210,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', [PriceServiceController::class, 'index'])->name('admin.price.service.index');
         });
 
-        // Order manage Buff
+        // Order Manage Buff
          Route::prefix('logs')->group(function () {
             Route::get('/', [OrderController::class, 'buff'])->name('admin.orders.buff');
         });

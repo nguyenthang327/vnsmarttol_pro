@@ -9,7 +9,6 @@ class ServicePack extends Model
     protected $fillable = [
         'sort',
         'name',
-        'slug',
         'display_name',
         'price_stock',
         'price_lv0',
@@ -26,7 +25,11 @@ class ServicePack extends Model
         'info',
         'show_comment',
         'show_camxuc',
-        'server',
+        'reaction',
+        'code_server',
+        'type_server',
+        'api_server',
+        'status_server',
         'service_id',
         'identity_website',
     ];

@@ -12,9 +12,8 @@ class ServicePackSeeder extends Seeder
         $dataServicePack = [
             [
                 'sort' => 0,
-                'name' => 'Like bình luận',
-                'slug' => 's_like',
-                'display_name',
+                'name' => 'ServicePack 01',
+                'display_name' => 'ServicePack 01',
                 'price_stock',
                 'price_lv0',
                 'price_lv1',
@@ -30,8 +29,13 @@ class ServicePackSeeder extends Seeder
                 'info',
                 'show_comment',
                 'show_camxuc',
-                'server',
-                'service_id',
+                'reaction',
+                'code_server',
+                'type_server',
+                'api_server',
+                'status_server',
+                'service_id' ,
+                'identity_website',
                 'identity_website' => config('license.domain'),
             ]
         ];

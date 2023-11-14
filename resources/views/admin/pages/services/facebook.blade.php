@@ -20,21 +20,13 @@
                 <h4 class="card-title text-white">Thêm máy chủ Facebook</h4>
             </div>
             <div class="card-body">
-                <form id="formAdminAction"  class="form-json" data-reload="1"method="POST" action="">
+                <form id="formAdminAction" class="form-json" method="POST" action="">
                     <div class="kt-portlet__body">
                         <div class="form-group">
                             <label for="service">Máy chủ của dịch vụ</label>
                             <select class="form-control" id="service" name="service" autocomplete="off" required>
                                 <option></option>
-
-                                <option value="1">
-                                    dịch vụ 1
-                                </option>
-
-                                <option value="2">
-                                    dịch vụ 2
-                                </option>
-
+                                <option value="subgiare">subgiare.vn</option>
                             </select>
                         </div>
 
@@ -42,15 +34,12 @@
                             <label for="server">Server</label>
                             <select class="form-control" id="server" name="server" autocomplete="off" required>
                                 <option></option>
-
                                 <option value="1">
                                     server 1
                                 </option>
-
                                 <option value="2">
                                     server 2
                                 </option>
-
                             </select>
                         </div>
 
