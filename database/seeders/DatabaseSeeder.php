@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
                 RoleSeeder::class,
                 UserSeeder::class,
                 SettingsSeeder::class,
+                CategorySeeder::class,
+                ServicesSeeder::class,
+                ServicePackSeeder::class,
             ]);
             DB::commit();
         }catch(Exception $e){
