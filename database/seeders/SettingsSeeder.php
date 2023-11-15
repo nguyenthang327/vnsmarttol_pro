@@ -65,6 +65,7 @@ class SettingsSeeder extends Seeder
             'usdt_address_wallet' => null,
             'usdt_token_wallet' => null,
             'usdt_discount' => null,
+            'token_subgiare' => null,
             'identity_website' => 'viplike.org',
         ]);
     }

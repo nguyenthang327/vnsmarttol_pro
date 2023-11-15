@@ -185,10 +185,10 @@ Route::group(['middleware' => ['auth']], function () {
         // Services
         Route::prefix('services')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('admin.service.category');
-            Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
-            Route::post('store', [SettingController::class, 'store'])->name('admin.setting.store');
-            Route::post('show', [SettingController::class, 'show'])->name('admin.setting.show');
-            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.setting.delete');
+            Route::post('update', [SettingController::class, 'update'])->name('admin.service.update');
+            Route::post('store', [SettingController::class, 'store'])->name('admin.service.store');
+            Route::post('show', [SettingController::class, 'show'])->name('admin.service.show');
+            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.service.delete');
         });
 
         // Banks
@@ -229,6 +229,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('discount_codes', [DiscountController::class, 'ajaxGetDiscounts'])->name('admin.ajax.discount_codes');
             Route::get('contacts', [ContactController::class, 'ajaxGetContacts'])->name('admin.ajax.contacts');
             Route::get('questions', [QuestionController::class, 'ajaxGetQuestions'])->name('admin.ajax.questions');
+            Route::get('services/{type}', [ServiceController::class, 'ajaxGetServices'])->name('admin.ajax.services');
         });
     });
 });

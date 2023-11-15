@@ -61,6 +61,7 @@ class SettingService
             'usdt_address_wallet' => $request->input('usdt_address_wallet'),
             'usdt_token_wallet' => $request->input('usdt_token_wallet'),
             'usdt_discount' => $request->input('usdt_discount'),
+            'token_subgiare' => $request->input('token_subgiare'),
         ]);
     }
 

@@ -9,18 +9,25 @@ class ServicePackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'order' => ['required', 'integer'],
+            'sort' => ['nullable', 'integer'],
             'name' => ['required'],
-            'price' => ['required', 'numeric'],
+            'display_name' => ['nullable'],
+            'price_stock' => ['required', 'numeric'],
             'cost' => ['required', 'numeric'],
             'min_order' => ['required', 'integer'],
             'max_order' => ['required', 'integer'],
             'content' => ['required'],
-            'display' => ['required'],
+            'visible' => ['required'],
             'note_admin' => ['nullable'],
+            'note' => ['nullable'],
+            'info' => ['nullable'],
             'show_comment' => ['nullable', 'integer'],
             'show_camxuc' => ['nullable', 'integer'],
-            'server' => ['nullable'],
+            'reaction' => ['nullable'],
+            'code_server' => ['required'],
+            'type_server' => ['required'],
+            'api_service' => ['required'],
+            'status_server' => ['nullable'],
             'service_id' => ['required', 'integer'],
         ];
     }

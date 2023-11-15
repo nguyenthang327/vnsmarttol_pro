@@ -54,6 +54,7 @@ class SettingResource extends JsonResource
             'payment_popup_content' => $this->payment_popup_content,
             'show_header' => $this->show_header,
             'notify_new_user' => $this->notify_new_user,
+            'token_subgiare' => $this->token_subgiare,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
