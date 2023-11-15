@@ -148,7 +148,7 @@
                                 <option value="share-profile">Share (profile)</option>
                                 <option value="member-group">Thành viên nhóm</option>
                                 <option value="view-story">View story</option>
-                                <option value="vip-like">Vip like (profil)</option>
+                                <option value="vip-like">Vip like (profile)</option>
                             </select>
                         </div>
                       </div>
