@@ -9,18 +9,18 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function facebookIndex()
+    protected $pathView = 'admin.pages.services.';
+    public function index(Request $request, $type)
     {
         $settings = Setting::select('token_subgiare')->first();
         if (empty($settings) || empty($settings->token_subgiare)) {
             return redirect()->route('admin.setting.index');
         }
-        return view('admin.pages.services.facebook');
+        return view($this->pathView . $type);
     }
 
-    public function ajaxGetServices(Request $request)
+    public function ajaxGetServices(Request $request, $type)
     {
-        $type = $request->input('type');
         // Lấy dữ liệu từ request
         $start = $request->input('start');
         $length = $request->input('length');

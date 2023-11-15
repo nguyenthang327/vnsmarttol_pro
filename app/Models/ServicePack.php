@@ -25,11 +25,13 @@ class ServicePack extends Model
         'show_comment',
         'show_camxuc',
         'reaction',
-        'code_server',
+        // details server
         'type_server',
+        'code_server',
+        'server_service',
         'api_service',
         'status_server',
-        'service_id',
+
         'identity_website',
     ];
 }

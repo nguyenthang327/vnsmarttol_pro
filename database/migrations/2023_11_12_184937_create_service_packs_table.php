@@ -20,17 +20,20 @@ return new class extends Migration {
             $table->integer('min_order')->nullable()->default(0);
             $table->integer('max_order')->nullable()->default(0);
             $table->longText('content')->nullable();
-            $table->boolean('visible')->nullable()->default(0)->comment('Trạng thái hiển thị');
+            $table->boolean('visible')->nullable()->default(1)->comment('Trạng thái hiển thị');
             $table->longText('note_admin')->nullable();
             $table->longText('note')->nullable();
             $table->longText('info')->nullable();
             $table->integer('show_comment')->nullable();
             $table->integer('show_camxuc')->nullable();
             $table->string('reaction')->nullable();
+
+            $table->string('type_server')->nullable()->comment('Ví dụ: facebook, tiktok,...');
             $table->string('code_server')->nullable()->comment('Ví dụ: like_post_sale');
-            $table->string('type_server')->nullable()->comment('MD5 facebook, tiktok,...');
+            $table->string('server_service')->nullable()->comment('Ví dụ: sv1, sv2,..');
             $table->string('api_service')->nullable()->comment('Server api: subgiare, baostart');
-            $table->string('status_server')->nullable()->comment('Trạng thái server');
+            $table->string('status_server')->nullable()->default('on')->comment('Trạng thái server');
+
             $table->unsignedBigInteger('service_id');
             $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();

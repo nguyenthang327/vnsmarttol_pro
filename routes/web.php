@@ -22,6 +22,7 @@ use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
 use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\Services\FacebookController;
+use App\Http\Controllers\ServicePackController;
 use App\Http\Controllers\SettingController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -178,15 +179,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('settings')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
             Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
-            Route::post('store', [SettingController::class, 'store'])->name('admin.setting.store');
-            Route::post('show', [SettingController::class, 'show'])->name('admin.setting.show');
-            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.setting.delete');
         });
+
         // Services
         Route::prefix('services')->group(function () {
-            Route::get('/', [SettingController::class, 'index'])->name('admin.service.category');
+            Route::get('{type}', [ServiceController::class, 'index'])->name('admin.service.index');
+            Route::post('{type}/store', [ServicePackController::class, 'store'])->name('admin.service.store');
             Route::post('update', [SettingController::class, 'update'])->name('admin.service.update');
-            Route::post('store', [SettingController::class, 'store'])->name('admin.service.store');
             Route::post('show', [SettingController::class, 'show'])->name('admin.service.show');
             Route::post('delete', [SettingController::class, 'destroy'])->name('admin.service.delete');
         });
@@ -198,11 +197,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('show', [AdminBankController::class, 'show'])->name('admin.bank.show');
             Route::post('update', [AdminBankController::class, 'update'])->name('admin.bank.update');
             Route::post('delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
-        });
-
-        // Service
-        Route::prefix('services')->group(function () {
-            Route::get('facebook', [ServiceController::class, 'facebookIndex'])->name('admin.service.facebookIndex');
         });
 
         // Price Service
