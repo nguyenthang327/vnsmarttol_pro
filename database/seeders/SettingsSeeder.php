@@ -65,7 +65,7 @@ class SettingsSeeder extends Seeder
             'usdt_address_wallet' => null,
             'usdt_token_wallet' => null,
             'usdt_discount' => null,
-            'token_subgiare' => 'eyJpdiI6Imd5NHAwekpGbnFacGhpV01laFVnSUE9PSIsInZhbHVlIjoiUC82RXYzTW9LU2cyeGtFcUdtV3NRdktiaHA5SDhxQnNWRzd5ZzhwbGhzQnQ0Q2tZTXlPR0ttaWMxVUpIUWgxU1MrTSt6OEdFaHU3dVY5MEgyRFV0UU9BUFhVb29ySENnRWRhNER0OHVsS3lxMklJY1lpNFZMQVBuaVYrTjdpbTRCWGZkU3FBVGdHc012VU1INEVoRXdRPT0iLCJtYWMiOiIxMTNkMjMzYTBjZWYwM2IzMzM0YWQ3NzZhZjJjZmZhYTE1OTlkY2M4NjliNWIwZjNiNDRmNWQ4OTk1MDhlZGM3IiwidGFnIjoiIn0=',
+            'token_subgiare' => 'eyJpdiI6IkFMVGlTWEwxWEdZVXZNK0VUNjFYUFE9PSIsInZhbHVlIjoiYldCbDVXS21IMWZCWE44MjdtTGwrSTg3VDZVNy9yTlltODN0aUtqdU40bFZzV0NRQjcrQlFoaEVJa1pWdUU5eThtMjVvcFdrSmlURnBRUHl5VEV1NWtBaDNjeE1iRk8vSENmaUMzOTNMUmFyakZKUVdKaDNmcXh2dmlKM3NUOFZiMGtyalhNczF4MjdlYlMrL0hIQ3p3PT0iLCJtYWMiOiJlMGMyYjFkMGZiNTFiYjk0ZWM3NzAwOWFhNmQwY2ZmN2IwMmEyOWRjZDM4MjA2NjVjOTJlYjExZDVkMDc1MzhhIiwidGFnIjoiIn0=',
             'identity_website' => 'viplike.org',
         ]);
     }

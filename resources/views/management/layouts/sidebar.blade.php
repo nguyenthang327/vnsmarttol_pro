@@ -153,7 +153,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="item-parent">
-                                <a href="{{route('facebook.sLike')}}">
+                                <a href="/service/facebook/like-speed">
                                     <span class="menu-dot"></span>
                                     <span class="text-danger pl-0">Like</span> bài viết speed
                                 </a>

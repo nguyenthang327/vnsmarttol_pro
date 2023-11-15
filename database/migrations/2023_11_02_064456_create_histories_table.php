@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id')->comment('Mã người dùng');
             $table->string('username');
             $table->string('link')->nullable()->comment('Link chạy dịch vụ của người dùng');
-            $table->uuid('uid')->nullable();
+            $table->string('uid')->nullable();
             $table->string('msg')->nullable()->comment('Tên log');
             $table->integer('count')->nullable()->comment('Số lượng');
             $table->bigInteger('price')->comment('Giá dịch vụ hoặc số tiền cộng, trừ, hoàn');
@@ -25,7 +25,6 @@ return new class extends Migration {
             $table->string('site')->nullable();
             $table->integer('original')->nullable();
             $table->integer('present')->nullable();
-            $table->unsignedBigInteger('order_id')->nullable();
             $table->string('note')->nullable()->comment('Ghi chú của khách hàng');
             $table->string('admin_note')->nullable()->comment('Ghi chú của admin');
             $table->tinyInteger('status')->nullable();
@@ -33,6 +32,9 @@ return new class extends Migration {
             $table->integer('refund_count')->nullable()->comment('Số lượng hoàn');
             $table->bigInteger('refund_subtraction')->nullable()->comment('Số tiền giao dịch hoàn');
             $table->string('other')->nullable();
+            $table->string('order_id')->nullable();
+            $table->string('order_code')->nullable();
+            $table->string('type_service')->nullable();
             $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });

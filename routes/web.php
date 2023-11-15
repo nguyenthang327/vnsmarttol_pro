@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PriceServiceController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ServicePackController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -22,7 +23,6 @@ use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
 use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\Services\FacebookController;
-use App\Http\Controllers\ServicePackController;
 use App\Http\Controllers\SettingController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -102,10 +102,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', [ReportController::class, 'index'])->name('report.index');
         });
 
-        // report
-        Route::prefix('fb_speed')->group(function () {
-            Route::get('/s_like', [FacebookController::class, 'sLike'])->name('facebook.sLike');
+        // Services
+        Route::prefix('service')->group(function () {
+            Route::get('facebook/{type}', [FacebookController::class, 'index'])->name('service.facebook.type');
         });
+
         Route::prefix('ajax-manage')->group(function () {
             Route::prefix('payment')->group(function () {
                 Route::get('recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
