@@ -68,7 +68,7 @@ class FacebookController extends Controller
                 break;
             case 'eye-live':
                 $title = "Tăng eye live Facebook";
-                $code = "mat-live";
+                $code = "eye-live";
                 break;
             case 'view-video':
                 $title = "Tăng view video Facebook";

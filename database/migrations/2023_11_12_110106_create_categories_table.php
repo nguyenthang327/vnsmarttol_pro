@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('slug')->unique()->nullable()->comment('Đường dẫn danh mục');
             $table->longText('content')->nullable()->comment('Nội dung danh mục');
             $table->boolean('visible')->nullable()->default(0)->comment('Trạng thái hiển thị');
+            $table->string('type_category')->nullable()->comment('Danh mục của dạng: facebook, tiktok,...');
             $table->string('identity_website')->nullable()->comment('Mã định danh website');
             $table->timestamps();
         });

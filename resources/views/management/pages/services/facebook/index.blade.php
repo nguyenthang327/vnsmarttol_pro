@@ -30,8 +30,7 @@
 
                                 <div class="widget__subhead">
                                     <a href="javascript:void(0)" class="text-warning">
-                                        <i class="fa fa-envelope"></i><span
-                                            class="__cf_email__"> {{$user->email}}</span>
+                                        <i class="fa fa-envelope"></i><span> {{$user->email}}</span>
                                     </a>
                                     <a href="javascript:void(0)" class="text-primary">
                                         <i class="fa fa-user"></i> {{ session()->get('uGroup')[$user->ugroup] ?? 'Thành viên' }}
@@ -161,23 +160,40 @@
                                                                autocomplete="off" required>
                                                     </div>
                                                 @endif
-                                                @if ($type == 'sub-vip' || $type == 'sub-quanlity' || $type == 'sub-sale' || $type == 'sub-speed')
+                                                @if ($type == 'sub-vip' || $type == 'sub-quality' || $type == 'sub-sale' || $type == 'sub-speed')
                                                     <div class="form-group">
                                                         <label for="link">ID hoặc link tài khoản</label>
                                                         <input type="text" class="form-control" id="link" name="uid"
                                                                placeholder="https://www.facebook.com/username"
                                                                autocomplete="off" required>
                                                         <small class="form-text text-danger font-weight-bold">Đây là sub
-                                                            trang cá nhân, nick có sẵn 2 sub trở lên mới mua
-                                                            nhé.</small>
+                                                            trang cá nhân, nick có sẵn 2 sub trở lên mới mua nhé.</small>
                                                     </div>
                                                 @endif
+                                                @if ($type == 'member-group')
+                                                    <div class="form-group">
+                                                        <label for="idgroup">Link nhóm cần tăng</label>
+                                                        <input type="text" class="form-control" id="idgroup" name="idgroup"
+                                                               placeholder="Nhập UID group hoặc có thể nhập link"
+                                                               autocomplete="off" required>
+                                                    </div>
+                                                @endif
+                                                    @if ($type == 'member-group')
+                                                        <div class="form-group">
+                                                            <label for="link">Link nhóm cần tăng</label>
+                                                            <input type="text" class="form-control" id="link" name="uid"
+                                                                   placeholder="Nhập UID group hoặc có thể nhập link"
+                                                                   autocomplete="off" required>
+                                                        </div>
+                                                    @endif
                                                 <div class="form-group">
                                                     <label>Chọn server</label>
 
                                                     @foreach ($servers as $key => $server)
                                                         <div class="radio radio-server active">
-                                                            <label><input onchange="bill()" data-price="{{ $server->price_stock }}" type="radio" name="server_order"
+                                                            <label><input onchange="bill()"
+                                                                          data-price="{{ $server->price_stock }}"
+                                                                          type="radio" name="server_order"
                                                                           value="{{ $server->server_service }}">
                                                                 Server {{ $server->server_service }}
                                                                 <span
@@ -283,7 +299,7 @@
                                                 <div class="form-group">
                                                     <label for="count">Số lượng</label>
                                                     <input type="number" class="form-control" name="count"
-                                                           id="count" min="50" value="1000"/>
+                                                           id="count" min="50" value="50"/>
                                                 </div>
                                                 @if ($type == 'like-speed' || $type == 'like-comment')
                                                     <div
@@ -512,53 +528,14 @@
 
 @section('js_page')
     <script>
-        function selfOnChangeServer(server) {
-            if (server === 'server_2') $('[name="speed_server_2"]').first().trigger('change');
-        }
-
-        $(document).ready(function () {
-            function getPriceS2(price) {
-                if ($('.fb-reaction input[type="radio"]:checked').val() !== 'like') price += 5;
-                price *= $('[name="speed_server_2"]:checked').data('multiple');
-                return price;
-            }
-
-            $('.fb-reaction input[type="radio"]').change(function () {
-                var selectedReaction = $(this).val();
-
-                var selectedPrice;
-                if (selectedServer === 'server_3') {
-                    selectedPrice = allPrices[selectedServer + (selectedReaction === 'like' ? '' : '_reaction')];
-                    if (typeof selectedPrice !== "undefined") {
-                        $('#price').val(selectedPrice.price);
-                        $('#price').attr('min', selectedPrice.price);
-                        $('#count').trigger('change');
-                    }
-                } else if (selectedServer === 'server_2') {
-                    selectedPrice = allPrices[selectedServer];
-                    var basePrice = getPriceS2(selectedPrice.price);
-
-                    $('#price').val(basePrice);
-                    $('#price').attr('min', basePrice);
-                    $('#count').trigger('change');
-                }
-            });
-
-            $('[name="speed_server_2"]').change(function () {
-                $('#price').val(getPriceS2(selectedPrice.price));
-
-                $('#count').trigger('change');
-            })
-        });
-    </script>
-    <script>
         function bill() {
             let server_order = $('input[name=server_order]:checked');
             if (!server_order) return;
             let amount = server_order.data('price');
             $('input[name=price]').val(amount);
         }
-        $(document).ready(function() {
+
+        $(document).ready(function () {
             bill();
         });
     </script>
