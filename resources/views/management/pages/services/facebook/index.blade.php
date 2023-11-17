@@ -179,6 +179,7 @@
                                                                autocomplete="off" required>
                                                     </div>
                                                 @endif
+{{--                                                    TODO: view story --}}
                                                 @if ($type == 'view-story')
                                                     <div class="form-group">
                                                         <div class="row">
