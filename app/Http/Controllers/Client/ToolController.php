@@ -21,31 +21,33 @@ class ToolController extends Controller
     public function getUID(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'link' => 'required|string',
+            'link' => 'nullable|string'
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'status' => false,
-                'message' => $validator->errors()->first()
+                'status' => 0,
+                'msg' => $validator->errors()->first()
             ], 200);
         }
         $url = "https://id.traodoisub.com/api.php";
         $headers = [
             "accept: application/json, text/javascript, */*; q=0.01"
         ];
+
         $client = new Client();
         $response = $client->request('POST', $url, [
             'headers' => $headers,
             'form_params' => [
-                'link' => $request->link
+                'link' => "https://www.facebook.com/" . $request->link
             ]
         ]);
         $body = $response->getBody();
         $data = json_decode($body, true);
         if (isset($data['error'])) {
+            \Log::info($data['error']);
             return response()->json([
-                'status' => false,
-                'message' => "Hệ thống get uid lỗi, Vui lòng tự điền uid"
+                'status' => 0,
+                'msg' => "Hệ thống get uid lỗi, Vui lòng tự điền uid"
             ], 200);
         } else {
             return response()->json([

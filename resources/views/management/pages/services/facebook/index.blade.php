@@ -167,25 +167,36 @@
                                                                placeholder="https://www.facebook.com/username"
                                                                autocomplete="off" required>
                                                         <small class="form-text text-danger font-weight-bold">Đây là sub
-                                                            trang cá nhân, nick có sẵn 2 sub trở lên mới mua nhé.</small>
+                                                            trang cá nhân, nick có sẵn 2 sub trở lên mới mua
+                                                            nhé.</small>
                                                     </div>
                                                 @endif
                                                 @if ($type == 'member-group')
                                                     <div class="form-group">
-                                                        <label for="idgroup">Link nhóm cần tăng</label>
-                                                        <input type="text" class="form-control" id="idgroup" name="idgroup"
+                                                        <label for="link">Link nhóm cần tăng</label>
+                                                        <input type="text" class="form-control" id="link" name="idgroup"
                                                                placeholder="Nhập UID group hoặc có thể nhập link"
                                                                autocomplete="off" required>
                                                     </div>
                                                 @endif
-                                                    @if ($type == 'member-group')
-                                                        <div class="form-group">
-                                                            <label for="link">Link nhóm cần tăng</label>
-                                                            <input type="text" class="form-control" id="link" name="uid"
-                                                                   placeholder="Nhập UID group hoặc có thể nhập link"
-                                                                   autocomplete="off" required>
+                                                @if ($type == 'view-story')
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-xl-3">
+                                                                <label for="idstory" class="form-label">Link
+                                                                    story</label>
+                                                            </div>
+                                                            <div class="col-xl-9">
+                                                                <input type="text" name="idstory" id="idstory"
+                                                                       class="form-control form-control-lg"
+                                                                       placeholder="Nhập link story">
+                                                                <b>Lưu ý: hãy xem cách lấy link story chuẩn: <a
+                                                                        href="https://imgur.com/0DXPYsc">Tại đây</a>
+                                                                </b>
+                                                            </div>
                                                         </div>
-                                                    @endif
+                                                    </div>
+                                                @endif
                                                 <div class="form-group">
                                                     <label>Chọn server</label>
 
