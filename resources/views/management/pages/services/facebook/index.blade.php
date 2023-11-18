@@ -9,7 +9,6 @@
 
 @section('content')
     <div class="main-content">
-
         <div class="card widget-user">
             <div class="card-body p-b-0">
                 <div class="row">
@@ -519,7 +518,7 @@
                                                 <i class="fa fa-list text-success"></i>
                                             </span>
                                             <span class="nav-text">Tất cả
-                                                <span class="count text-success">0</span>
+                                                <span class="count text-success">{{ $counts['all'] ?? 0 }}</span>
                                             </span>
                                         </a>
                                     </li>
@@ -529,7 +528,7 @@
                                                 <i class="fa fa-play"></i>
                                             </span>
                                             <span class="nav-text">Đang xử lý
-                                                <span class="count text-info">0</span>
+                                                <span class="count text-info">{{ $counts['all'] ?? 0 }}</span>
                                             </span>
                                         </a>
                                     </li>
@@ -539,7 +538,7 @@
                                                 <i class="fas fa-pause-circle"></i>
                                             </span>
                                             <span class="nav-text">Đang chạy
-                                                <span class="count text-primary">0</span>
+                                                <span class="count text-primary">{{ $counts['start'] ?? 0 }}</span>
                                             </span>
                                         </a>
                                     </li>
@@ -549,7 +548,7 @@
                                                 <i class="fa fa-check"></i>
                                             </span>
                                             <span class="nav-text">Đã xong
-                                                <span class="count text-success">0</span>
+                                                <span class="count text-success">{{ $counts['success'] ?? 0 }}</span>
                                             </span>
                                         </a>
                                     </li>
@@ -579,7 +578,7 @@
                                                 <i class="fa fa-question"></i>
                                             </span>
                                             <span class="nav-text"> Cần check
-                                                <span class="count text-success">0</span>
+                                                <span class="count text-success">{{ $counts['error'] ?? 0 }}</span>
                                             </span>
                                         </a>
                                     </li>
@@ -598,6 +597,9 @@
 @endsection
 
 @section('js_page')
+    <script>
+        type = '{{$type}}';
+    </script>
     <script>
         function bill(isToastr = true) {
             let server_order = $('input[name=server_order]:checked');
@@ -654,4 +656,5 @@
             });
         </script>
     @endif
+    <script src="{{ asset('admin/datatable-log-group.js') }}"></script>
 @endsection

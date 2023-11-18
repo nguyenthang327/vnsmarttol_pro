@@ -56,7 +56,7 @@ class FacebookSGRController extends Controller
         return $data;
     }
 
-    public function like_comment($idcomment, $server_order, $reaction, $speed, $amount, $note =null){
+    public function likeComment($idcomment, $server_order, $reaction, $speed, $amount, $note =null){
         $url = "https://thuycute.hoangvanlinh.vn/api/service/facebook/like-comment/order";
         $client = new Client();
 
@@ -367,7 +367,7 @@ class FacebookSGRController extends Controller
 
     public function headers()
     {
-        $headers = [
+        return [
             'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
             'Accept' => 'application/json',
             'Accept-Language' => 'en-US,en;q=0.9',
@@ -380,7 +380,5 @@ class FacebookSGRController extends Controller
             'DNT' => '1',
             'Api-token' => $this->token,
         ];
-
-        return $headers;
     }
 }

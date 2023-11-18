@@ -200,12 +200,6 @@
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/service/facebook/comment-speed">
-                                    <span class="menu-dot"></span>
-                                    Tăng bình luận (speed)
-                                </a>
-                            </li>
-                            <li class="item-parent">
                                 <a href="/service/facebook/share-profile">
                                     <span class="menu-dot"></span>
                                     Tăng chia sẻ (profile)

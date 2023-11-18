@@ -11,9 +11,9 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('Mã người dùng');
             $table->string('username');
-            $table->string('link')->nullable()->comment('Link chạy dịch vụ của người dùng');
-            $table->string('uid')->nullable();
-            $table->string('msg')->nullable()->comment('Tên log');
+            $table->longText('link')->nullable()->comment('Link chạy dịch vụ của người dùng');
+            $table->longText('uid')->nullable();
+            $table->longText('msg')->nullable()->comment('Tên log');
             $table->integer('count')->nullable()->comment('Số lượng');
             $table->bigInteger('price')->comment('Giá dịch vụ hoặc số tiền cộng, trừ, hoàn');
             $table->bigInteger('price_current')->comment('Tiền hiện tại của user');
@@ -25,8 +25,8 @@ return new class extends Migration {
             $table->string('site')->nullable();
             $table->integer('original')->nullable();
             $table->integer('present')->nullable();
-            $table->string('note')->nullable()->comment('Ghi chú của khách hàng');
-            $table->string('admin_note')->nullable()->comment('Ghi chú của admin');
+            $table->longText('note')->nullable()->comment('Ghi chú của khách hàng');
+            $table->longText('admin_note')->nullable()->comment('Ghi chú của admin');
             $table->tinyInteger('status')->nullable();
             $table->longText('data')->nullable()->comment('Dùng cho các dịch vụ comment');
             $table->integer('refund_count')->nullable()->comment('Số lượng hoàn');

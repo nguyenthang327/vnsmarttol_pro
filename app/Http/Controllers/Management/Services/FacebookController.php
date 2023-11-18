@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management\Services;
 
 use App\Http\Controllers\Controller;
+use App\Models\History;
 use App\Models\ServicePack;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -100,10 +101,38 @@ class FacebookController extends Controller
             'api_service' => 'subgiare'
         ])->get();
 
+        $statuses = ['success', 'start', 'error'];
+
+        $counts = [];
+
+        foreach ($statuses as $status) {
+            $statusNumber = $this->getStatusNumber($status);
+            $counts[$status] = History::when($statusNumber !== null, function ($query) use ($statusNumber) {
+                return $query->where('status', $statusNumber);
+            })->count();
+        }
+
+        $counts['all'] = History::count();
+
         return view("management.pages.services.facebook.index", [
             'title' => $title,
             'servers' => $servers,
-            'type' => $type
+            'type' => $type,
+            'counts' => $counts
         ]);
+    }
+
+    protected function getStatusNumber($status)
+    {
+        switch ($status) {
+            case 'success':
+                return 1;
+            case 'start':
+                return 0;
+            case 'error':
+                return 10;
+            default:
+                return -1; // Trạng thái mặc định hoặc không xác định
+        }
     }
 }

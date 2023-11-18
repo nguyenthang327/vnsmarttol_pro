@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\Management\BankATMController;
 use App\Http\Controllers\Management\BankController;
 use App\Http\Controllers\Management\HomeController;
@@ -112,6 +113,9 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
                 Route::get('bank-history', [BankATMController::class, 'ajaxGetBankHistory'])->name('ajax.ajaxGetBankHistory.list');
             });
+        });
+        Route::prefix('ajax')->group(function () {
+            Route::get('logs', [HistoryController::class, 'ajaxGetLogs'])->name('admin.ajax.logs');
         });
         Route::post('new_update', [HomeController::class, 'newUpdate'])->name('home.new-update');
     });
