@@ -179,28 +179,52 @@
                                                                autocomplete="off" required>
                                                     </div>
                                                 @endif
-{{--                                                    TODO: view story --}}
                                                 @if ($type == 'view-story')
                                                     <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-xl-3">
-                                                                <label for="idstory" class="form-label">Link
-                                                                    story</label>
-                                                            </div>
-                                                            <div class="col-xl-9">
-                                                                <input type="text" name="idstory" id="idstory"
-                                                                       class="form-control form-control-lg"
-                                                                       placeholder="Nhập link story">
-                                                                <b>Lưu ý: hãy xem cách lấy link story chuẩn: <a
-                                                                        href="https://imgur.com/0DXPYsc">Tại đây</a>
-                                                                </b>
-                                                            </div>
-                                                        </div>
+                                                        <label for="link">Link story</label>
+                                                        <input type="text" class="form-control" id="link"
+                                                               name="idstory"
+                                                               placeholder="Nhập link story"
+                                                               autocomplete="off" required>
+                                                        <small class="form-text text-danger font-weight-bold">Lưu ý:
+                                                            hãy xem cách lấy link story chuẩn: <a
+                                                                href="https://imgur.com/0DXPYsc">Tại đây</a></small>
+                                                    </div>
+                                                @endif
+                                                @if ($type == 'like-page-quality' || $type == 'like-page-sale' || $type == 'like-page-speed')
+                                                    <div class="form-group">
+                                                        <label for="link">ID page</label>
+                                                        <input type="text" class="form-control form-control-lg"
+                                                               id="link" name="idpage"
+                                                               placeholder="Nhập UID page có thể nhập link"
+                                                               autocomplete="off" required>
+                                                    </div>
+                                                @endif
+                                                @if ($type == 'like-comment')
+                                                    <div class="form-group">
+                                                        <label for="link">ID Comment</label>
+                                                        <input type="text" class="form-control" id="link"
+                                                               name="idcomment"
+                                                               placeholder="Nhập ID comment cần tăng"
+                                                               autocomplete="off" required>
+                                                        <small class="form-text text-danger font-weight-bold">Lưu ý:
+                                                            Hướng dẫn lấy id comment <a
+                                                                href="javascript:;"
+                                                                onclick="window.open('https://imgur.com/bume4kV')">tại
+                                                                đây</a></small>
+                                                    </div>
+                                                @endif
+                                                @if ($type == 'view-video')
+                                                    <div class="form-group">
+                                                        <label for="link">Link video</label>
+                                                        <input type="text" class="form-control" id="link"
+                                                               name="link_video"
+                                                               placeholder="Nhập link video cần tăng"
+                                                               autocomplete="off" required>
                                                     </div>
                                                 @endif
                                                 <div class="form-group">
                                                     <label>Chọn server</label>
-
                                                     @foreach ($servers as $key => $server)
                                                         <div class="radio radio-server active">
                                                             <label><input onchange="bill()"
@@ -230,6 +254,18 @@
                                                         </div>
                                                     @endforeach
                                                 </div>
+                                                @if ($type == 'comment-sale' || $type == 'comment-speed')
+                                                    <div class="form-group">
+                                                        <label for="list_comment">
+                                                            Danh Sách Bình Luận (<span id="comment_count"
+                                                                                       class="text-bold">0</span>)
+                                                            <span style="color:red"> (Không hỗ trợ bài viết vi phạm pháp luật đạo đức, đòi nợ, lô đề, cờ bạc)</span>
+                                                        </label>
+                                                        <textarea type="number" class="form-control" name="list_comment"
+                                                                  id="list_comment" rows="10" required=""
+                                                                  placeholder="Mỗi bình luận 1 dòng, tối thiểu 5 bình luận"></textarea>
+                                                    </div>
+                                                @endif
                                                 @if ($type == 'like-sale' || $type == 'like-speed' || $type == 'like-comment')
                                                     <div
                                                         class="form-group server-section">
@@ -308,11 +344,38 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                <div class="form-group">
-                                                    <label for="count">Số lượng</label>
-                                                    <input type="number" class="form-control" name="count"
-                                                           id="count" min="50" value="50"/>
-                                                </div>
+                                                @if ($type == 'like-sale' || $type == 'like-speed' || $type == 'like-comment' || $type == 'comment-sale' || $type == 'sub-vip' || $type == 'sub-quanlity' || $type == 'sub-sale' || $type == 'sub-speed' || $type == 'like-page-quality' || $type == 'like-page-sale' || $type == 'like-page-speed' || $type == 'view-video' || $type == 'share-profile' || $type == 'member-group' || $type == 'view-story')
+                                                    <div class="form-group">
+                                                        <label for="count">Số lượng</label>
+                                                        <input type="number" class="form-control" name="count"
+                                                               id="count" min="50" value="50"/>
+                                                    </div>
+                                                @endif
+                                                @if ($type == 'eye-live')
+                                                    <div class="form-group">
+                                                        <label for="count">
+                                                            Số lượng mắt
+                                                        </label>
+                                                        <input type="number" class="form-control change-price"
+                                                               name="count" min="20" value="50">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="minutes">Phút xem</label>
+                                                        <input class="form-control change-price" id="minutes"
+                                                               type="number" name="minutes" value="30" min="30"
+                                                               max="600">
+                                                    </div>
+                                                @endif
+                                                    @if ($type == 'view-video')
+                                                        <div class="form-group server-section" style="">
+                                                            <label>Thời gian</label>
+                                                            <select class="form-control change-price" name="time">
+                                                                <option value="3" selected="">Xem trong 3 giây</option>
+                                                                <option value="10">Xem trong 10 giây</option>
+                                                                <option value="15">Xem trong 15 giây</option>
+                                                            </select>
+                                                        </div>
+                                                    @endif
                                                 @if ($type == 'like-speed' || $type == 'like-comment')
                                                     <div
                                                         class="form-group server-section">
@@ -438,13 +501,9 @@
 
                                             <p>C&aacute;c uid khi lỗi kh&ocirc;ng c&ocirc;ng khai hoặc chưa bật n&uacute;t
                                                 like sẽ ho&agrave;n tự động v&agrave; trừ 2k ph&iacute;.</p>
-
-
                                         </div>
                                     </div>
-
                                     <!--Show popup if exist-->
-
                                 </div>
                             </div>
                         </div>
@@ -540,15 +599,59 @@
 
 @section('js_page')
     <script>
-        function bill() {
+        function bill(isToastr = true) {
             let server_order = $('input[name=server_order]:checked');
-            if (!server_order) return;
+            if (!server_order) {
+                $('input[name=price]').val(0);
+                $("#total").val(formatMoney(0, ' VND'));
+                return;
+            }
             let amount = server_order.data('price');
             $('input[name=price]').val(amount);
+            @if ($type == 'eye-live')
+            calculatorPrice();
+            @else
+            let countService = $('input[name=count]').val();
+            let total = Math.round(countService * amount) ?? 0;
+            $("#total").val(formatMoney(total, ' VND'));
+            if (isToastr) {
+                toastr.success("Cập nhật giá thành công");
+            }
+            @endif
+
         }
 
         $(document).ready(function () {
+            @if ($type == 'eye-live')
+            calculatorPrice();
+            @else
             bill();
+            @endif
+        });
+
+        function calculatorPrice(isToastr = true) {
+            var form = $('#formUserAction');
+            var count = form.find(`[name="count"]`).val();
+            var minutes = form.find(`[name="minutes"]`).val();
+            var selectedPrice = form.find(`input[name=price]`).val();
+            var total = count * minutes * selectedPrice;
+            $('#total').val(formatMoney(total, ' VNĐ'));
+            if (isToastr) {
+                toastr.success("Cập nhật giá thành công");
+            }
+        }
+
+        $('.change-price').change(function () {
+            calculatorPrice();
         });
     </script>
+    @if ($type == 'comment-sale' || $type == 'comment-speed')
+        <script>
+            $("#list_comment").keyup(function () {
+                let count = countLine($(this).val());
+                $('#comment_count').html(count.toString());
+                bill(false);
+            });
+        </script>
+    @endif
 @endsection

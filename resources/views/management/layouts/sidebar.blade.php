@@ -217,15 +217,30 @@
                                     Tăng thành viên nhóm
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+                    <li class="has-child">
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <span class="icon-holder"><i class="fas fa-eye"></i></span>
+                            <span class="title">Mắt lives-View video</span>
+                            <span class="fas fa-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
                             <li class="item-parent">
-                                <a href="/service/facebook/view-story">
-                                    <span class="menu-dot"></span>
-                                    Tăng view story
+                                <a href="/service/facebook/eye-live"> <span class="menu-dot"></span> Buff Mắt Livestream
+                                    V2
+                                </a>
+                            </li>
+                            <li class="item-parent">
+                                <a href="/service/facebook/view-video"> <span class="menu-dot"></span> Tăng View Video
+                                </a>
+                            </li>
+                            <li class="item-parent">
+                                <a href="/service/facebook/view-story"> <span class="menu-dot"></span> Tăng View Story
                                 </a>
                             </li>
                         </ul>
                     </li>
-
                     {{--
                     <li class="has-child">
                         <a class="dropdown-toggle" href="javascript:void(0);">
@@ -338,41 +353,6 @@
 
                         </ul>
                     </li>
-
-
-                    <li class="has-child">
-                        <a class="dropdown-toggle" href="javascript:void(0);">
-                            <span class="icon-holder"><i class="fas fa-eye"></i></span>
-                            <span class="title">Mắt lives-View video</span>
-                            <span class="fas fa-chevron-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="item-parent">
-                                <a href="/view/view_live_v2"> <span class="menu-dot"></span> Buff Mắt Livestream
-                                    V2
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_video"> <span class="menu-dot"></span> Tăng View Video
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_story"> <span class="menu-dot"></span> Tăng View Story
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_other"> <span class="menu-dot"></span> View 600k phút
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_60k_offline"> <span class="menu-dot"></span> View 60k
-                                    Offline
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
                 --}}
                 </ul>
             </li>
