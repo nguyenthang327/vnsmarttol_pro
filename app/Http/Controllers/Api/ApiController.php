@@ -949,7 +949,7 @@ class ApiController extends Controller
                 }
             } elseif ($request->type == 'eye-live') {
                 $validator = Validator::make($request->all(), [
-                    'idpost' => 'required|numeric',
+                    'uid' => 'required|numeric',
                     'server_order' => 'required|string',
                     'count' => 'required|numeric',
                     'minutes' => 'required|numeric',
@@ -980,7 +980,7 @@ class ApiController extends Controller
                             $oldMonetUser = $user->price;
                             $money_user = $user->price - $total_money;
                             $sgr = new FacebookSGRController();
-                            $idpost = $request->idpost;
+                            $idpost = $request->uid;
                             $server_order = $request->server_order;
                             $amount = $request->count;
                             $minutes = $request->minutes;
@@ -989,7 +989,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                $link_post = $result['data']['idpost'];
+                                Log::info('data eyeLive: ' . json_encode( $result['data']));
+                                $link_post = $result['data']['idpost'] ??  $idpost ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -1072,6 +1073,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data viewVideo: ' . json_encode( $result['data']));
                                 $link_post = $link_video;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -1317,6 +1319,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data viewStory: ' . json_encode( $result['data']));
                                 $link_post = $idstory;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
