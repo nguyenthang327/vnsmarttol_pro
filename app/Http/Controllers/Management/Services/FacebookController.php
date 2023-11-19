@@ -9,6 +9,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FacebookController extends Controller
 {
@@ -108,11 +109,11 @@ class FacebookController extends Controller
         foreach ($statuses as $status) {
             $statusNumber = $this->getStatusNumber($status);
             $counts[$status] = History::when($statusNumber !== null, function ($query) use ($statusNumber) {
-                return $query->where('status', $statusNumber);
+                return $query->where('user_id', Auth::id())->where('status', $statusNumber);
             })->count();
         }
 
-        $counts['all'] = History::count();
+        $counts['all'] = History::where('user_id', Auth::id())->count();
 
         return view("management.pages.services.facebook.index", [
             'title' => $title,

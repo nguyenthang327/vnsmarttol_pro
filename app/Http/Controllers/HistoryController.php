@@ -32,4 +32,22 @@ class HistoryController extends Controller
             return response()->json(['status' => 0, 'msg' => $e->getMessage()]);
         }
     }
+
+    public function ajaxGetLogReport(Request $request)
+    {
+        $type = $request->input('filter', '');
+
+        $start = $request->input('start');
+        $length = $request->input('length');
+
+        $orderBy = $request->input('order_by');
+        $orderDir = $request->input('order_dir');
+        $keyword = $request->input('keyword');
+
+        try {
+            return $this->historyService->getFormattedLogReport($type, $start, $length, $orderBy, $orderDir, $keyword);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 0, 'msg' => $e->getMessage()]);
+        }
+    }
 }

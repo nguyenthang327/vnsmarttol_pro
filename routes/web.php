@@ -116,6 +116,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
         Route::prefix('ajax')->group(function () {
             Route::get('logs', [HistoryController::class, 'ajaxGetLogs'])->name('admin.ajax.logs');
+            Route::get('log_report', [HistoryController::class, 'ajaxGetLogReport'])->name('admin.ajax.log_report');
         });
         Route::post('new_update', [HomeController::class, 'newUpdate'])->name('home.new-update');
     });

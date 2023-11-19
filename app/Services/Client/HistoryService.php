@@ -4,6 +4,7 @@ namespace App\Services\Client;
 
 use App\Http\Resources\HistoryResource;
 use App\Models\History;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryService
 {
@@ -90,7 +91,38 @@ class HistoryService
             $formattedLogs = HistoryResource::collection($logs);
         }
         // Đếm tổng số lượng dòng dữ liệu
-        $totalRecords = History::count();
+        $totalRecords = History::where('user_id', Auth::id())->count();
+        // Trả về JSON response
+        return response()->json([
+            'aaData' => $formattedLogs,
+            'iTotalDisplayRecords' => $totalRecords,
+            'iTotalRecords' => $totalRecords,
+        ]);
+    }
+
+    public function getFormattedLogReport($type, $start, $length, $orderBy, $orderDir, $keyword)
+    {
+        // Xử lý logic để truy vấn dữ liệu từ model History
+        $logs = History::query();
+        if ($type && in_array($type, ['payment', 'refund'])) {
+            $logs->where('type', $type);
+        }
+        if (!empty($keyword)) {
+            $logs->where('username', 'like', '%' . $keyword . '%');
+        }
+        if (!empty($orderBy) && !empty($orderDir)) {
+            $logs->orderBy($orderBy, $orderDir);
+        }
+        if (!empty($start) && !empty($length)) {
+            $logs->skip($start)->take($length);
+        }
+        $logs = $logs->get();
+        $formattedLogs = [];
+        if ($logs) {
+            $formattedLogs = HistoryResource::collection($logs);
+        }
+        // Đếm tổng số lượng dòng dữ liệu
+        $totalRecords = count($logs);
         // Trả về JSON response
         return response()->json([
             'aaData' => $formattedLogs,

@@ -10,26 +10,13 @@
             <div class="card-body">
                 <h4>
                     Nhật Ký Hoạt Động
-                    {{-- <button class="btn btn-success btn-sm btn-export-report btn-bold ml-3" data-toggle="modal"
+                     <button class="btn btn-success btn-sm btn-export-report btn-bold ml-3" data-toggle="modal"
                         data-target="#modalExport">
                         <i class="fa-solid fa-download"></i>
                         Xuất dữ liệu (CSV)
-                    </button> --}}
+                    </button>
                 </h4>
-
-                <!--      <hr />-->
-                <!--      <p>-->
-                <!--        Chú ý: Đây chỉ là nhật ký hoạt động <br/>-->
-                <!--        Hãy vào lịch sử để xem số like sub đã chạy và trạng thái "xong" hay chưa nhé.<br/>-->
-                <!--        Hãy quản lý uid ở đó.<br/>-->
-                <!--      </p>-->
-
-                <!--      <img alt="" src="/assets/images/history_note.png" class="image_highlight">-->
-
-
-
                 <div class="m-t-10">
-
                     <div>
                         <ul class="nav nav-pills tab-filter tab-filter-report" role="tablist">
                             <li class="nav-item">
@@ -48,14 +35,14 @@
                                     <span class="nav-text text-warning">Lịch sử cộng tiền</span>
                                 </a>
                             </li>
-                            {{-- <li class="nav-item">
+                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#" data-filter="refund">
                                     <span class="nav-icon text-primary">
                                         <i class="fas fa-redo-alt"></i>
                                     </span>
                                     <span class="nav-text text-primary">Lịch sử hoàn tiền</span>
                                 </a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </div>
 
@@ -70,13 +57,12 @@
     <!-- Modal -->
     <div id="modalExport" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header flex-center-between">
-                    {{-- <div>
+                     <div>
                         <h4 class="modal-title">Xuất dữ liệu (CSV)</h4>
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -228,4 +214,14 @@
 
         </div>
     </div>
+@endsection
+
+
+@section('js_page')
+    <script>
+        var type = "all";
+        var fieldMap = JSON.parse('{"id":"ID","uid":"UID","msg":"Nội dung","count":"Số lượng","price":"Giá","price_current":"Tiền trước","price_left":"Tiền sau","math":"Tăng/Giảm","type":"Loại","server":"Server","time":"Thời gian","original":"Gốc","present":"Đã tăng","note":"Ghi chú","status":"Trạng thái"}')
+    </script>
+    <script src="{{ asset('admin/datatable-logs.js') }}"></script>
+    <script src="{{ asset('admin/datatable-report.js') }}"></script>
 @endsection

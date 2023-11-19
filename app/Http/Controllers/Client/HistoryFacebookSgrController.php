@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\History;
 use App\Models\Setting;
 use GuzzleHttp\Client;
+use Illuminate\Database\Eloquent\Builder;
 
 class HistoryFacebookSgrController extends Controller
 {
@@ -22,9 +23,11 @@ class HistoryFacebookSgrController extends Controller
     {
 
         $fb = History::where([
-            'status' => 'active',
             'type_service' => md5('subgiare' . 'facebook')
-        ])->get();
+        ])->where(function (Builder $query) {
+            $query->where('status', -1);
+            $query->orWhere('status', 0);
+        })->get();
         $result = array();
         foreach ($fb as $key) {
             $code = $key->code_order;
