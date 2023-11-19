@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('slug')->unique()->nullable()->comment('Đường dẫn dịch vụ');
             $table->string('icon')->nullable()->comment('Class icon của fontawesome');
             $table->longText('content')->nullable()->comment('Nội dung dịch vụ');
+            $table->string('instructional_video')->nullable()->comment('Video hướng dẫn');
             $table->boolean('visible')->nullable()->default(0)->comment('Trạng thái hiển thị');
             $table->unsignedBigInteger('category_id')->nullable()->default(1)->comment('Danh mục cha');
             $table->string('identity_website')->nullable()->comment('Mã định danh website');

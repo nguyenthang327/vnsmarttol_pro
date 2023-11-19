@@ -13,7 +13,8 @@ class Service extends Model
         'slug',
         'icon',
         'content',
-        'display',
+        'instructional_video',
+        'visible',
         'category_id',
     ];
 }

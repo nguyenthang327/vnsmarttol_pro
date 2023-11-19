@@ -63,6 +63,7 @@ class Setting extends Model
         'usdt_token_wallet',
         'usdt_discount',
         'notify_new_user',
+        'token_subgiare',
         'identity_website'
     ];
 

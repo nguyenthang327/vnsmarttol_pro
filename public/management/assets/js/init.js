@@ -8,6 +8,7 @@ var domainStatus = ['Chờ xử lý', 'Hoạt động', 'Tạm khoá', 'Lỗi To
 var allStatusRechargeCard = ['Thành công', 'Đang chờ', 'Lỗi', 'Bảo trì'];
 $.ajaxSetup({
     headers: {
+        "Api-Token": $('meta[name="api-token"]').attr("content"),
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
@@ -1170,7 +1171,7 @@ $(".form-json").submit(function(e) {
         errors.forEach((item, index) => {
           errorMsg += item + ' ';
         });
-        
+
       }
       return swalError(errorMsg);
     }

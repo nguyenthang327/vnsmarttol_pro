@@ -13,6 +13,8 @@ class Category extends Model
         'display_name',
         'slug',
         'content',
-        'display',
+        'visible',
+        'type_category',
+        'identity_website',
     ];
 }

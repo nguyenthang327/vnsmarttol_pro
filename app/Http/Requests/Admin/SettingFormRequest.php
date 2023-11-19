@@ -50,6 +50,7 @@ class SettingFormRequest extends BaseFormRequest
             'referral_note' => ['nullable', 'string', 'max:255'],
             'payment_note' => ['nullable', 'string', 'max:255'],
             'payment_popup_content' => ['nullable', 'string', 'max:255'],
+            'token_subgiare' => ['nullable', 'string', 'max:555'],
             'show_header' => ['nullable', 'boolean'],
         ];
     }

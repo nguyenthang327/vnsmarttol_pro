@@ -2,31 +2,32 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class ServicePackRequest extends FormRequest
+class ServicePackRequest extends BaseFormRequest
 {
     public function rules(): array
     {
         return [
-            'order' => ['required', 'integer'],
-            'name' => ['required'],
-            'price' => ['required', 'numeric'],
-            'cost' => ['required', 'numeric'],
+            'sort' => ['nullable', 'integer'],
+            'display_name' => ['nullable'],
+            'cost' => ['nullable', 'numeric'],
             'min_order' => ['required', 'integer'],
             'max_order' => ['required', 'integer'],
-            'content' => ['required'],
-            'display' => ['required'],
+            'content' => ['nullable'],
+            'visible' => ['nullable'],
             'note_admin' => ['nullable'],
+            'note' => ['nullable'],
+            'info' => ['nullable'],
             'show_comment' => ['nullable', 'integer'],
             'show_camxuc' => ['nullable', 'integer'],
-            'server' => ['nullable'],
-            'service_id' => ['required', 'integer'],
-        ];
-    }
+            'reaction' => ['nullable'],
 
-    public function authorize(): bool
-    {
-        return true;
+            'code_server' => ['required'],
+            'server_service' => ['required'],
+            'api_service' => ['required'],
+            'price_stock' => ['required', 'numeric'],
+            'name' => ['required', 'string', 'max:255'],
+            'status_server' => ['nullable'],
+            'service_id' => ['nullable', 'integer'],
+        ];
     }
 }

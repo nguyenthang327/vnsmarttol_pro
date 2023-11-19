@@ -9,7 +9,6 @@ class ServicePack extends Model
     protected $fillable = [
         'sort',
         'name',
-        'slug',
         'display_name',
         'price_stock',
         'price_lv0',
@@ -19,15 +18,20 @@ class ServicePack extends Model
         'min_order',
         'max_order',
         'content',
-        'instructional_video',
         'visible',
         'note_admin',
         'note',
         'info',
         'show_comment',
         'show_camxuc',
-        'server',
-        'service_id',
+        'reaction',
+        // details server
+        'type_server',
+        'code_server',
+        'server_service',
+        'api_service',
+        'status_server',
+
         'identity_website',
     ];
 }

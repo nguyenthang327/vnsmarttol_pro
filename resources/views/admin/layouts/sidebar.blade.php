@@ -35,32 +35,13 @@
 
                 <ul class="dropdown-menu">
                     <li class="item-parent">
-                        <a href="{{route('admin.service.facebookIndex')}}">
+                        <a href="/qladmin/services/facebook">
                             <span class="menu-dot"></span>
                             Dịch vụ facebook
                         </a>
                     </li>
-
-                    <li class="item-parent">
-                        <a href="#">
-                            <span class="menu-dot"></span>
-                            Dịch vụ instagram
-                        </a>
-                    </li>
-
-                    <li class="item-parent">
-                        <a href="#">
-                            <span class="menu-dot"></span>
-                            Dịch vụ Tiktok
-                        </a>
-                    </li>
-
-
                 </ul>
             </li>
-
-
-
 
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -138,27 +119,6 @@
                         <i class="far fa-sticky-note"></i>
                     </span>
                     <span class="title">Ghi chú</span>
-                </a>
-            </li>
-            <li>
-                <a class="sidebar-title">
-                    <span class="title">Phần thiết lập dịch vụ</span>
-                </a>
-            </li>
-            <li class="item-parent menu-item-settings">
-                <a href="">
-                    <span class="icon-holder">
-                        <i class="fas fa-cogs"></i>
-                    </span>
-                    <span class="title">Chuyên mục</span>
-                </a>
-            </li>
-            <li class="item-parent menu-item-logs">
-                <a href="{{route('admin.service.category')}}">
-                    <span class="icon-holder">
-                        <i class="fas fa-thumbs-up"></i>
-                    </span>
-                    <span class="title">Quản lý chuyên mục</span>
                 </a>
             </li>
             <li>

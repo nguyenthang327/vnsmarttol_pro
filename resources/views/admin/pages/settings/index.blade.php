@@ -571,7 +571,25 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="card mb-3">
+                        <div class="card-header collapsed" data-toggle="collapse" data-target="#control6"
+                             aria-expanded="false">
+                            <h5 class="mb-0">Auto SubGiaRe (SubGiaRe.Vn) </h5>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div id="control6" class="collapse">
+                            <div class="card-body">
+                                <h4 class="card-head-title">Cấu hình SubGiaRe</h4>
+                                <hr/>
+                                <div class=form-group>
+                                    <label>Token SubGiaRe</label><br/>
+                                    <div class="text-danger text-bold mb-1">Dịch vụ sẽ tắt nếu bạn không điền token</div>
+                                    <input class="form-control" name="token_subgiare" value="{{ old('token_subgiare') ?? $settings->token_subgiare }}"
+                                           placeholder="Token SubGiaRe" maxlength="500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card mb-3">
                         <div class="card-header collapsed" data-toggle="collapse" data-target="#control8"
                              aria-expanded="false">

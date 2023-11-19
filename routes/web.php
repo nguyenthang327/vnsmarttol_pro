@@ -11,10 +11,12 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PriceServiceController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ServicePackController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\Management\BankATMController;
 use App\Http\Controllers\Management\BankController;
 use App\Http\Controllers\Management\HomeController;
@@ -101,15 +103,19 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', [ReportController::class, 'index'])->name('report.index');
         });
 
-        // report
-        Route::prefix('fb_speed')->group(function () {
-            Route::get('/s_like', [FacebookController::class, 'sLike'])->name('facebook.sLike');
+        // Services
+        Route::prefix('service')->group(function () {
+            Route::get('facebook/{type}', [FacebookController::class, 'index'])->name('service.facebook.type');
         });
+
         Route::prefix('ajax-manage')->group(function () {
             Route::prefix('payment')->group(function () {
                 Route::get('recharge-card-history', [RechargeCardController::class, 'ajaxGetRechargeCardHistory'])->name('ajax.rechargeCardHistory.list');
                 Route::get('bank-history', [BankATMController::class, 'ajaxGetBankHistory'])->name('ajax.ajaxGetBankHistory.list');
             });
+        });
+        Route::prefix('ajax')->group(function () {
+            Route::get('logs', [HistoryController::class, 'ajaxGetLogs'])->name('admin.ajax.logs');
         });
         Route::post('new_update', [HomeController::class, 'newUpdate'])->name('home.new-update');
     });
@@ -134,6 +140,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('upgrade', [UserController::class, 'upgrade'])->name('admin.user.upgrade');
             Route::post('upgrade_user', [UserController::class, 'upgradeUser'])->name('admin.user.upgrade_user');
         });
+
         // Notifications
         Route::prefix('notifications')->group(function () {
             Route::match(['get', 'post'],'/', [NotificationController::class, 'notifications'])->name('admin.notification.index');
@@ -177,17 +184,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('settings')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
             Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
-            Route::post('store', [SettingController::class, 'store'])->name('admin.setting.store');
-            Route::post('show', [SettingController::class, 'show'])->name('admin.setting.show');
-            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.setting.delete');
         });
+
         // Services
         Route::prefix('services')->group(function () {
-            Route::get('/', [SettingController::class, 'index'])->name('admin.service.category');
-            Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
-            Route::post('store', [SettingController::class, 'store'])->name('admin.setting.store');
-            Route::post('show', [SettingController::class, 'show'])->name('admin.setting.show');
-            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.setting.delete');
+            Route::get('{type}', [ServiceController::class, 'index'])->name('admin.service.index');
+            Route::post('{type}/store', [ServicePackController::class, 'store'])->name('admin.service.store');
+            Route::post('update', [SettingController::class, 'update'])->name('admin.service.update');
+            Route::post('show', [SettingController::class, 'show'])->name('admin.service.show');
+            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.service.delete');
         });
 
         // Banks
@@ -199,17 +204,12 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('delete', [AdminBankController::class, 'destroy'])->name('admin.bank.delete');
         });
 
-        // Service
-        Route::prefix('services')->group(function () {
-            Route::get('/facebook', [ServiceController::class, 'facebookIndex'])->name('admin.service.facebookIndex');
-        });
-
         // Price Service
         Route::prefix('prices')->group(function () {
             Route::get('/', [PriceServiceController::class, 'index'])->name('admin.price.service.index');
         });
 
-        // Order manage Buff
+        // Order Manage Buff
          Route::prefix('logs')->group(function () {
             Route::get('/', [OrderController::class, 'buff'])->name('admin.orders.buff');
         });
@@ -228,6 +228,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('discount_codes', [DiscountController::class, 'ajaxGetDiscounts'])->name('admin.ajax.discount_codes');
             Route::get('contacts', [ContactController::class, 'ajaxGetContacts'])->name('admin.ajax.contacts');
             Route::get('questions', [QuestionController::class, 'ajaxGetQuestions'])->name('admin.ajax.questions');
+            Route::get('services/{type}', [ServiceController::class, 'ajaxGetServices'])->name('admin.ajax.services');
         });
     });
 });

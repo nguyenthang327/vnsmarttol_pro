@@ -90,18 +90,6 @@ $(document).ready(function () {
   if (typeof type !== "undefined" && $(multiOrderData.uidElementSelector).length) {
     multiOrderData.elementType = $(multiOrderData.uidElementSelector).attr('id');
 
-    $('#formUserAction').prepend(
-        `
-            <div class="form-group">
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="switch_multi_order">
-                <label class="custom-control-label" for="switch_multi_order"></label>
-                <label for="switch_multi_order">Mua nhiều đơn cùng lúc</label>
-              </div>
-            </div>
-        `
-    );
-
     $('body').append(`
     <div class="modal fade" id="modalMultiOrder" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-xl" role="document">
@@ -115,15 +103,15 @@ $(document).ready(function () {
               <h5>
                 UID/Link: <span class="text-danger" id="multi_order_current_uid"></span>
               </h5>
-    
+
               <h5>Tiến độ: <span class="text-success" id="multi_order_progress"></span></h5>
             </div>
-    
+
             <button class="btn btn-success multi_order_btn_start">Bắt đầu mua</button>
             <button class="btn btn-danger" id="multi_order_btn_stop">Dừng</button>
-    
+
             <hr />
-    
+
             <div class="table-responsive">
               <table class="table table-bordered">
                 <thead>
@@ -605,7 +593,7 @@ function applyDiscount(total) {
 
   if (!sDiscount) return total;
   if (total < sDiscount.min_order) {
-    $('#discount-status').addClass('text-danger').html(`Vui lòng tạo đơn tối thiểu 
+    $('#discount-status').addClass('text-danger').html(`Vui lòng tạo đơn tối thiểu
         <span>${formatMoney(sDiscount.min_order, 'd')}</span> để sử dụng mã giảm giá này!`);
     return total;
   }
@@ -1050,7 +1038,7 @@ $(document).on("change", "#link", function() {
 });
 
 async function getFbInfoFromUsername(username) {
-  let data = await callAjaxPost('/facebook/get_uid', { username });
+  let data = await callAjaxPost('/api/tools/get_uid', { link: username });
 
   if (data.status == 1) return [true, data.data];
   return [false, data.msg];

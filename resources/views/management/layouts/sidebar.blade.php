@@ -153,86 +153,88 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="item-parent">
-                                <a href="{{route('facebook.sLike')}}">
+                                <a href="/service/facebook/like-speed">
                                     <span class="menu-dot"></span>
                                     <span class="text-danger pl-0">Like</span> bài viết speed
                                 </a>
                             </li>
-                            {{-- <li class="item-parent">
-                                <a href="/facebook/reactions"> <span class="menu-dot"></span> <span
-                                        class="text-danger pl-0">Like</span> bài viết VIP
+                             <li class="item-parent">
+                                <a href="/service/facebook/like-sale"> <span class="menu-dot"></span> <span
+                                        class="text-danger pl-0">Like</span> bài viết sale
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/fb_speed/s_follow">
+                                <a href="/service/facebook/sub-sale">
                                     <span class="menu-dot"></span>
-                                    <span class="text-success pl-0">Sub</span> Trang cá nhân speed
+                                    <span class="text-success pl-0">Sub</span> Trang cá nhân sale
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/facebook/follow">
+                                <a href="/service/facebook/sub-vip">
                                     <span class="menu-dot"></span>
                                     <span class="text-success pl-0">Sub</span> Trang cá nhân VIP
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/fb_speed/s_like_page">
+                                <a href="/service/facebook/like-page-sale">
+                                    <span class="menu-dot"></span>
+                                    Like Sub <span class="text-warning">FanPage</span> sale
+                                </a>
+                            </li>
+                            <li class="item-parent">
+                                <a href="/service/facebook/like-page-speed">
                                     <span class="menu-dot"></span>
                                     Like Sub <span class="text-warning">FanPage</span> speed
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/facebook/like_page">
+                                <a href="/service/facebook/like-comment">
                                     <span class="menu-dot"></span>
-                                    Like Sub <span class="text-warning">FanPage</span> VIP
+                                    Tăng like bình luận
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/fb_speed/s_like_comment">
+                                <a href="/service/facebook/comment-sale">
                                     <span class="menu-dot"></span>
-                                    Like cho Bình Luận
+                                    Tăng bình luận (sale)
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/facebook/comment">
+                                <a href="/service/facebook/share-profile">
                                     <span class="menu-dot"></span>
-                                    Tăng Bình Luận
+                                    Tăng chia sẻ (profile)
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/facebook/share">
+                                <a href="/service/facebook/member-group">
                                     <span class="menu-dot"></span>
-                                    Chia Sẻ Bài Viết
+                                    Tăng thành viên nhóm
                                 </a>
                             </li>
-                            <li class="item-parent">
-                                <a href="/facebook/buff_group">
-                                    <span class="menu-dot"></span>
-                                    Tăng member Group
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/facebook/share_group"> <span class="menu-dot"></span> Share Livestream
-                                    Group
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/facebook/review"> <span class="menu-dot"></span> Đánh giá 5* sao
-                                    Fanpage
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/facebook/checkin"> <span class="menu-dot"></span> Check In FanPage
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/facebook/fb_event"> <span class="menu-dot"></span> Sự kiện Facebook
-                                </a>
-                            </li> --}}
-
                         </ul>
                     </li>
-
+                    <li class="has-child">
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <span class="icon-holder"><i class="fas fa-eye"></i></span>
+                            <span class="title">Mắt lives-View video</span>
+                            <span class="fas fa-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="item-parent">
+                                <a href="/service/facebook/eye-live"> <span class="menu-dot"></span> Buff Mắt Livestream
+                                    V2
+                                </a>
+                            </li>
+                            <li class="item-parent">
+                                <a href="/service/facebook/view-video"> <span class="menu-dot"></span> Tăng View Video
+                                </a>
+                            </li>
+                            <li class="item-parent">
+                                <a href="/service/facebook/view-story"> <span class="menu-dot"></span> Tăng View Story
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     {{--
                     <li class="has-child">
                         <a class="dropdown-toggle" href="javascript:void(0);">
@@ -345,41 +347,6 @@
 
                         </ul>
                     </li>
-
-
-                    <li class="has-child">
-                        <a class="dropdown-toggle" href="javascript:void(0);">
-                            <span class="icon-holder"><i class="fas fa-eye"></i></span>
-                            <span class="title">Mắt lives-View video</span>
-                            <span class="fas fa-chevron-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="item-parent">
-                                <a href="/view/view_live_v2"> <span class="menu-dot"></span> Buff Mắt Livestream
-                                    V2
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_video"> <span class="menu-dot"></span> Tăng View Video
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_story"> <span class="menu-dot"></span> Tăng View Story
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_other"> <span class="menu-dot"></span> View 600k phút
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/view/view_60k_offline"> <span class="menu-dot"></span> View 60k
-                                    Offline
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
                 --}}
                 </ul>
             </li>
