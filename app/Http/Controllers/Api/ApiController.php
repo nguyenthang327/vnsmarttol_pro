@@ -8,6 +8,7 @@ use App\Models\ServicePack;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -75,7 +76,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                $link_post = $result['data']['link_post'];
+                                Log::info('data likePostSale: ' . json_encode( $result['data']));
+                                $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -159,7 +161,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                $link_post = $result['data']['link_post'];
+                                Log::info('data likePostSpeed: ' . json_encode( $result['data']));
+                                $link_post = $result['data']['link_post'] ?? $result['data']['idpost'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -244,7 +247,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                $link_post = $result['data']['link_post'];
+                                Log::info('data likeComment: ' . json_encode( $result['data']));
+                                $link_post = $result['data']['link_post'] ?? $result['data']['idcomment'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -327,7 +331,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                $link_post = $result['data']['link_post'];
+                                Log::info('data commentSale: ' . json_encode( $result['data']));
+                                $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -408,7 +413,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                $link_post = $result['data']['link_post'];
+                                Log::info('data likePostSpeed: ' . json_encode( $result['data']));
+                                $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -489,7 +495,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                $link_post = $result['data']['link_post'];
+                                Log::info('data subQuality: ' . json_encode( $result['data']));
+                                $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -570,6 +577,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data subSale: ' . json_encode( $result['data']));
                                 $link_post = $result['data']['link_post'];
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -651,6 +659,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data subSpeed: ' . json_encode( $result['data']));
                                 $link_post = $result['data']['idfb'];
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -732,6 +741,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data likePageQuality: ' . json_encode( $result['data']));
                                 $link_post = $result['data']['idpage'];
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -813,6 +823,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data likePageSale: ' . json_encode( $result['data']));
                                 $link_post = $result['data']['idpage'];
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -894,6 +905,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data likePageSpeed: ' . json_encode( $result['data']));
                                 $link_post = $result['data']['idpage'];
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
