@@ -295,7 +295,7 @@ var components = {
       if (full.link && full.link !== 'default') {
         if (!full.link.match(/^(http)/)) full.link = 'https://' + full.link;
 
-        if (data.length > 30) data = data.substring(0, 28) + '...';
+        if (data && data.length > 30) data = data.substring(0, 28) + '...';
 
         return ejs.render('<a href="<%= full.link %>" class="text-bold" target="_blank"><%= data %></a>', {data, full});
       } else {

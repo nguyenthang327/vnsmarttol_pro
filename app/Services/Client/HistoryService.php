@@ -91,7 +91,7 @@ class HistoryService
             $formattedLogs = HistoryResource::collection($logs);
         }
         // Đếm tổng số lượng dòng dữ liệu
-        $totalRecords = History::where('user_id', Auth::id())->count();
+        $totalRecords = count($logs);
         // Trả về JSON response
         return response()->json([
             'aaData' => $formattedLogs,

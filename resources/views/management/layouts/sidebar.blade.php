@@ -91,7 +91,7 @@
                         </ul>
                     </li> --}}
                     <li class="item-parent">
-                        <a href="{{route('report.index')}}">
+                        <a href="/report">
                             <span class="menu-dot"></span>
                             Nhật ký hoạt động
                         </a>

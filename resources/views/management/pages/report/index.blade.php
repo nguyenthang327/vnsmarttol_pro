@@ -1,6 +1,7 @@
 @extends('management.layouts.master')
 
 @section('css_page')
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.min.css') }}" />
 @endsection
 
 @section('content')
@@ -222,6 +223,7 @@
         var type = "all";
         var fieldMap = JSON.parse('{"id":"ID","uid":"UID","msg":"Nội dung","count":"Số lượng","price":"Giá","price_current":"Tiền trước","price_left":"Tiền sau","math":"Tăng/Giảm","type":"Loại","server":"Server","time":"Thời gian","original":"Gốc","present":"Đã tăng","note":"Ghi chú","status":"Trạng thái"}')
     </script>
+    <script type="text/javascript" src="{{ asset('admin/plugins/daterangepicker/daterangepicker.min.js') }}"></script>
     <script src="{{ asset('admin/datatable-logs.js') }}"></script>
     <script src="{{ asset('admin/datatable-report.js') }}"></script>
 @endsection
