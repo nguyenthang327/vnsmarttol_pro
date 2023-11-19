@@ -291,7 +291,7 @@ class ApiController extends Controller
                 }
             } elseif ($request->type == 'comment-sale') {
                 $validator = Validator::make($request->all(), [
-                    'idpost' => 'required|numeric',
+                    'uid' => 'required|numeric',
                     'server_order' => 'required|string',
                     'comment' => 'required|string',
                     'count' => 'required|numeric',
@@ -322,7 +322,7 @@ class ApiController extends Controller
                             $oldMonetUser = $user->price;
                             $money_user = $user->price - $total_money;
                             $sgr = new FacebookSGRController();
-                            $idpost = $request->idpost;
+                            $idpost = $request->uid;
                             $server_order = $request->server_order;
                             $comment = $request->comment;
                             $amount = $request->count;
@@ -375,7 +375,7 @@ class ApiController extends Controller
                 }
             } elseif ($request->type == 'sub-vip') {
                 $validator = Validator::make($request->all(), [
-                    'idpost' => 'required|numeric',
+                    'uid' => 'required|numeric',
                     'server_order' => 'required|string',
                     'count' => 'required|numeric',
                     'note' => 'string',
@@ -405,7 +405,7 @@ class ApiController extends Controller
                             $oldMonetUser = $user->price;
                             $money_user = $user->price - $total_money;
                             $sgr = new FacebookSGRController();
-                            $idpost = $request->idpost;
+                            $idpost = $request->uid;
                             $server_order = $request->server_order;
                             $amount = $request->count;
                             $note = $request->note;
@@ -413,7 +413,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data likePostSpeed: ' . json_encode( $result['data']));
+                                Log::info('data subVip: ' . json_encode( $result['data']));
                                 $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -539,7 +539,7 @@ class ApiController extends Controller
                 }
             } elseif ($request->type == 'sub-sale') {
                 $validator = Validator::make($request->all(), [
-                    'idpost' => 'required|numeric',
+                    'uid' => 'required|numeric',
                     'server_order' => 'required|string',
                     'count' => 'required|numeric',
                     'note' => 'string',
@@ -569,7 +569,7 @@ class ApiController extends Controller
                             $oldMonetUser = $user->price;
                             $money_user = $user->price - $total_money;
                             $sgr = new FacebookSGRController();
-                            $idpost = $request->idpost;
+                            $idpost = $request->uid;
                             $server_order = $request->server_order;
                             $amount = $request->count;
                             $note = $request->note;
@@ -578,7 +578,7 @@ class ApiController extends Controller
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
                                 Log::info('data subSale: ' . json_encode( $result['data']));
-                                $link_post = $result['data']['link_post'];
+                                $link_post = $result['data']['link_post'] ?? $result['data']['idfb'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -824,7 +824,7 @@ class ApiController extends Controller
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
                                 Log::info('data likePageSale: ' . json_encode( $result['data']));
-                                $link_post = $result['data']['idpage'];
+                                $link_post = $result['data']['idpage'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -906,7 +906,7 @@ class ApiController extends Controller
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
                                 Log::info('data likePageSpeed: ' . json_encode( $result['data']));
-                                $link_post = $result['data']['idpage'];
+                                $link_post = $result['data']['idpage'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -1115,7 +1115,7 @@ class ApiController extends Controller
                 }
             } elseif ($request->type == 'share-profile') {
                 $validator = Validator::make($request->all(), [
-                    'idpost' => 'required|string',
+                    'uid' => 'required|string',
                     'server_order' => 'required|string',
                     'count' => 'required|numeric',
                     'note' => 'string',
@@ -1145,7 +1145,7 @@ class ApiController extends Controller
                             $oldMonetUser = $user->price;
                             $money_user = $user->price - $total_money;
                             $sgr = new FacebookSGRController();
-                            $idpost = $request->idpost;
+                            $idpost = $request->uid;
                             $server_order = $request->server_order;
                             $amount = $request->count;
                             $note = $request->note;
@@ -1153,6 +1153,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data shareProfile: ' . json_encode( $result['data']));
                                 $link_post = $idpost;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -1234,6 +1235,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
+                                Log::info('data memberGroup: ' . json_encode( $result['data']));
                                 $link_post = $idgroup;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
