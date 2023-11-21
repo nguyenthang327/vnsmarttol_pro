@@ -38,8 +38,8 @@ class HistoryFacebookSgrController extends Controller
         }
         foreach ($result as $key) {
             foreach ($key as $value) {
-                if (isset($value['status'])) {
-                    foreach ($value['data'] as $i) {
+                if (isset($value['status']) && isset($value['data']['items'])) {
+                    foreach ($value['data']['items'] as $i) {
                         $code_order = $i['code_order'];
                         $start = $i['start'];
                         $buff = $i['buff'];
@@ -60,9 +60,9 @@ class HistoryFacebookSgrController extends Controller
                                 break;
 
                         }
-                        History::where('code_order', $code_order)->update([
+                        History::where('order_code', $code_order)->update([
                             'status' => $statusNumber,
-                            'startWith' => $start,
+                            'original' => $start,
                             'present' => $buff
                         ]);
                     }
