@@ -351,7 +351,6 @@
                 </ul>
             </li>
 
-            {{--
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fab fa-instagram-square"></i></span>
@@ -359,68 +358,23 @@
                     <span class="fas fa-chevron-down"></span>
                 </a>
                 <ul class="dropdown-menu">
-
-
                     <li class="item-parent">
-                        <a href="/instagram/like_instagram">
+                        <a href="/service/instagram/like-post">
                             <span class="menu-dot"></span>
                             Like Instagram
                         </a>
                     </li>
 
-
                     <li class="item-parent">
-                        <a href="/instagram/comment_instagram">
-                            <span class="menu-dot"></span>
-                            Comment Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/follow_instagram">
+                        <a href="/service/instagram/follow">
                             <span class="menu-dot"></span>
                             Follow Instagram
                         </a>
                     </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/view_instagram">
-                            <span class="menu-dot"></span>
-                            View Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/live_instagram">
-                            <span class="menu-dot"></span>
-                            Mắt Livestream Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/vip_like_instagram">
-                            <span class="menu-dot"></span>
-                            Vip Like Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/vip_comment_instagram">
-                            <span class="menu-dot"></span>
-                            Vip Comment Instagram
-                        </a>
-                    </li>
-
-
                 </ul>
             </li>
 
-
+            {{--
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fa fa-t"></i></span>

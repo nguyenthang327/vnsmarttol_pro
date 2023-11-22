@@ -24,6 +24,7 @@ use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
 use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\Services\FacebookController;
+use App\Http\Controllers\Management\Services\InstagramController;
 use App\Http\Controllers\SettingController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -106,6 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
         // Services
         Route::prefix('service')->group(function () {
             Route::get('facebook/{type}', [FacebookController::class, 'index'])->name('service.facebook.type');
+            Route::get('instagram/{type}', [InstagramController::class, 'index'])->name('service.instagram.type');
         });
 
         Route::prefix('ajax-manage')->group(function () {

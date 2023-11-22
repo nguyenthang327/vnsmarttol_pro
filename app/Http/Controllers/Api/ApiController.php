@@ -76,7 +76,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data likePostSale: ' . json_encode( $result['data']));
+                                Log::info('data likePostSale: ' . json_encode($result['data']));
                                 $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -161,7 +161,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data likePostSpeed: ' . json_encode( $result['data']));
+                                Log::info('data likePostSpeed: ' . json_encode($result['data']));
                                 $link_post = $result['data']['link_post'] ?? $result['data']['idpost'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -247,7 +247,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data likeComment: ' . json_encode( $result['data']));
+                                Log::info('data likeComment: ' . json_encode($result['data']));
                                 $link_post = $result['data']['link_post'] ?? $result['data']['idcomment'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -331,7 +331,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data commentSale: ' . json_encode( $result['data']));
+                                Log::info('data commentSale: ' . json_encode($result['data']));
                                 $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -413,7 +413,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data subVip: ' . json_encode( $result['data']));
+                                Log::info('data subVip: ' . json_encode($result['data']));
                                 $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -495,7 +495,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data subQuality: ' . json_encode( $result['data']));
+                                Log::info('data subQuality: ' . json_encode($result['data']));
                                 $link_post = $result['data']['link_post'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -577,7 +577,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data subSale: ' . json_encode( $result['data']));
+                                Log::info('data subSale: ' . json_encode($result['data']));
                                 $link_post = $result['data']['link_post'] ?? $result['data']['idfb'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -659,7 +659,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data subSpeed: ' . json_encode( $result['data']));
+                                Log::info('data subSpeed: ' . json_encode($result['data']));
                                 $link_post = $result['data']['idfb'];
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -741,7 +741,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data likePageQuality: ' . json_encode( $result['data']));
+                                Log::info('data likePageQuality: ' . json_encode($result['data']));
                                 $link_post = $result['data']['idpage'];
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -823,7 +823,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data likePageSale: ' . json_encode( $result['data']));
+                                Log::info('data likePageSale: ' . json_encode($result['data']));
                                 $link_post = $result['data']['idpage'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -905,7 +905,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data likePageSpeed: ' . json_encode( $result['data']));
+                                Log::info('data likePageSpeed: ' . json_encode($result['data']));
                                 $link_post = $result['data']['idpage'] ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -989,8 +989,8 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data eyeLive: ' . json_encode( $result['data']));
-                                $link_post = $result['data']['idpost'] ??  $idpost ?? null;
+                                Log::info('data eyeLive: ' . json_encode($result['data']));
+                                $link_post = $result['data']['idpost'] ?? $idpost ?? null;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
                                 $type_service = 'subgiare' . 'facebook';
@@ -1073,7 +1073,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data viewVideo: ' . json_encode( $result['data']));
+                                Log::info('data viewVideo: ' . json_encode($result['data']));
                                 $link_post = $link_video;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -1155,7 +1155,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data shareProfile: ' . json_encode( $result['data']));
+                                Log::info('data shareProfile: ' . json_encode($result['data']));
                                 $link_post = $idpost;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -1237,7 +1237,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data memberGroup: ' . json_encode( $result['data']));
+                                Log::info('data memberGroup: ' . json_encode($result['data']));
                                 $link_post = $idgroup;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -1319,7 +1319,7 @@ class ApiController extends Controller
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
-                                Log::info('data viewStory: ' . json_encode( $result['data']));
+                                Log::info('data viewStory: ' . json_encode($result['data']));
                                 $link_post = $idstory;
                                 $code_order = $result['data']['code_order'];
                                 $startWith = $result['data']['start'];
@@ -1364,6 +1364,37 @@ class ApiController extends Controller
             } else {
                 return response()->json(['status' => 0, 'msg' => 'Không tìm thấy dịch vụ này'], 201);
             }
+        }
+        return response()->json(['status' => false, 'msg' => 'Chức năng này đang được cập nhật'], 201);
+    }
+
+    public function instagram(Request $request)
+    {
+        $Api_token = $request->header('Api-Token');
+        $id_order = Str::random(15);
+        if (empty($Api_token)) {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Api-token phải bắt buộc'
+            ], 200);
+        }
+        $user = User::where('api', $Api_token)->first();
+        if (empty($user)) {
+            return response()->json(['status' => 0, 'msg' => 'Api-Token này không tồn tại'], 200);
+        }
+        switch ($request->type) {
+            // TODO: đang làm o day
+            case 'like-post':
+                $validator = Validator::make($request->all(), [
+                    'idpost' => 'required|string',
+                    'server_order' => 'required|string',
+                    'amount' => 'required|numeric',
+                    'note' => 'string',
+                ]);
+            default:
+                break;
+            case 'follow':
+                break;
         }
         return response()->json(['status' => false, 'msg' => 'Chức năng này đang được cập nhật'], 201);
     }

@@ -93,7 +93,7 @@ class FacebookController extends Controller
                 $code = "vip-like";
                 break;
             default:
-                return abort(404);
+                abort(404);
         }
 
         $servers = ServicePack::where([
