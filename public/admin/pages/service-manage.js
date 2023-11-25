@@ -55,4 +55,9 @@ jQuery(document).ready(function () {
             }),
         ],
     });
+    $(function(){
+        $(".kt-form__actions button").click(function(){
+            dtb_Services.ajax.reload(null, false);
+        });
+    });
 });
