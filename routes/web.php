@@ -25,6 +25,7 @@ use App\Http\Controllers\Management\RechargeCardController;
 use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\Services\FacebookController;
 use App\Http\Controllers\Management\Services\InstagramController;
+use App\Http\Controllers\Management\Services\TiktokController;
 use App\Http\Controllers\Management\Services\TwitterController;
 use App\Http\Controllers\SettingController;
 use App\Models\Role;
@@ -110,6 +111,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('facebook/{type}', [FacebookController::class, 'index'])->name('service.facebook.type');
             Route::get('instagram/{type}', [InstagramController::class, 'index'])->name('service.instagram.type');
             Route::get('twitter/{type}', [TwitterController::class, 'index'])->name('service.twitter.type');
+            Route::get('tiktok/{type}', [TiktokController::class, 'index'])->name('service.tiktok.type');
         });
 
         Route::prefix('ajax-manage')->group(function () {

@@ -98,7 +98,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-post-sale',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -183,7 +183,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-post-speed',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -269,7 +269,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-post-speed',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -353,7 +353,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-post-speed',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -435,7 +435,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-post-speed',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -517,7 +517,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'sub-quality',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -599,7 +599,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'sub-sale',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -681,7 +681,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'sub-sale',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -763,7 +763,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-page-quality',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -845,7 +845,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-page-sale',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -927,7 +927,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => 'like-page-sale',
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -1011,7 +1011,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => $request->type,
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => $minutes,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -1036,7 +1036,7 @@ class ApiController extends Controller
                     'link_video' => 'required|string',
                     'server_order' => 'required|string',
                     'count' => 'required|numeric',
-                    'time' => 'required|numeric',
+                    'minutes' => 'required|numeric',
                     'note' => 'string',
                     'url' => 'string',
                 ]);
@@ -1057,7 +1057,7 @@ class ApiController extends Controller
                     } elseif ($server->status_server == 'off') {
                         return response()->json(['status' => false, 'msg' => 'Server đang tạm ngừng hoạt động'], 201);
                     } else {
-                        $total_money = $request->count * $server->price_stock;
+                        $total_money = $request->count * $request->minutes * $server->price_stock;
                         if ($total_money > $user->price) {
                             return response()->json(['status' => false, 'msg' => 'Tài khoản của bạn không đủ tiền'], 201);
                         } else {
@@ -1067,9 +1067,9 @@ class ApiController extends Controller
                             $link_video = $request->link_video;
                             $server_order = $request->server_order;
                             $amount = $request->count;
-                            $time = $request->time;
+                            $minutes = $request->minutes;
                             $note = $request->note;
-                            $result = $sgr->viewVideo($link_video, $server_order, $amount, $time, $note);
+                            $result = $sgr->viewVideo($link_video, $server_order, $amount, $minutes, $note);
                             if ($result['status'] == false) {
                                 return response()->json(['status' => false, 'msg' => $result['message']], 201);
                             } elseif ($result['status'] == true) {
@@ -1095,7 +1095,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => $request->type,
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => $minutes,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -1177,7 +1177,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => $request->type,
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -1259,7 +1259,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => $request->type,
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -1341,7 +1341,7 @@ class ApiController extends Controller
                                     'price_left' => $user->price,
                                     'type' => $request->type,
                                     'server' => $server_order,
-                                    'time' => time(),
+                                    'time' => null,
                                     'site' => "like",
                                     'original' => $startWith,
                                     'present' => 0,
@@ -1454,7 +1454,7 @@ class ApiController extends Controller
         ])->first();
     }
 
-    public function createHistory($amount, $user, $link_post, $message, $total_money, $oldMonetUser, $type, $server_order, $startWith, $id_order, $code_order, $type_service, $note)
+    public function createHistory($amount, $user, $link_post, $message, $total_money, $oldMonetUser, $type, $server_order, $startWith, $id_order, $code_order, $type_service, $note, $minutes = null)
     {
         History::create([
             'admin_note' => null,
@@ -1471,7 +1471,7 @@ class ApiController extends Controller
             'price_left' => $user->price,
             'type' => $type,
             'server' => $server_order,
-            'time' => time(),
+            'time' => $minutes,
             'site' => "like",
             'original' => $startWith,
             'present' => 0,
@@ -1564,4 +1564,98 @@ class ApiController extends Controller
         }
     }
 
+    public function tiktok(Request $request, $type)
+    {
+        $api_token = $request->header('Api-Token');
+        $id_order = Str::random(15);
+        if (empty($api_token)) {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Api-token phải bắt buộc'
+            ]);
+        }
+        $user = User::where('api', $api_token)->first();
+        if (empty($user)) {
+            return response()->json(['status' => 0, 'msg' => 'Api-Token này không tồn tại']);
+        }
+        $arrayValidate = [
+            'server_order' => 'required|string',
+            'count' => 'required|numeric|min:1',
+            'note' => 'string',
+        ];
+        $codeServer = strtolower($type);
+        if (in_array($codeServer, ['like-tiktok', 'comment-tiktok', 'share-tiktok', 'view-tiktok'])) {
+            $arrayValidate['link_post'] = 'required|string';
+            $idPost = $request->input('link_post');
+        } elseif (in_array($codeServer, ['sub-tiktok', 'eye-live-tiktok'])) {
+            $arrayValidate['username'] = 'required|string';
+            if ($codeServer === 'eye-live-tiktok') {
+                $arrayValidate['minutes'] = 'required|numeric|min:0';
+            }
+            $idPost = $request->input('username');
+        } else {
+            return response()->json(['status' => false, 'msg' => 'Không tìm thấy dịch vụ']);
+        }
+        $validator = Validator::make($request->all(), $arrayValidate);
+        $codeServerSGR = $codeServer;
+        if ($validator->fails()) {
+            return response()->json(['status' => false, 'msg' => $validator->errors()->first()]);
+        } else {
+            $serverService = $request->input('server_order');
+            $server = $this->findServer('tiktok', $codeServerSGR, $serverService);
+            if (empty($server)) {
+                return response()->json(['status' => false, 'msg' => 'Mã server không tồn tại']);
+            } elseif ($server->status_server == 'off') {
+                return response()->json(['status' => false, 'msg' => 'Mã server đang tạm ngưng']);
+            } else {
+                $total_money = $request->input('count') * $server->price_stock * $request->minutes;
+                if ($total_money > $user->price) {
+                    return response()->json(['status' => false, 'msg' => 'Tài khoản của bạn không đủ tiền'], 201);
+                } else {
+                    $oldMonetUser = $user->price;
+                    $money_user = $user->price - $total_money;
+                    $sgr = new TikTokSGRController();
+                    $server_order = $serverService;
+                    $amount = $request->input('count');
+                    $note = $request->input('note');
+                    switch ($codeServerSGR) {
+                        case 'like-tiktok':
+                        default:
+                            $result = $sgr->like($idPost, $server_order, $amount, $note);
+                            break;
+                        case 'comment-tiktok':
+                            $result = $sgr->comment($idPost, $server_order, $amount, $note);
+                            break;
+                        case 'share-tiktok':
+                            $result = $sgr->share($idPost, $server_order, $amount, $note);
+                            break;
+                        case 'sub-tiktok':
+                            $result = $sgr->sub($idPost, $server_order, $amount, $note);
+                            break;
+                        case 'view-tiktok':
+                            $result = $sgr->view($idPost, $server_order, $amount, $note);
+                            break;
+                        case 'eye-live-tiktok':
+                            $minutes = $request->input('minutes', 0);
+                            $result = $sgr->eye($idPost, $server_order, $amount, $minutes, $note);
+                            break;
+                    }
+                    if ($result && !$result['status']) {
+                        return response()->json(['status' => false, 'msg' => $result['message']], 201);
+                    } elseif ($result && $result['status']) {
+                        Log::info('data tiktok: ' . json_encode($result['data']));
+                        $link_post = $idPost;
+                        $code_order = $result['data']['code_order'];
+                        $startWith = $result['data']['start'];
+                        $type_service = 'subgiare' . 'tiktok';
+                        $user->price = $money_user;
+                        $user->save();
+                        $message = "Bạn đã order dịch vụ $codeServerSGR với số lượng $amount tổng tiền $total_money";
+                        $this->createHistory($amount, $user, $link_post, $message, $total_money, $oldMonetUser, $codeServerSGR, $server_order, $startWith, $id_order, $code_order, $type_service, $note);
+                        return response()->json(['status' => 1, 'msg' => "Đã mua đơn hàng này thành công", "code_order" => $id_order]);
+                    }
+                }
+            }
+        }
+    }
 }

@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('math')->nullable()->comment('Dấu toán tử để hiển thị ra view');
             $table->string('type')->nullable()->comment('Loại dịch vụ');
             $table->string('server')->nullable()->comment('Server dịch vụ');
-            $table->timestamp('time')->nullable();
+            $table->integer('time')->nullable();
             $table->string('site')->nullable();
             $table->integer('original')->nullable();
             $table->integer('present')->nullable();

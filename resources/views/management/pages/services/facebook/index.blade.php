@@ -368,7 +368,7 @@
                                                     @if ($type == 'view-video')
                                                         <div class="form-group server-section" style="">
                                                             <label>Thời gian</label>
-                                                            <select class="form-control change-price" name="time">
+                                                            <select class="form-control change-price" name="minutes">
                                                                 <option value="3" selected="">Xem trong 3 giây</option>
                                                                 <option value="10">Xem trong 10 giây</option>
                                                                 <option value="15">Xem trong 15 giây</option>
