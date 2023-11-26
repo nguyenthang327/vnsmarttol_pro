@@ -10,7 +10,7 @@
             <div class="header-sub-title">
                 <nav class="breadcrumb breadcrumb-dash">
                     <a href="#" class="breadcrumb-item"><i class="fa fa-home m-r-5"></i>Admin</a>
-                    <a class="breadcrumb-item" href="javascript:void(0)">Dịch vụ instagram</a>
+                    <a class="breadcrumb-item" href="javascript:void(0)">Dịch vụ tiktok</a>
                 </nav>
             </div>
         </div>
@@ -20,7 +20,10 @@
                 <h4 class="card-title text-white">Thêm máy chủ Instagram</h4>
             </div>
             <div class="card-body">
-                <form class="form-json" method="POST" action="{{ route('admin.service.store', ['type' => 'instagram']) }}">
+                <form class="form-add-service form-json" method="POST" data-type="tiktok"
+                      action="{{ route('admin.service.store', ['type' => 'tiktok']) }}"
+                      data-table="Services"
+                >
                     <div class="kt-portlet__body">
                         <div class="form-group">
                             <label for="api_service">API của dịch vụ</label>
@@ -76,7 +79,7 @@
 
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="card-title text-white">Danh sách dịch vụ subgiare</h4>
+                <h4 class="card-title text-white">Danh sách dịch vụ TIKTOK - SUBGIARE</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -85,7 +88,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-bordered table-hover dataTable no-footer"
-                                       id="datatable-services-subgiare" role="grid">
+                                       id="datatable-services" role="grid">
                                     <thead>
                                     <tr>
                                         <th>STT</th>
