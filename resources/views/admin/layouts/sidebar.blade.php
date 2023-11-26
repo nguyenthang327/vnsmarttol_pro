@@ -40,6 +40,12 @@
                             Dịch vụ facebook
                         </a>
                     </li>
+                    <li class="item-parent">
+                        <a href="/qladmin/services/instagram">
+                            <span class="menu-dot"></span>
+                            Dịch vụ instagram
+                        </a>
+                    </li>
                 </ul>
             </li>
 
