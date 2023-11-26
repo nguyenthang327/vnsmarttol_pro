@@ -10,18 +10,18 @@
             <div class="header-sub-title">
                 <nav class="breadcrumb breadcrumb-dash">
                     <a href="#" class="breadcrumb-item"><i class="fa fa-home m-r-5"></i>Admin</a>
-                    <a class="breadcrumb-item" href="javascript:void(0)">Dịch vụ instagram</a>
+                    <a class="breadcrumb-item" href="javascript:void(0)">Dịch vụ {{$type}}</a>
                 </nav>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="card-title text-white">Thêm máy chủ Instagram</h4>
+                <h4 class="card-title text-white">Thêm máy chủ {{$name}}</h4>
             </div>
             <div class="card-body">
-                <form class="form-add-service-pack form-json" method="POST" data-type="instagram"
-                      action="{{ route('admin.service_pack.store', ['type' => 'instagram']) }}"
+                <form class="form-add-service-pack form-json" method="POST" data-type="{{$type}}"
+                      action="{{ route('admin.service_pack.store', ['type' => $type]) }}"
                       data-table="Service_Packs"
                 >
                     <div class="kt-portlet__body">
@@ -79,7 +79,7 @@
 
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="card-title text-white">Danh sách dịch vụ INSTAGRAM - SUBGIARE</h4>
+                <h4 class="card-title text-white">Danh sách dịch vụ {{$name}} - SUBGIARE</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

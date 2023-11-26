@@ -359,51 +359,20 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="item-parent">
-                        <a href="/service/instagram/like-post">
+                        <a href="/service/instagram/like-instagram">
                             <span class="menu-dot"></span>
                             Like Instagram
                         </a>
                     </li>
 
                     <li class="item-parent">
-                        <a href="/service/instagram/follow">
+                        <a href="/service/instagram/follow-instagram">
                             <span class="menu-dot"></span>
                             Follow Instagram
                         </a>
                     </li>
                 </ul>
             </li>
-
-            {{--
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fa fa-t"></i></span>
-                    <span class="title">Threads</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/threads/like_threads">
-                            <span class="menu-dot"></span>
-                            Like Threads
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/threads/follow_threads">
-                            <span class="menu-dot"></span>
-                            Follow Threads
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
-
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fab fa-tiktok"></i></span>
@@ -521,8 +490,55 @@
 
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder"><i class="fab fa-twitter"></i></span>
+                    <span class="title">Twitter</span>
+                    <span class="fas fa-chevron-down"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="item-parent">
+                        <a href="/service/twitter/like-twitter">
+                            <span class="menu-dot"></span>
+                            Like Twitter
+                        </a>
+                    </li>
+                    <li class="item-parent">
+                        <a href="/service/twitter/follow-twitter">
+                            <span class="menu-dot"></span>
+                            Follow Twitter
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{--
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder"><i class="fa fa-t"></i></span>
+                    <span class="title">Threads</span>
+                    <span class="fas fa-chevron-down"></span>
+                </a>
+                <ul class="dropdown-menu">
 
 
+                    <li class="item-parent">
+                        <a href="/threads/like_threads">
+                            <span class="menu-dot"></span>
+                            Like Threads
+                        </a>
+                    </li>
+
+
+                    <li class="item-parent">
+                        <a href="/threads/follow_threads">
+                            <span class="menu-dot"></span>
+                            Follow Threads
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fa fa-shopping-cart"></i></span>
@@ -688,76 +704,6 @@
 
                 </ul>
             </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fab fa-twitter"></i></span>
-                    <span class="title">Twitter</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/like_twitter">
-                            <span class="menu-dot"></span>
-                            Like Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/follow_twitter">
-                            <span class="menu-dot"></span>
-                            Follow Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/view_twitter">
-                            <span class="menu-dot"></span>
-                            View Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/retweet_twitter">
-                            <span class="menu-dot"></span>
-                            ReTweet Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/comment_twitter">
-                            <span class="menu-dot"></span>
-                            Comment Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/vip_like_twitter">
-                            <span class="menu-dot"></span>
-                            Vip Like Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/vip_view_twitter">
-                            <span class="menu-dot"></span>
-                            Vip View Twitter
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
 
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">

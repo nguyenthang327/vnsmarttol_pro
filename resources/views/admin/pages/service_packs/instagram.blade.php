@@ -20,9 +20,9 @@
                 <h4 class="card-title text-white">Thêm máy chủ Instagram</h4>
             </div>
             <div class="card-body">
-                <form class="form-add-service form-json" method="POST" data-type="instagram"
-                      action="{{ route('admin.service.store', ['type' => 'instagram']) }}"
-                      data-table="Services"
+                <form class="form-add-service-pack form-json" method="POST" data-type="instagram"
+                      action="{{ route('admin.service_pack.store', ['type' => 'instagram']) }}"
+                      data-table="Service_Packs"
                 >
                     <div class="kt-portlet__body">
                         <div class="form-group">
@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-bordered table-hover dataTable no-footer"
-                                       id="datatable-services" role="grid">
+                                       id="datatable-service-packs" role="grid">
                                     <thead>
                                     <tr>
                                         <th>STT</th>

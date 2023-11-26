@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use GuzzleHttp\Client;
 
-class TwitterSGRController extends Controller
+class InstagramSGRController extends Controller
 {
     protected $token;
     public function __construct()
@@ -16,7 +16,7 @@ class TwitterSGRController extends Controller
     }
 
     public function likePost($link_post, $server_order, $amount, $note = null){
-        $url = "https://thuycute.hoangvanlinh.vn/api/service/twitter/like/order";
+        $url = "https://thuycute.hoangvanlinh.vn/api/service/instagram/like-post/order";
         $client = new Client();
 
         $response = $client->request('POST', $url, [
@@ -35,7 +35,7 @@ class TwitterSGRController extends Controller
     }
 
     public function sub($username, $server, $amount, $note = null){
-        $url = "https://thuycute.hoangvanlinh.vn/api/service/twitter/sub/order";
+        $url = "https://thuycute.hoangvanlinh.vn/api/service/instagram/sub/order";
         $client = new Client();
 
         $response = $client->request('POST', $url, [

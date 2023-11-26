@@ -27,13 +27,13 @@ class InstagramController extends Controller
     public function index(Request $request, $type)
     {
         switch ($type) {
-            case 'like-post':
+            case 'like-instagram':
                 $title = "Like bài viết Instagram";
                 $code = "like-instagram";
                 break;
-            case 'follow':
+            case 'follow-instagram':
                 $title = "Theo dõi tài khoản Instagram";
-                $code = "sub-instagram";
+                $code = "follow-instagram";
                 break;
             default:
                 abort(404);
@@ -45,11 +45,9 @@ class InstagramController extends Controller
             'api_service' => 'subgiare'
         ])->get();
 
-        $statuses = ['success', 'start', 'error'];
-
         $counts = [];
 
-        foreach ($statuses as $status) {
+        foreach (ServicePack::SERVICE_PACK_STATUS as $status) {
             $statusNumber = $this->getStatusNumber($status);
             $counts[$status] = History::when($statusNumber !== null, function ($query) use ($statusNumber) {
                 return $query->where('user_id', Auth::id())->where('status', $statusNumber);

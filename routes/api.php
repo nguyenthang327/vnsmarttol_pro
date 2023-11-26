@@ -25,6 +25,7 @@ Route::post('tools/get_uid', [ToolController::class, 'getUID']);
 Route::prefix('service')->group(function() {
     Route::post('facebook/{type}', [ApiController::class, 'index'])->name('api.service.facebook');
     Route::post('instagram/{type}', [ApiController::class, 'instagram'])->name('api.service.instagram');
+    Route::post('twitter/{type}', [ApiController::class, 'twitter'])->name('api.service.twitter');
 });
 
 Route::prefix('cron')->group(function() {

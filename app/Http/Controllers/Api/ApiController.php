@@ -1368,34 +1368,200 @@ class ApiController extends Controller
         return response()->json(['status' => false, 'msg' => 'Chức năng này đang được cập nhật'], 201);
     }
 
-    public function instagram(Request $request)
+    public function instagram(Request $request, $type)
     {
-        $Api_token = $request->header('Api-Token');
+        $api_token = $request->header('Api-Token');
         $id_order = Str::random(15);
-        if (empty($Api_token)) {
+        if (empty($api_token)) {
             return response()->json([
                 'status' => 'error',
                 'msg' => 'Api-token phải bắt buộc'
-            ], 200);
+            ]);
         }
-        $user = User::where('api', $Api_token)->first();
+        $user = User::where('api', $api_token)->first();
         if (empty($user)) {
-            return response()->json(['status' => 0, 'msg' => 'Api-Token này không tồn tại'], 200);
+            return response()->json(['status' => 0, 'msg' => 'Api-Token này không tồn tại']);
         }
-        switch ($request->type) {
-            // TODO: đang làm o day
-            case 'like-post':
-                $validator = Validator::make($request->all(), [
-                    'idpost' => 'required|string',
-                    'server_order' => 'required|string',
-                    'amount' => 'required|numeric',
-                    'note' => 'string',
-                ]);
-            default:
-                break;
-            case 'follow':
-                break;
+        $arrayValidate = [
+            'server_order' => 'required|string',
+            'count' => 'required|numeric|min:1',
+            'note' => 'string',
+        ];
+        $codeServer = strtolower($type);
+        if ($codeServer == 'like-instagram') {
+            $arrayValidate['link_post'] = 'required|string';
+            $codeServerSGR = 'like-instagram';
+            $idPost = $request->input('link_post');
+        } elseif ($codeServer == 'follow-instagram') {
+            $arrayValidate['username'] = 'required|string';
+            $codeServerSGR = 'follow-instagram';
+            $idPost = $request->input('username');
+        } else {
+            return response()->json(['status' => false, 'msg' => 'Không tìm thấy dịch vụ']);
         }
-        return response()->json(['status' => false, 'msg' => 'Chức năng này đang được cập nhật'], 201);
+        $validator = Validator::make($request->all(), $arrayValidate);
+        if ($validator->fails()) {
+            return response()->json(['status' => false, 'msg' => $validator->errors()->first()]);
+        } else {
+            $serverService = $request->input('server_order');
+            $server = $this->findServer('instagram', $codeServerSGR, $serverService);
+            if (empty($server)) {
+                return response()->json(['status' => false, 'msg' => 'Mã server không tồn tại']);
+            } elseif ($server->status_server == 'off') {
+                return response()->json(['status' => false, 'msg' => 'Mã server đang tạm ngưng']);
+            } else {
+                $total_money = $request->input('count') * $server->price_stock;
+                if ($total_money > $user->price) {
+                    return response()->json(['status' => false, 'msg' => 'Tài khoản của bạn không đủ tiền'], 201);
+                } else {
+                    $oldMonetUser = $user->price;
+                    $money_user = $user->price - $total_money;
+                    $sgr = new InstagramSGRController();
+                    $server_order = $serverService;
+                    $amount = $request->input('count');
+                    $note = $request->input('note');
+                    if ($codeServerSGR === 'like-instagram') {
+                        $result = $sgr->likePost($idPost, $server_order, $amount, $note);
+                    } else {
+                        $result = $sgr->sub($idPost, $server_order, $amount, $note);
+                    }
+                    if ($result && !$result['status']) {
+                        return response()->json(['status' => false, 'msg' => $result['message']], 201);
+                    } elseif ($result && $result['status']) {
+                        Log::info('data instagram: ' . json_encode($result['data']));
+                        $link_post = $idPost;
+                        $code_order = $result['data']['code_order'];
+                        $startWith = $result['data']['start'];
+                        $type_service = 'subgiare' . 'twitter';
+                        $user->price = $money_user;
+                        $user->save();
+                        $message = "Bạn đã order dịch vụ $codeServerSGR với số lượng $amount tổng tiền $total_money";
+                        $this->createHistory($amount, $user, $link_post, $message, $total_money, $oldMonetUser, $codeServerSGR, $server_order, $startWith, $id_order, $code_order, $type_service, $note);
+                        return response()->json(['status' => 1, 'msg' => "Đã mua đơn hàng này thành công", "code_order" => $id_order]);
+                    }
+                }
+            }
+        }
     }
+
+    public function findServer($typeServer, $codeServer, $serverService, $apiService = 'subgiare')
+    {
+        return ServicePack::where([
+            'type_server' => $typeServer,
+            'code_server' => $codeServer,
+            'server_service' => $serverService,
+            'api_service' => $apiService
+        ])->first();
+    }
+
+    public function createHistory($amount, $user, $link_post, $message, $total_money, $oldMonetUser, $type, $server_order, $startWith, $id_order, $code_order, $type_service, $note)
+    {
+        History::create([
+            'admin_note' => null,
+            'count' => $amount,
+            'data' => "",
+            'user_id' => $user->id,
+            'link' => $link_post,
+            'username' => $user->username,
+            'math' => "-",
+            'uid' => $link_post,
+            'msg' => $message,
+            'price' => $total_money,
+            'price_current' => $oldMonetUser,
+            'price_left' => $user->price,
+            'type' => $type,
+            'server' => $server_order,
+            'time' => time(),
+            'site' => "like",
+            'original' => $startWith,
+            'present' => 0,
+            'order_id' => $id_order,
+            'order_code' => $code_order,
+            'type_service' => md5($type_service),
+            'note' => $note,
+            'status' => -1,
+            'refund_count' => 0,
+            'refund_subtraction' => 0,
+            'other' => null,
+            'identity_website' => config('license.domain'),
+            'created_at' => Carbon::now(),
+        ]);
+    }
+
+    public function twitter(Request $request, $type)
+    {
+        $api_token = $request->header('Api-Token');
+        $id_order = Str::random(15);
+        if (empty($api_token)) {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Api-token phải bắt buộc'
+            ]);
+        }
+        $user = User::where('api', $api_token)->first();
+        if (empty($user)) {
+            return response()->json(['status' => 0, 'msg' => 'Api-Token này không tồn tại']);
+        }
+        $arrayValidate = [
+            'server_order' => 'required|string',
+            'count' => 'required|numeric|min:1',
+            'note' => 'string',
+        ];
+        $codeServer = strtolower($type);
+        if ($codeServer == 'like-twitter') {
+            $arrayValidate['link_post'] = 'required|string';
+            $codeServerSGR = 'like-twitter';
+            $idPost = $request->input('link_post');
+        } elseif ($codeServer == 'follow-twitter') {
+            $arrayValidate['username'] = 'required|string';
+            $codeServerSGR = 'sub-twitter';
+            $idPost = $request->input('username');
+        } else {
+            return response()->json(['status' => false, 'msg' => 'Không tìm thấy dịch vụ']);
+        }
+        $validator = Validator::make($request->all(), $arrayValidate);
+        if ($validator->fails()) {
+            return response()->json(['status' => false, 'msg' => $validator->errors()->first()]);
+        } else {
+            $serverService = $request->input('server_order');
+            $server = $this->findServer('twitter', $codeServerSGR, $serverService);
+            if (empty($server)) {
+                return response()->json(['status' => false, 'msg' => 'Mã server không tồn tại']);
+            } elseif ($server->status_server == 'off') {
+                return response()->json(['status' => false, 'msg' => 'Mã server đang tạm ngưng']);
+            } else {
+                $total_money = $request->input('count') * $server->price_stock;
+                if ($total_money > $user->price) {
+                    return response()->json(['status' => false, 'msg' => 'Tài khoản của bạn không đủ tiền'], 201);
+                } else {
+                    $oldMonetUser = $user->price;
+                    $money_user = $user->price - $total_money;
+                    $sgr = new TwitterSGRController();
+                    $server_order = $serverService;
+                    $amount = $request->input('count');
+                    $note = $request->input('note');
+                    if ($codeServerSGR === 'like-twitter') {
+                        $result = $sgr->likePost($idPost, $server_order, $amount, $note);
+                    } else {
+                        $result = $sgr->sub($idPost, $server_order, $amount, $note);
+                    }
+                    if ($result && !$result['status']) {
+                        return response()->json(['status' => false, 'msg' => $result['message']], 201);
+                    } elseif ($result && $result['status']) {
+                        Log::info('data twitter: ' . json_encode($result['data']));
+                        $link_post = $idPost;
+                        $code_order = $result['data']['code_order'];
+                        $startWith = $result['data']['start'];
+                        $type_service = 'subgiare' . 'twitter';
+                        $user->price = $money_user;
+                        $user->save();
+                        $message = "Bạn đã order dịch vụ $codeServerSGR với số lượng $amount tổng tiền $total_money";
+                        $this->createHistory($amount, $user, $link_post, $message, $total_money, $oldMonetUser, $codeServerSGR, $server_order, $startWith, $id_order, $code_order, $type_service, $note);
+                        return response()->json(['status' => 1, 'msg' => "Đã mua đơn hàng này thành công", "code_order" => $id_order]);
+                    }
+                }
+            }
+        }
+    }
+
 }

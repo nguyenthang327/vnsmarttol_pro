@@ -11,7 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class InstagramController extends Controller
+class TwitterController extends Controller
 {
 
     public function __construct()
@@ -27,29 +27,27 @@ class InstagramController extends Controller
     public function index(Request $request, $type)
     {
         switch ($type) {
-            case 'like-instagram':
-                $title = "Like bài viết Instagram";
-                $code = "like-instagram";
+            case 'like-twitter':
+                $title = "Like bài viết Twitter";
+                $code = "like-twitter";
                 break;
-            case 'follow-instagram':
-                $title = "Theo dõi tài khoản Instagram";
-                $code = "follow-instagram";
+            case 'follow-twitter':
+                $title = "Theo dõi tài khoản Twitter";
+                $code = "sub-twitter";
                 break;
             default:
                 abort(404);
         }
 
         $servers = ServicePack::where([
-            'type_server' => 'instagram',
+            'type_server' => 'twitter',
             'code_server' => $code,
             'api_service' => 'subgiare'
         ])->get();
 
-        $statuses = ['success', 'start', 'error'];
-
         $counts = [];
 
-        foreach ($statuses as $status) {
+        foreach (ServicePack::SERVICE_PACK_STATUS as $status) {
             $statusNumber = $this->getStatusNumber($status);
             $counts[$status] = History::when($statusNumber !== null, function ($query) use ($statusNumber) {
                 return $query->where('user_id', Auth::id())->where('status', $statusNumber);
@@ -58,7 +56,7 @@ class InstagramController extends Controller
 
         $counts['all'] = History::where('user_id', Auth::id())->count();
 
-        return view("management.pages.services.instagram.index", [
+        return view("management.pages.services.twitter.index", [
             'title' => $title,
             'servers' => $servers,
             'type' => $type,
