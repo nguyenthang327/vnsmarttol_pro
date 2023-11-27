@@ -24,6 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('tools/get_uid', [ToolController::class, 'getUID']);
 Route::prefix('service')->group(function() {
     Route::post('facebook/{type}', [ApiController::class, 'index'])->name('api.service.facebook');
+    Route::post('instagram/{type}', [ApiController::class, 'instagram'])->name('api.service.instagram');
+    Route::post('twitter/{type}', [ApiController::class, 'twitter'])->name('api.service.twitter');
+    Route::post('tiktok/{type}', [ApiController::class, 'tiktok'])->name('api.service.tiktok');
 });
 
 Route::prefix('cron')->group(function() {

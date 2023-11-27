@@ -1,14 +1,14 @@
-"use strict";
-
-jQuery(document).ready(function () {
-    var dtb_Services;
+var dtb_Service_Packs;
+$(document).ready(function () {
+    let service_type = $('form.form-add-service-pack').data('type') ?? 'facebook';
     $('#api_service').change(function () {
         let api_service = $(this).val();
         if (api_service === 'select') {
             $('#show_service').html('');
         }
         if (api_service === 'subgiare') {
-            $('#show_service').html(`
+            if (service_type === 'facebook') {
+                $('#show_service').html(`
                     <div class="form-group">
                         <label class="form-label" for="code_server">Loại dịch vụ</label>
                         <div class="form-control-wrap">
@@ -30,17 +30,60 @@ jQuery(document).ready(function () {
                                 <option value="view-story">View story</option>
                             </select>
                         </div>
-                      </div>
-                    `);
+                    </div>
+                `);
+            } else if (service_type === 'instagram') {
+                $('#show_service').html(`
+                    <div class="form-group">
+                        <label class="form-label" for="code_server">Loại dịch vụ</label>
+                        <div class="form-control-wrap">
+                            <select name="code_server" id="code_server" class="form-control">
+                                <option>Chọn loại dịch vụ</option>
+                                <option value="like-instagram">Like instagram</option>
+                                <option value="follow-instagram">Follow instagram</option>
+                            </select>
+                        </div>
+                    </div>
+                `);
+            } else if (service_type === 'tiktok') {
+                $('#show_service').html(`
+                    <div class="form-group">
+                        <label class="form-label" for="code_server">Loại dịch vụ</label>
+                        <div class="form-control-wrap">
+                            <select name="code_server" id="code_server" class="form-control">
+                                <option>Chọn loại dịch vụ</option>
+                                <option value="like-tiktok">Like thả tim</option>
+                                <option value="comment-tiktok">Tăng bình luận</option>
+                                <option value="share-tiktok">Tăng chia sẻ</option>
+                                <option value="sub-tiktok">Tăng sub/follow</option>
+                                <option value="view-tiktok">Tăng view video</option>
+                                <option value="eye-live-tiktok">Tăng mắt live</option>
+                            </select>
+                        </div>
+                    </div>
+                `);
+            } else if (service_type === 'twitter') {
+                $('#show_service').html(`
+                    <div class="form-group">
+                        <label class="form-label" for="code_server">Loại dịch vụ</label>
+                        <div class="form-control-wrap">
+                            <select name="code_server" id="code_server" class="form-control">
+                                <option>Chọn loại dịch vụ</option>
+                                <option value="like-twitter">Tăng like</option>
+                                <option value="sub-twitter">Tăng sub/follow</option>
+                            </select>
+                        </div>
+                    </div>
+                `);
+            }
         }
     });
-
-    dtb_Services = $('#datatable-services-subgiare').DataTable({
+    dtb_Service_Packs = $('#datatable-service-packs').DataTable({
         responsive: false,
         searchDelay: 500,
         processing: true,
         serverSide: true,
-        ajax: xAjax(baseUrl + '/ajax/services/facebook'),
+        ajax: xAjax(baseUrl + `/ajax/service_packs/${service_type}`),
         order: [[0, "desc"]],
         columns: [
             definedColumns.stt,
@@ -50,14 +93,23 @@ jQuery(document).ready(function () {
             makeColumn('Giá', 'price_stock'),
             makeColumn('Trạng thái', 'status_server', 'status_server'),
             definedColumns.created_at,
-            definedColumns.action(function (data, type, notify) {
-                return components.btn_edit(notify, 'btn-edit-notify') + components.btn_delete(notify, 'btn-delete-notify');
+            definedColumns.action(function (data, type, service) {
+                return components.btn_edit(service, 'btn-edit-service-pack') + components.btn_delete(service, 'btn-delete-service-pack');
             }),
         ],
     });
-    $(function(){
-        $(".kt-form__actions button").click(function(){
-            dtb_Services.ajax.reload(null, false);
-        });
+    $(document).on("click", ".btn-delete-service-pack", async function () {
+        if (!await swalConfirm()) return;
+        let id = $(this).data('id');
+        callAjaxPost(`${baseUrl}/service_pack/delete`, {id}).then(function () {
+            toastr.success('Đã xoá dịch vụ!');
+            dtb_Service_Packs.ajax.reload(null, false);
+        })
+    });
+
+    $(document).on("click", ".btn-edit-service-pack", function () {
+        let id = $(this).data('id');
+        let urlShowServicePack = `${baseUrl}/service_pack/edit/${id}`
+        window.location.assign(urlShowServicePack);
     });
 });

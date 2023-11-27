@@ -351,7 +351,6 @@
                 </ul>
             </li>
 
-            {{--
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fab fa-instagram-square"></i></span>
@@ -359,97 +358,21 @@
                     <span class="fas fa-chevron-down"></span>
                 </a>
                 <ul class="dropdown-menu">
-
-
                     <li class="item-parent">
-                        <a href="/instagram/like_instagram">
+                        <a href="/service/instagram/like-instagram">
                             <span class="menu-dot"></span>
                             Like Instagram
                         </a>
                     </li>
 
-
                     <li class="item-parent">
-                        <a href="/instagram/comment_instagram">
-                            <span class="menu-dot"></span>
-                            Comment Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/follow_instagram">
+                        <a href="/service/instagram/follow-instagram">
                             <span class="menu-dot"></span>
                             Follow Instagram
                         </a>
                     </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/view_instagram">
-                            <span class="menu-dot"></span>
-                            View Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/live_instagram">
-                            <span class="menu-dot"></span>
-                            Mắt Livestream Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/vip_like_instagram">
-                            <span class="menu-dot"></span>
-                            Vip Like Instagram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/instagram/vip_comment_instagram">
-                            <span class="menu-dot"></span>
-                            Vip Comment Instagram
-                        </a>
-                    </li>
-
-
                 </ul>
             </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fa fa-t"></i></span>
-                    <span class="title">Threads</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/threads/like_threads">
-                            <span class="menu-dot"></span>
-                            Like Threads
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/threads/follow_threads">
-                            <span class="menu-dot"></span>
-                            Follow Threads
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
-
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fab fa-tiktok"></i></span>
@@ -457,8 +380,6 @@
                     <span class="fas fa-chevron-down"></span>
                 </a>
                 <ul class="dropdown-menu">
-
-
                     <li class="has-child">
                         <a class="dropdown-toggle" href="javascript:void(0);">
                             <span class="icon-holder"><i class="fab fa-tiktok"></i></span>
@@ -467,275 +388,40 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="item-parent">
-                                <a href="/tiktok/like_tiktok"> <span class="menu-dot"></span> <span
+                                <a href="/service/tiktok/like-tiktok"> <span class="menu-dot"></span> <span
                                         class="pl-0 c-1">Like (Love)</span> TikTok
                                 </a>
                             </li>
+
                             <li class="item-parent">
-                                <a href="/tiktok/like_comment_tiktok"> <span class="menu-dot"></span> <span
-                                        class="pl-0 c-1">Like</span> Comment TikTok
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/tiktok/follow_tiktok"> <span class="menu-dot"></span> <span
-                                        class="pl-0 c-2">Follow</span> TikTok
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/tiktok/view_tiktok"> <span class="menu-dot"></span> <span
-                                        class="pl-0 c-6">View</span> TikTok
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/tiktok/comment_tiktok"> <span class="menu-dot"></span> <span
+                                <a href="/service/tiktok/comment-tiktok"> <span class="menu-dot"></span> <span
                                         class="pl-0 c-4">Comment</span> TikTok
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/tiktok/share_tiktok"> <span class="menu-dot"></span> <span
+                                <a href="/service/tiktok/share-tiktok"> <span class="menu-dot"></span> <span
                                         class="pl-0 c-7">Share</span> TikTok
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/tiktok/favorite_tiktok"> <span class="menu-dot"></span> Yêu thích
-                                    Tiktok
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-
-                    <li class="has-child">
-                        <a class="dropdown-toggle" href="javascript:void(0);">
-                            <span class="icon-holder"><i class="fas fa-eye"></i></span>
-                            <span class="title">Tiktok Livestream</span>
-                            <span class="fas fa-chevron-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="item-parent">
-                                <a href="/tiktok/like_live_tiktok"> <span class="menu-dot"></span> <span
-                                        class="pl-0 c-3">Tim</span> Livestream Tiktok
+                                <a href="/service/tiktok/sub-tiktok"> <span class="menu-dot"></span> <span
+                                        class="pl-0 c-2">Follow</span> TikTok
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/tiktok/share_live_tiktok"> <span class="menu-dot"></span> <span
-                                        class="pl-0 c-7">Share</span> Livestream TikTok
+                                <a href="/service/tiktok/view-tiktok"> <span class="menu-dot"></span> <span
+                                        class="pl-0 c-6">View</span> TikTok
                                 </a>
                             </li>
                             <li class="item-parent">
-                                <a href="/tiktok/comment_live_tiktok"> <span class="menu-dot"></span> <span
-                                        class="pl-0 c-4">Comment</span> Livestream TikTok
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/tiktok/live_tiktok"> <span class="menu-dot"></span> <span
+                                <a href="/service/tiktok/eye-live-tiktok"> <span class="menu-dot"></span> <span
                                         class="pl-0 c-8">Mắt</span> LiveStream TikTok
                                 </a>
                             </li>
-                            <li class="item-parent">
-                                <a href="/tiktok/pk_tiktok"> <span class="menu-dot"></span> Điểm chiến đấu (PK)
-                                    Tiktok
-                                </a>
-                            </li>
-
                         </ul>
                     </li>
-
-
-                    <li class="has-child">
-                        <a class="dropdown-toggle" href="javascript:void(0);">
-                            <span class="icon-holder"><i class="fab fa-vimeo-square"></i></span>
-                            <span class="title">Tiktok Vip tháng</span>
-                            <span class="fas fa-chevron-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="item-parent">
-                                <a href="/tiktok/vip_love_tiktok"> <span class="menu-dot"></span> Vip <span
-                                        class="c-8">Love</span> TikTok
-                                </a>
-                            </li>
-                            <li class="item-parent">
-                                <a href="/tiktok/vip_view_tiktok"> <span class="menu-dot"></span> Vip <span
-                                        class="c-2">View</span> TikTok
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-
                 </ul>
             </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fa fa-shopping-cart"></i></span>
-                    <span class="title">Shopee</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/shopee/follow_shopee">
-                            <span class="menu-dot"></span>
-                            Follow Shopee
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/shopee/love_shopee">
-                            <span class="menu-dot"></span>
-                            Love Shopee
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/shopee/like_review_shopee">
-                            <span class="menu-dot"></span>
-                            Like Review Shopee
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fab fa-telegram"></i></span>
-                    <span class="title">Telegram</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/telegram/member_telegram">
-                            <span class="menu-dot"></span>
-                            Member & Sub Telegram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/telegram/view_telegram">
-                            <span class="menu-dot"></span>
-                            View Bài Viết Telegram
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/telegram/reaction_telegram">
-                            <span class="menu-dot"></span>
-                            Cảm Xúc Bài Viết Telegram
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fab fa-youtube"></i></span>
-                    <span class="title">Youtube</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/like_youtube">
-                            <span class="menu-dot"></span>
-                            <span class="text-danger pl-0">Like</span> Youtube
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/like_youtube_short">
-                            <span class="menu-dot"></span>
-                            <span class="text-danger pl-0">Like</span> Youtube Short
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/view_youtube">
-                            <span class="menu-dot"></span>
-                            <span class="text-primary pl-0">View</span> Youtube
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/view_youtube_short">
-                            <span class="menu-dot"></span>
-                            <span class="text-primary pl-0">View</span> Youtube Short
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/view_youtube_4k">
-                            <span class="menu-dot"></span>
-                            <span class="text-primary pl-0">View</span> Youtube 4000H
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/live_youtube">
-                            <span class="menu-dot"></span>
-                            <span class="text-danger pl-0">Livestream</span> Youtube
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/comment_youtube">
-                            <span class="menu-dot"></span>
-                            <span class="text-success pl-0">Comment</span> Youtube
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/like_comment_youtube">
-                            <span class="menu-dot"></span>
-                            Like <span class="text-success">Comment</span> Youtube
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/sub_youtube">
-                            <span class="menu-dot"></span>
-                            <span class="text-warning pl-0">Subscribe</span> Youtube
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/youtube/tick_youtube">
-                            <span class="menu-dot"></span>
-                            Tick Nghệ Sĩ Youtube
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
-
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder"><i class="fab fa-twitter"></i></span>
@@ -743,187 +429,20 @@
                     <span class="fas fa-chevron-down"></span>
                 </a>
                 <ul class="dropdown-menu">
-
-
                     <li class="item-parent">
-                        <a href="/twitter/like_twitter">
+                        <a href="/service/twitter/like-twitter">
                             <span class="menu-dot"></span>
                             Like Twitter
                         </a>
                     </li>
-
-
                     <li class="item-parent">
-                        <a href="/twitter/follow_twitter">
+                        <a href="/service/twitter/follow-twitter">
                             <span class="menu-dot"></span>
                             Follow Twitter
                         </a>
                     </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/view_twitter">
-                            <span class="menu-dot"></span>
-                            View Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/retweet_twitter">
-                            <span class="menu-dot"></span>
-                            ReTweet Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/comment_twitter">
-                            <span class="menu-dot"></span>
-                            Comment Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/vip_like_twitter">
-                            <span class="menu-dot"></span>
-                            Vip Like Twitter
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/twitter/vip_view_twitter">
-                            <span class="menu-dot"></span>
-                            Vip View Twitter
-                        </a>
-                    </li>
-
-
                 </ul>
             </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fa-solid fa-l"></i></span>
-                    <span class="title">Lazada</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/lazada/sub_lazada">
-                            <span class="menu-dot"></span>
-                            Sub Lazada
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fa-brands fa-google"></i></span>
-                    <span class="title">Dịch Vụ Google</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/google/google_map">
-                            <span class="menu-dot"></span>
-                            Google Map
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/google/rip_google_map">
-                            <span class="menu-dot"></span>
-                            RIP Google Map
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/google/google_map_review">
-                            <span class="menu-dot"></span>
-                            Review Google Map
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
-
-
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="fa-solid fa-award"></i></span>
-                    <span class="title">Tiện Ích Miễn Phí</span>
-                    <span class="fas fa-chevron-down"></span>
-                </a>
-                <ul class="dropdown-menu">
-
-
-                    <li class="item-parent">
-                        <a href="/tools/two_fa">
-                            <span class="menu-dot"></span>
-                            TwoFA Code
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/tools/text">
-                            <span class="menu-dot"></span>
-                            Tool Edit Text
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/tools/check_token">
-                            <span class="menu-dot"></span>
-                            Check Token
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/tools/check_uid">
-                            <span class="menu-dot"></span>
-                            Check Live UID
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/tools/get_link">
-                            <span class="menu-dot"></span>
-                            Get Link/UID
-                        </a>
-                    </li>
-
-
-                    <li class="item-parent">
-                        <a href="/tools/check_domain_expiry">
-                            <span class="menu-dot"></span>
-                            Kiểm tra hạn tên miền
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li> --}}
-
-
             <li class="nav-item item-parent menu-item-logout">
                 <a class="" href="#"
                     onclick="event.preventDefault();

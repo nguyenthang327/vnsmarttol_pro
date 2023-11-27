@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServicePack extends Model
 {
+
+    const ARRAY_SOCIAL = ['facebook', 'instagram', 'tiktok', 'twitter'];
+    const SERVICE_PACK_STATUS = ['success', 'start', 'error'];
+
     protected $fillable = [
         'sort',
         'name',
@@ -31,7 +35,17 @@ class ServicePack extends Model
         'server_service',
         'api_service',
         'status_server',
-
         'identity_website',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (!isset($model->attributes['identity_website']) || is_null($model->attributes['identity_website'])) {
+                $model->attributes['identity_website'] = config('license.domain');
+            }
+        });
+    }
 }

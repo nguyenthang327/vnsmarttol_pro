@@ -14,15 +14,6 @@
                 </a>
             </li>
 
-            <li class="item-parent menu-item-prices">
-                <a href="{{route('admin.price.service.index')}}">
-                    <span class="icon-holder">
-                        <i class="fa fa-list"></i>
-                    </span>
-                    <span class="title">Chỉnh giá dịch vụ</span>
-                </a>
-            </li>
-
 
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -35,15 +26,27 @@
 
                 <ul class="dropdown-menu">
                     <li class="item-parent">
-                        <a href="/qladmin/services/facebook">
+                        <a href="/qladmin/service_pack/facebook">
                             <span class="menu-dot"></span>
                             Dịch vụ facebook
                         </a>
                     </li>
                     <li class="item-parent">
-                        <a href="/qladmin/services/instagram">
+                        <a href="/qladmin/service_pack/instagram">
                             <span class="menu-dot"></span>
                             Dịch vụ instagram
+                        </a>
+                    </li>
+                    <li class="item-parent">
+                        <a href="/qladmin/service_pack/tiktok">
+                            <span class="menu-dot"></span>
+                            Dịch vụ tiktok
+                        </a>
+                    </li>
+                    <li class="item-parent">
+                        <a href="/qladmin/service_pack/twitter">
+                            <span class="menu-dot"></span>
+                            Dịch vụ twitter
                         </a>
                     </li>
                 </ul>

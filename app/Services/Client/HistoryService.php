@@ -10,11 +10,9 @@ class HistoryService
 {
     public function getFormattedLogs($type, $status, $server, $start, $length, $orderBy, $orderDir, $keyword)
     {
-        // Xử lý logic để truy vấn dữ liệu từ model History
         $logs = History::query();
         switch ($type) {
             case 'like-sale':
-            default:
                 $code = "like-post-sale";
                 break;
             case 'like-speed':
@@ -64,6 +62,9 @@ class HistoryService
                 break;
             case 'vip-like':
                 $code = "vip-like";
+                break;
+            default:
+                $code = $type;
                 break;
         }
         if ($type !== 'all') {

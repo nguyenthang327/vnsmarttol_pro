@@ -22,4 +22,34 @@ class ServicePackService
         $servicePack->service_id = 1;
         $servicePack->save();
     }
+
+    public function updateServicePack($servicePack, $typeService, $codeServer, $serverService, $apiServer, $name, $priceStock, $minOrder, $maxOrder, $note, $status)
+    {
+        $servicePack->update([
+            'type_server' => $typeService,
+            'code_server' => $codeServer,
+            'server_service' => $serverService,
+            'api_service' => $apiServer,
+            'name' => $name,
+            'price_stock' => $priceStock,
+            'min_order' => $minOrder,
+            'max_order' => $maxOrder,
+            'note' => $note,
+            'service_id' => 1,
+            'status_server' => $status,
+        ]);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function deleteServicePack($id)
+    {
+        $servicePack = ServicePack::find($id);
+        if (!$servicePack) {
+            throw new \Exception("Không tồn tại dịch vụ");
+        } else {
+            $servicePack->delete();
+        }
+    }
 }

@@ -24,6 +24,9 @@ use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\RechargeCardController;
 use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\Services\FacebookController;
+use App\Http\Controllers\Management\Services\InstagramController;
+use App\Http\Controllers\Management\Services\TiktokController;
+use App\Http\Controllers\Management\Services\TwitterController;
 use App\Http\Controllers\SettingController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -106,6 +109,9 @@ Route::group(['middleware' => ['auth']], function () {
         // Services
         Route::prefix('service')->group(function () {
             Route::get('facebook/{type}', [FacebookController::class, 'index'])->name('service.facebook.type');
+            Route::get('instagram/{type}', [InstagramController::class, 'index'])->name('service.instagram.type');
+            Route::get('twitter/{type}', [TwitterController::class, 'index'])->name('service.twitter.type');
+            Route::get('tiktok/{type}', [TiktokController::class, 'index'])->name('service.tiktok.type');
         });
 
         Route::prefix('ajax-manage')->group(function () {
@@ -188,12 +194,12 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         // Services
-        Route::prefix('services')->group(function () {
-            Route::get('{type}', [ServiceController::class, 'index'])->name('admin.service.index');
-            Route::post('{type}/store', [ServicePackController::class, 'store'])->name('admin.service.store');
-            Route::post('update', [SettingController::class, 'update'])->name('admin.service.update');
-            Route::post('show', [SettingController::class, 'show'])->name('admin.service.show');
-            Route::post('delete', [SettingController::class, 'destroy'])->name('admin.service.delete');
+        Route::prefix('service_pack')->group(function () {
+            Route::get('{type}', [ServicePackController::class, 'index'])->name('admin.service_pack.index');
+            Route::post('{type}/store', [ServicePackController::class, 'store'])->name('admin.service_pack.store');
+            Route::get('edit/{service_pack}', [ServicePackController::class, 'edit'])->name('admin.service_pack.edit');
+            Route::post('update', [ServicePackController::class, 'update'])->name('admin.service_pack.update');
+            Route::post('delete', [ServicePackController::class, 'destroy'])->name('admin.service_pack.delete');
         });
 
         // Banks
@@ -229,7 +235,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('discount_codes', [DiscountController::class, 'ajaxGetDiscounts'])->name('admin.ajax.discount_codes');
             Route::get('contacts', [ContactController::class, 'ajaxGetContacts'])->name('admin.ajax.contacts');
             Route::get('questions', [QuestionController::class, 'ajaxGetQuestions'])->name('admin.ajax.questions');
-            Route::get('services/{type}', [ServiceController::class, 'ajaxGetServices'])->name('admin.ajax.services');
+            Route::get('service_packs/{type}', [ServicePackController::class, 'ajaxGetServicePacks'])->name('admin.ajax.service_packs');
         });
     });
 });
