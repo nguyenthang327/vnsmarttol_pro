@@ -101,7 +101,7 @@
                 </div>
             </li>
 
-            {{-- <li class="scale-left">
+             <li class="scale-left">
                 <div class="mr-3">
                     <div class="switch d-inline">
                         <label for="switch_dark_mode" class="dark-mode-label">Dark Mode</label>
@@ -109,7 +109,7 @@
                         <label for="switch_dark_mode"></label>
                     </div>
                 </div>
-            </li> --}}
+            </li>
             <li class="scale-left">
                 <div class="translate-wrapper">
                     <div id="button_translate"></div>

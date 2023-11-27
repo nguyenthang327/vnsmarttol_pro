@@ -124,11 +124,12 @@
                     @endif
                 </ul>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="section-title" href="javascript:void(0);">
                     <span class="title">DANH SÁCH DỊCH VỤ</span>
                 </a>
             </li>
+            {{--
             <li class="nav-item item-parent menu-item-">
                 <a class="" href="/lucky_wheel">
                     <span class="icon-holder">

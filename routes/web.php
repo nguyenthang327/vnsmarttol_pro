@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
         // Dashboard
         Route::prefix('home')->group(function () {
             Route::get('/', [HomeController::class, 'index'])->name('dashboard.index');
+            Route::get('dark_mode', [HomeController::class, 'darkMode'])->name('home.dark_mode');
         });
         // Information
         Route::prefix('profile')->group(function () {

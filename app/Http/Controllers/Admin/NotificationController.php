@@ -27,9 +27,9 @@ class NotificationController extends Controller
     public function notifications(NotificationRequest $request)
     {
         if ($request->isMethod('get')) {
-            $notify_new_user = Setting::select('notify_new_user')->first();
+            $setting = Setting::select(['notify_new_user', 'show_last_notify'])->first();
             return view('admin.pages.notifications.index', [
-                'notify_new_user' => $notify_new_user
+                'setting' => $setting
             ]);
         } else {
             return $this->store($request);

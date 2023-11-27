@@ -57,6 +57,7 @@ return new class extends Migration {
             $table->boolean('show_last_notify')->nullable()->comment('Hiển thị popup thông báo mới nhất');
             $table->boolean('admin_tele_on_payment')->nullable()->comment('Nhận thông báo về Telegram khi người dùng nạp tiền');
             $table->boolean('enable_card_payment')->nullable()->default(0)->comment('Cấu hình bật tắt nạp card');
+            $table->boolean('dark_mode')->nullable()->default(0)->comment('Dark mode');
             $table->text('card_partner_id')->nullable()->comment('Cấu hình partner_id nạp card');
             $table->text('card_partner_key')->nullable()->comment('Cấu hình partner_key nạp card');
             $table->string('card_discount')->nullable()->comment('Cấu hình tỷ giá nạp card. VD nap the 100 tỷ giá 75 người dùng sẽ nhận đc 75k');

@@ -1262,7 +1262,7 @@ function getCookie(cname) {
 
 $('#switch_dark_mode').change(function() {
   var dark_mode = $(this).is(':checked') ? 1 : 0;
-  callAjaxPost( '/dark_mode', {dark_mode}).then(function() {
+  callAjaxPost( '/home/dark_mode', {dark_mode}).then(function() {
     $('body')[dark_mode ? 'addClass' : 'removeClass']('dark_mode');
   })
 });

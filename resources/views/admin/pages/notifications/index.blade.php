@@ -42,7 +42,7 @@
                         <div class="form-group mb-0">
                             <div class="d-flex align-items-center">
                                 <div class="switch m-r-10">
-                                    <input type="checkbox" id="show_last_notify" name="show_last_notify">
+                                    <input type="checkbox" id="show_last_notify" name="show_last_notify" value="{{ $setting->show_last_notify ?? '' }}" {{$setting->show_last_notify == 1 ? 'checked' : ''}}>
                                     <label for="show_last_notify"></label>
                                 </div>
                                 <label>Hiển thị popup thông báo mới nhất</label>
@@ -136,7 +136,7 @@
                             <div class="form-group">
                                 <label>Nội dung thông báo</label>
                                 <textarea class="form-control" name="notify_new_user" rows="5">
-                                    {{ $notify_new_user->notify_new_user }}
+                                    {{ $setting->notify_new_user ?? '' }}
                                 </textarea>
                             </div>
                             <div class="alert alert-primary">
@@ -153,7 +153,6 @@
             </div>
         </div>
     </div>
-
     <!--begin::Modal-->
     <div class="modal fade" id="modalEditNotify" tabindex="-1" role="dialog" aria-hidden="true"
          style="opacity: 1; overflow: visible;">
@@ -207,10 +206,9 @@
         </div>
     </div>
     <!--end::Modal-->
-
+    <!-- Content Wrapper END -->
 @endsection
 
-<!-- Content Wrapper END -->
 @section('js_page')
     <script src="{{ asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('management/assets/plugins/select2/select2.min.js') }}"></script>
