@@ -76,7 +76,10 @@ Route::group(['middleware' => ['auth']], function () {
         // Dashboard
         Route::prefix('home')->group(function () {
             Route::get('/', [HomeController::class, 'index'])->name('dashboard.index');
-            Route::get('dark_mode', [HomeController::class, 'darkMode'])->name('home.dark_mode');
+        });
+        // Dashboard
+        Route::prefix('setting')->group(function () {
+            Route::post('dark_mode', [SettingController::class, 'darkMode'])->name('home.dark_mode');
         });
         // Information
         Route::prefix('profile')->group(function () {
@@ -122,10 +125,10 @@ Route::group(['middleware' => ['auth']], function () {
             });
         });
         Route::prefix('ajax')->group(function () {
-            Route::get('logs', [HistoryController::class, 'ajaxGetLogs'])->name('admin.ajax.logs');
-            Route::get('log_report', [HistoryController::class, 'ajaxGetLogReport'])->name('admin.ajax.log_report');
+            Route::get('logs', [HistoryController::class, 'ajaxGetLogs'])->name('client.ajax.logs');
+            Route::get('log_report', [HistoryController::class, 'ajaxGetLogReport'])->name('client.ajax.log_report');
+            Route::post('new_update', [HomeController::class, 'newUpdate'])->name('client.new_update');
         });
-        Route::post('new_update', [HomeController::class, 'newUpdate'])->name('home.new-update');
     });
     // Admin manager
     Route::group(['prefix' => 'qladmin', 'middleware' => ['role:' . Role::ROLE_ADMIN]], function () {
@@ -219,7 +222,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         // Order Manage Buff
          Route::prefix('logs')->group(function () {
-            Route::get('/', [OrderController::class, 'buff'])->name('admin.orders.buff');
+            Route::get('/', [OrderController::class, 'index'])->name('admin.logs.buff');
         });
 
         // Ajax
@@ -237,6 +240,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('contacts', [ContactController::class, 'ajaxGetContacts'])->name('admin.ajax.contacts');
             Route::get('questions', [QuestionController::class, 'ajaxGetQuestions'])->name('admin.ajax.questions');
             Route::get('service_packs/{type}', [ServicePackController::class, 'ajaxGetServicePacks'])->name('admin.ajax.service_packs');
+            Route::get('logs', [HistoryController::class, 'ajaxGetLogs'])->name('admin.ajax.logs');
         });
     });
 });

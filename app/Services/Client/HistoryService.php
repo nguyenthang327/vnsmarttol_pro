@@ -12,10 +12,10 @@ class HistoryService
     {
         $logs = History::query();
         switch ($type) {
-            case 'like-sale':
+            case 'like-post-sale':
                 $code = "like-post-sale";
                 break;
-            case 'like-speed':
+            case 'like-post-speed':
                 $code = "like-post-speed";
                 break;
             case 'like-comment':

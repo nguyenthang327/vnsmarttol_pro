@@ -26,76 +26,46 @@
             <li class="scale-left li-service-select">
                 <div class="mr-3">
                     <div class="service-select-wrapper">
-                        <select id="service-select" class="form-control" style="width: 500px">
+                        <select id="service-select" class="form-control">
                             <option value="">Chọn dịch vụ</option>
-                            {{-- <optgroup label="Facebook Speed">
-                                <option value="/fb_speed/s_like">Like bài viết speed</option>
-                                <option value="/fb_speed/s_follow">Sub Trang cá nhân speed</option>
-                                <option value="/fb_speed/s_like_page">Like Sub FanPage speed</option>
-                            </optgroup>
-                            <option value="">Chọn dịch vụ</option>
-                            <optgroup label="Facebook Buff">
-                                <option value="/facebook/reactions">Tăng Like bài viết chậm</option>
-                                <option value="/facebook/follow">Sub trang cá nhân VIP</option>
-                                <option value="/facebook/like_page">Like Sub Fanpage VIP</option>
-                                <option value="/fb_speed/s_like_comment">Tăng Like Comment</option>
-                                <option value="/facebook/comment">Tăng Bình Luận</option>
-                                <option value="/facebook/share">Chia Sẻ Bài Viết</option>
-                                <option value="/facebook/buff_group">Tăng member Group</option>
-                                <option value="/facebook/share_group">Share Lives Group</option>
-                                <option value="/facebook/review">Đánh giá 5 Sao</option>
-                                <option value="/facebook/checkin">Check In FanPage</option>
-                                <option value="/facebook/fb_event">Sự kiện Facebook</option>
-                            </optgroup>
-                            <option value="">Chọn dịch vụ</option>
-                            <optgroup label="Facebook Reel">
-                                <option value="/fb_reel/fb_like_reel">Tăng Like Reels</option>
-                                <option value="/fb_reel/fb_comment_reel">Tăng Comment Reels</option>
-                                <option value="/fb_reel/fb_view_reel">Tăng View Reels</option>
-                                <option value="/fb_reel/fb_view_100k_reel">Tăng View 100k Reels</option>
-                                <option value="/fb_reel/fb_share_reel">Tăng Share Reels</option>
-                            </optgroup>
-                            <option value="">Chọn dịch vụ</option>
-                            <optgroup label="Facebook Vip">
-                                <option value="/vipfacebook/vip_like">VIP Like Theo Tháng</option>
-                                <option value="/vipfacebook/vip_like_group">VIP Like Group Tháng</option>
-                                <option value="/vipfacebook/vip_cmt">VIP CMT Theo tháng</option>
-                                <option value="/vipfacebook/vip_live">VIP Mắt Theo Tháng</option>
-                                <option value="/vipfacebook/vip_view_video">Vip View Video Tháng</option>
-                                <option value="/vipfacebook/vip_share">Vip Share Theo Tháng</option>
-                            </optgroup>
-                            <option value="">Chọn dịch vụ</option>
-                            <optgroup label="Facebook Bot">
-                                <option value="/reaction/proxy">Proxy</option>
-                                <option value="/reaction/bot_comment">Bot cảm xúc và Cmt</option>
-                                <option value="/reaction/bot_love_story">Bot Love và cmt Story</option>
-                                <option value="/reaction/poke">Bot Chọc Tương Tác</option>
-                                <option value="/reaction/filter_friend">Lọc bạn bè k tương tác</option>
-                            </optgroup>
-                            <option value="">Chọn dịch vụ</option>
-                            <optgroup label="Mắt-View">
-                                <option value="/view/view_live_v2">Buff Mắt Livestream</option>
-                                <option value="/view/view_video">Tăng View Video</option>
-                                <option value="/view/view_story">Tăng View Story</option>
-                                <option value="/view/view_other">View 600k phút</option>
-                                <option value="/view/view_60k_offline">View 60k Offline</option>
+                            <optgroup label="Facebook">
+                                <option value="facebook/like-post-sale">Tăng like sale Facebook</option>
+                                <option value="facebook/like-post-speed">Tăng like speed Facebook</option>
+                                <option value="facebook/like-comment">Tăng like comment Facebook</option>
+                                <option value="facebook/comment-sale">Tăng comment sale Facebook</option>
+                                <option value="facebook/comment-speed">Tăng comment speed Facebook</option>
+                                <option value="facebook/sub-vip">Tăng sub vip Facebook</option>
+                                <option value="facebook/sub-sale">Tăng sub sale Facebook</option>
+                                <option value="facebook/sub-speed">Tăng sub speed Facebook</option>
+                                <option value="facebook/like-page-quality">Tăng like page quality Facebook</option>
+                                <option value="facebook/like-page-sale">Tăng like page sale Facebook</option>
+                                <option value="facebook/like-page-speed">Tăng like page speed Facebook</option>
+                                <option value="facebook/eye-live">Tăng eye live Facebook</option>
+                                <option value="facebook/view-video">Tăng view video Facebook</option>
+                                <option value="facebook/share-profile">Tăng share profile Facebook</option>
+                                <option value="facebook/member-group">Tăng member group Facebook</option>
+                                <option value="facebook/view-story">Tăng view story Facebook</option>
+                                <option value="facebook/vip-like">Tăng vip like Facebook</option>
                             </optgroup>
 
-                            <option value="">Chọn dịch vụ</option>
-                            <optgroup label="Threads">
-                                <option value="/threads/like_threads">Like Threads</option>
-                                <option value="/threads/follow_threads">Follow Threads</option>
-                            </optgroup>
-                            <option value="">Chọn dịch vụ</option>
                             <optgroup label="Instagram">
-                                <option value="/instagram/like_instagram">Like Instagram</option>
-                                <option value="/instagram/comment_instagram">Comment Instagram</option>
-                                <option value="/instagram/follow_instagram">Follow Instagram</option>
-                                <option value="/instagram/view_instagram">View Instagram</option>
-                                <option value="/instagram/live_instagram">Mắt Livestream Instagram</option>
-                                <option value="/instagram/vip_like_instagram">Vip Like Instagram</option>
-                                <option value="/instagram/vip_comment_instagram">Vip Comment Instagram</option>
-                            </optgroup> --}}
+                                <option value="instagram/like-instagram">Like bài viết Instagram</option>
+                                <option value="instagram/follow-instagram">Theo dõi tài khoản Instagram</option>
+                            </optgroup>
+
+                            <optgroup label="TikTok">
+                                <option value="tiktok/like-tiktok">Like Tiktok</option>
+                                <option value="tiktok/comment-tiktok">Comment Tiktok</option>
+                                <option value="tiktok/share-tiktok">Share Tiktok</option>
+                                <option value="tiktok/sub-tiktok">Follow Tiktok</option>
+                                <option value="tiktok/view-tiktok">View Tiktok</option>
+                                <option value="tiktok/eye-live-tiktok">Mắt live</option>
+                            </optgroup>
+
+                            <optgroup label="Twitter">
+                                <option value="twitter/like-twitter">Like bài viết Twitter</option>
+                                <option value="twitter/sub-twitter">Theo dõi tài khoản Twitter</option>
+                            </optgroup>
                         </select>
                     </div>
                 </div>

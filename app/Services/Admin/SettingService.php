@@ -81,4 +81,9 @@ class SettingService
             return false;
         }
     }
+
+    public function getSetting()
+    {
+        return Setting::first();
+    }
 }

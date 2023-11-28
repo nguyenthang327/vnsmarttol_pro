@@ -72,7 +72,7 @@
     </script>
 </head>
 
-<body class="menu-default">
+<body class="menu-default {{ $settingComposer->dark_mode ? 'dark_mode' : '' }}">
     <div class="app">
         <div class="layout">
             <!-- Header START -->

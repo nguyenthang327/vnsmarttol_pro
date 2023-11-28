@@ -154,13 +154,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="item-parent">
-                                <a href="/service/facebook/like-speed">
+                                <a href="/service/facebook/like-post-speed">
                                     <span class="menu-dot"></span>
                                     <span class="text-danger pl-0">Like</span> bài viết speed
                                 </a>
                             </li>
                              <li class="item-parent">
-                                <a href="/service/facebook/like-sale"> <span class="menu-dot"></span> <span
+                                <a href="/service/facebook/like-post-sale"> <span class="menu-dot"></span> <span
                                         class="text-danger pl-0">Like</span> bài viết sale
                                 </a>
                             </li>

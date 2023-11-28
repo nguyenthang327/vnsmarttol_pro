@@ -149,7 +149,7 @@
                                         <div class="card-body">
                                             <form id="formUserAction"
                                                   action="{{ route('api.service.facebook', $type) }}">
-                                                @if ($type == 'like-sale' || $type == 'like-speed' || $type == 'comment-sale' || $type == 'eye-live' || $type == 'share-profile')
+                                                @if ($type == 'like-post-sale' || $type == 'like-post-speed' || $type == 'comment-sale' || $type == 'eye-live' || $type == 'share-profile')
                                                     <div class="form-group">
                                                         <input type="hidden" name="url" id="url"/>
                                                         <label for="uid">ID hoặc link bài viết cần chạy</label>
@@ -265,7 +265,7 @@
                                                                   placeholder="Mỗi bình luận 1 dòng, tối thiểu 5 bình luận"></textarea>
                                                     </div>
                                                 @endif
-                                                @if ($type == 'like-sale' || $type == 'like-speed' || $type == 'like-comment')
+                                                @if ($type == 'like-post-sale' || $type == 'like-post-speed' || $type == 'like-comment')
                                                     <div
                                                         class="form-group server-section">
                                                         <label class="font-bold">Chọn loại cảm xúc:</label>
@@ -343,7 +343,7 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if ($type == 'like-sale' || $type == 'like-speed' || $type == 'like-comment' || $type == 'comment-sale' || $type == 'sub-vip' || $type == 'sub-quanlity' || $type == 'sub-sale' || $type == 'sub-speed' || $type == 'like-page-quality' || $type == 'like-page-sale' || $type == 'like-page-speed' || $type == 'view-video' || $type == 'share-profile' || $type == 'member-group' || $type == 'view-story')
+                                                @if ($type == 'like-post-sale' || $type == 'like-post-speed' || $type == 'like-comment' || $type == 'comment-sale' || $type == 'sub-vip' || $type == 'sub-quanlity' || $type == 'sub-sale' || $type == 'sub-speed' || $type == 'like-page-quality' || $type == 'like-page-sale' || $type == 'like-page-speed' || $type == 'view-video' || $type == 'share-profile' || $type == 'member-group' || $type == 'view-story')
                                                     <div class="form-group">
                                                         <label for="count">Số lượng</label>
                                                         <input type="number" class="form-control" name="count"
@@ -375,7 +375,7 @@
                                                             </select>
                                                         </div>
                                                     @endif
-                                                @if ($type == 'like-speed' || $type == 'like-comment')
+                                                @if ($type == 'like-post-speed' || $type == 'like-comment')
                                                     <div
                                                         class="form-group server-section">
                                                         <label for="speed">Tốc độ</label>

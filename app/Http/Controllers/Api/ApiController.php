@@ -34,7 +34,7 @@ class ApiController extends Controller
             if (empty($user)) {
                 return response()->json(['status' => 0, 'msg' => 'Api-Token này không tồn tại'], 200);
             }
-            if ($request->type == 'like-sale') {
+            if ($request->type == 'like-post-sale') {
                 $validator = Validator::make($request->all(), [
                     'uid' => 'required|string|max:100',
                     'server_order' => 'required|string',
@@ -118,7 +118,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'like-speed') {
+            }
+            elseif ($request->type == 'like-post-speed') {
                 $validator = Validator::make($request->all(), [
                     'uid' => 'required|string|max:100',
                     'server_order' => 'required|string',
@@ -204,7 +205,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'like-comment') {
+            }
+            elseif ($request->type == 'like-comment') {
                 $validator = Validator::make($request->all(), [
                     'idcomment' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -289,7 +291,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'comment-sale') {
+            }
+            elseif ($request->type == 'comment-sale') {
                 $validator = Validator::make($request->all(), [
                     'uid' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -373,7 +376,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'sub-vip') {
+            }
+            elseif ($request->type == 'sub-vip') {
                 $validator = Validator::make($request->all(), [
                     'uid' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -455,7 +459,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'sub-quality') {
+            }
+            elseif ($request->type == 'sub-quality') {
                 $validator = Validator::make($request->all(), [
                     'idpost' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -537,7 +542,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'sub-sale') {
+            }
+            elseif ($request->type == 'sub-sale') {
                 $validator = Validator::make($request->all(), [
                     'uid' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -619,7 +625,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'sub-speed') {
+            }
+            elseif ($request->type == 'sub-speed') {
                 $validator = Validator::make($request->all(), [
                     'idpost' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -701,7 +708,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'like-page-quality') {
+            }
+            elseif ($request->type == 'like-page-quality') {
                 $validator = Validator::make($request->all(), [
                     'idpage' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -783,7 +791,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'like-page-sale') {
+            }
+            elseif ($request->type == 'like-page-sale') {
                 $validator = Validator::make($request->all(), [
                     'idpage' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -865,7 +874,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'like-page-speed') {
+            }
+            elseif ($request->type == 'like-page-speed') {
                 $validator = Validator::make($request->all(), [
                     'idpage' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -947,7 +957,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'eye-live') {
+            }
+            elseif ($request->type == 'eye-live') {
                 $validator = Validator::make($request->all(), [
                     'uid' => 'required|numeric',
                     'server_order' => 'required|string',
@@ -1031,7 +1042,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'view-video') {
+            }
+            elseif ($request->type == 'view-video') {
                 $validator = Validator::make($request->all(), [
                     'link_video' => 'required|string',
                     'server_order' => 'required|string',
@@ -1115,7 +1127,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'share-profile') {
+            }
+            elseif ($request->type == 'share-profile') {
                 $validator = Validator::make($request->all(), [
                     'uid' => 'required|string',
                     'server_order' => 'required|string',
@@ -1197,7 +1210,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'member-group') {
+            }
+            elseif ($request->type == 'member-group') {
                 $validator = Validator::make($request->all(), [
                     'idgroup' => 'required|string',
                     'server_order' => 'required|string',
@@ -1279,7 +1293,8 @@ class ApiController extends Controller
                         }
                     }
                 }
-            } elseif ($request->type == 'view-story') {
+            }
+            elseif ($request->type == 'view-story') {
                 $validator = Validator::make($request->all(), [
                     'idstory' => 'required|string',
                     'server_order' => 'required|string',

@@ -43,21 +43,4 @@ class HomeController extends Controller
             'notify' => null
         ]);
     }
-
-    public function darkMode(Request $request)
-    {
-        try {
-            $this->settingService->updateSettingByKey('dark_mode', $request->input('dark_mode'));
-
-            return response()->json([
-                "status" => 1,
-                "msg" => "Cập nhật thành công."
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                "status" => 0,
-                "msg" => $e->getMessage()
-            ]);
-        }
-    }
 }

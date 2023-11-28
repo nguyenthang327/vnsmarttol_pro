@@ -24,11 +24,11 @@ class FacebookController extends Controller
     public function index(Request $request, $type)
     {
         switch ($type) {
-            case 'like-sale':
+            case 'like-post-sale':
                 $title = 'Tăng like sale Facebook';
                 $code = "like-post-sale";
                 break;
-            case 'like-speed':
+            case 'like-post-speed':
                 $title = 'Tăng like speed Facebook';
                 $code = "like-post-speed";
                 break;
@@ -114,6 +114,8 @@ class FacebookController extends Controller
         }
 
         $counts['all'] = History::where('user_id', Auth::id())->count();
+
+        if ($servers)
 
         return view("management.pages.services.facebook.index", [
             'title' => $title,

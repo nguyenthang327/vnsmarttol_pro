@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    protected $pathView = 'admin.pages.orders.';
 
-    public function buff()
+    public function index()
     {
-        return view($this->pathView . 'buff');
+        return view('admin.pages.orders.index');
     }
 }

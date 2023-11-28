@@ -136,7 +136,7 @@
                 </a>
             </li>
             <li class="item-parent menu-item-logs">
-                <a href="{{route('admin.orders.buff')}}">
+                <a href="/qladmin/logs">
                     <span class="icon-holder">
                         <i class="fas fa-thumbs-up"></i>
                     </span>

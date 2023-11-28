@@ -84,7 +84,7 @@ $(document).ready(function () {
       }
     },
   }).on('select2:select', function () {
-    window.location.href =  $('#service-select').val();
+    window.location.href =  '/service/' + $('#service-select').val();
   });
 
   if (typeof type !== "undefined" && $(multiOrderData.uidElementSelector).length) {
@@ -415,7 +415,7 @@ function checkDiscount() {
 }
 
 function getPayment() {
-  callAjaxPost('/new_update').then(async function(data) {
+  callAjaxPost('/ajax/new_update').then(async function(data) {
     var payment = data.payment;
     var refund = data.refund;
 
